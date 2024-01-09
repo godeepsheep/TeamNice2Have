@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6abc0c-19c1-4a95-88e9-b5d5abbca72a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Gui/Stilling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBconnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBconnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/Interface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/Interface.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +62,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mark\Documents\GitHub\TeamNice2Have\src\Gui" />
       <recent name="C:\Users\ebox\IdeaProjects\project0124\src\Gui" />
     </key>
   </component>
@@ -100,7 +102,7 @@
       <workItem from="1704745132842" duration="2138000" />
       <workItem from="1704750568843" duration="2103000" />
       <workItem from="1704787981958" duration="744000" />
-      <workItem from="1704799176579" duration="1195000" />
+      <workItem from="1704799176579" duration="1702000" />
     </task>
     <servers />
   </component>

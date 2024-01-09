@@ -17,7 +17,7 @@
       <TextField layoutX="272.0" layoutY="62.0" prefHeight="26.0" prefWidth="55.0" text="12:12" />
       <TextField fx:id="Team1Score" layoutX="22.0" layoutY="111.0" prefHeight="26.0" prefWidth="55.0" promptText="Score" />
       <TextField fx:id="Team2Score" layoutX="514.0" layoutY="111.0" prefHeight="26.0" prefWidth="55.0" promptText="Score" />
-      <ImageView fitHeight="52.0" fitWidth="55.0" layoutX="274.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Pause" fitHeight="52.0" fitWidth="55.0" layoutX="274.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@pause%20icon.png" />
          </image>

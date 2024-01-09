@@ -28,7 +28,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 
 		DBconnection db = new DBconnection();
-
+ /*
 		ArrayList<Student> list = db.getStudentsBySemesterNo(1);
 
 		for (Student student : list)
@@ -42,7 +42,7 @@ public class Main extends Application {
 
 		for (Student student : all)
 			System.out.println(student);
-
+*/
 
 		launch(args);
 	}
