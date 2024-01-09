@@ -1,9 +1,11 @@
 package Gui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
-import java.awt.*;
+
 
 public class InterfaceController {
 
@@ -28,9 +30,23 @@ public class InterfaceController {
     @FXML
     ImageView PauseButton;
 
+    public int Team1Goals = 0;
+    public int Team2Goals = 0;
+    public int penaltiesTeam1= 0;
+    public int penaltiesTeam2= 0;
 
-    public void AddGoal(String Team){
+    public void AddGoalTeam1(String Team){
+        Team1Goals += 1;
+    }
+    public void AddGoalTeam2(String Team){
+        Team2Goals += 1;
+    }
 
+    public void AddPenaltiesTeam1(){
+        penaltiesTeam1 +=1;
+    }
+    public void AddPenaltiesTeam2(){
+        penaltiesTeam2 +=1;
     }
 
     public void AddPenalty(String Team){
