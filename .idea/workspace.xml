@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5d6abc0c-19c1-4a95-88e9-b5d5abbca72a" name="Changes" comment="Made classes from the ER diagram.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Datalayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Datalayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui/Interface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/Interface.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui/InterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/InterfaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/PlayIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/PlayIcon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/Stilling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/Stilling.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui/pauseicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/pauseicon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
