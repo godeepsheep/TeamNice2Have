@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.SidebarNavigation">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.SidebarNavigationController">
    <children>
       <AnchorPane layoutX="100.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #002d40;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="2.0">
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="5.0">
                <image>
                   <Image url="@icons8-menu-50%20(1).png" />
                </image>
@@ -35,5 +39,28 @@
                      </image></ImageView>
                </children></VBox>
          </children></AnchorPane>
+      <AnchorPane layoutX="40.0" layoutY="40.0" prefHeight="360.0" prefWidth="130.0" style="-fx-background-color: White;">
+         <children>
+            <VBox layoutX="14.0" prefHeight="350.0" prefWidth="154.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Label accessibleRole="BUTTON" prefHeight="40.0" prefWidth="162.0" text="Stilling" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label accessibleRole="BUTTON" prefHeight="40.0" prefWidth="162.0" text="Kamp" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label accessibleRole="BUTTON" prefHeight="40.0" prefWidth="162.0" text="Kamprapport" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label accessibleRole="BUTTON" prefHeight="40.0" prefWidth="162.0" text="Hold" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+               </children></VBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
