@@ -1,5 +1,8 @@
 import Data.DBconnection;
+import Data.Datalayer;
 import Data.Student;
+import Logic.Liga;
+import Logic.TeamScore;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -9,8 +12,6 @@ import java.util.ArrayList;
 
 
 public class Main extends Application {
-
-
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -27,7 +28,11 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 
-		DBconnection db = new DBconnection();
+		//DBconnection db = new DBconnection();
+		Liga liga = new Liga();
+		liga.show();
+
+
  /*
 		ArrayList<Student> list = db.getStudentsBySemesterNo(1);
 
