@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 
+	static Datalayer db = new Datalayer();
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -25,33 +27,24 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
+			e.getMessage();
 			e.printStackTrace();
 		}
 	}
 	
 	public static void main(String[] args) {
 
-		//DBconnection db = new DBconnection();
+
 		Liga liga = new Liga();
 		liga.show();
 
 
- /*
-		ArrayList<Student> list = db.getStudentsBySemesterNo(1);
-
-		for (Student student : list)
-			System.out.println(student);
-
-		Student s = db.getStudentById(1000);
-
-		System.out.println(s);
-
-		ArrayList<Student> all = db.getAllStudents();
-
-		for (Student student : all)
-			System.out.println(student);
-*/
-
 		launch(args);
 	}
+
+
+	public static void WriteActionsToDB(int id, int time, String Name){
+		db.PrintAction(id, time, Name);
+	}
+
 }
