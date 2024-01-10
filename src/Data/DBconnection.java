@@ -58,6 +58,10 @@ public class DBconnection {
 
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5c8a89d6402615f4536a611984d95039c4c1f756
 /*
   public Student getStudentById(int id) {
     ArrayList<Student> list = getStudentsByWhereClause("StudentID=" + id);
