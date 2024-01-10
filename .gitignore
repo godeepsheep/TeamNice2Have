@@ -27,3 +27,4 @@ out/
 ### Mac OS ###
 .DS_Store
 project0124/
+.idea/workspace.xml
