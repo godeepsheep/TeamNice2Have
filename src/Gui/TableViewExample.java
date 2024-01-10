@@ -28,10 +28,6 @@ import javafx.stage.Stage;
                 this.name.set(name);
             }
 
-            public ObservableValue<String> nameProperty() {
-
-                return null;
-            }
         }
 
         @Override

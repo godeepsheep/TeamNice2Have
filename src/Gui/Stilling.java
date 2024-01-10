@@ -24,15 +24,11 @@ public class Stilling {
     public void AddEntry(String _Stilling, String _HoldNavn, String _Kampe, String _Pts, String _Goals){
 
 
-    tableView.setItems();
+    
 
     }
     public void AddEntry(String _HoldNavn) {
-        Stilling.setHeaderValue("");
-        HoldNavn.setHeaderValue(_HoldNavn);
-        Kampe.setHeaderValue(0);
-        Pts.setHeaderValue(0);
-        Goals.setHeaderValue(0);
+
     }
 
     public void getKampe(String _HoldNavn){
