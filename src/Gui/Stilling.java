@@ -27,6 +27,8 @@ public class Stilling {
     TableColumn Pts;
     @FXML
     TableView tableView;
+
+
     public void AddEntry(){
 
         final ObservableList<StandingEntry> data = FXCollections.observableArrayList(
