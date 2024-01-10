@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.InterfaceController">
    <children>
@@ -14,13 +15,17 @@
       <Button fx:id="Team2Penalty" layoutX="504.0" layoutY="295.0" mnemonicParsing="false" text="Penalty" />
       <TextField fx:id="Team1Name" layoutX="22.0" layoutY="63.0" promptText="Team 1 name" />
       <TextField fx:id="Team2Name" layoutX="419.0" layoutY="63.0" promptText="Team 2 name" />
-      <TextField fx:id="Timer" layoutX="272.0" layoutY="62.0" prefHeight="26.0" prefWidth="55.0" text="12:12" />
       <TextField fx:id="Team1Score" layoutX="22.0" layoutY="111.0" prefHeight="26.0" prefWidth="55.0" promptText="Score" />
       <TextField fx:id="Team2Score" layoutX="514.0" layoutY="111.0" prefHeight="26.0" prefWidth="55.0" promptText="Score" />
-      <ImageView fx:id="PauseButton" fitHeight="52.0" fitWidth="55.0" layoutX="274.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="PauseButton" fitHeight="52.0" fitWidth="55.0" layoutX="274.0" layoutY="310.0" onMouseClicked="#UpdateTimer" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@pauseicon.png" />
+            <Image url="@PlayIcon.png" />
          </image>
       </ImageView>
+      <TextField fx:id="timerTextField" alignment="CENTER" layoutX="265.0" layoutY="56.0" prefHeight="40.0" prefWidth="69.0" promptText="00:00">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
