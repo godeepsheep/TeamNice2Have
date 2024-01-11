@@ -86,6 +86,14 @@ public class Main extends Application {
 		for (Event e : list3)
 			System.out.println(e);
 
+		/*Starter en kamp*/
+		//int matchID = db.startMatch(4, 8);
+		//System.out.println(matchID);
+
+		/*slutter en kamp*/
+		db.endMatch(30);
+
+
 		/*sætter event. eventType : 1 er mål 2 er udvisning*/
 		//db.setEvent(2,1,11, "00:00:11");
 

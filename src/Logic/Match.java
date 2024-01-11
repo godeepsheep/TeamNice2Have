@@ -29,6 +29,7 @@ public class Match {
         return goals2;
     }
 
+
     @Override
     public String toString() {
         return "[Match: id=" + id +

@@ -58,9 +58,12 @@ AS
 BEGIN
 	DECLARE @ID INT;
 	INSERT INTO [Match] (TimeStart) OUTPUT INSERTED.ID VALUES (GETDATE());
+
 	SET @ID = SCOPE_IDENTITY();
 	INSERT INTO TeamMatch (MatchID, TeamID) VALUES (@ID, @t1);
 	INSERT INTO TeamMatch (MatchID, TeamID) VALUES (@ID, @t2);
+
+	SELECT @ID AS matchID;
 END;
 GO
 
@@ -113,5 +116,5 @@ BEGIN
 	LEFT JOIN EventType ON TypeID = EventType.ID
 	LEFT JOIN Team ON TeamID = Team.ID
 
-	WHERE MatchID = 1;
+	WHERE MatchID = @matchID;
 END;
