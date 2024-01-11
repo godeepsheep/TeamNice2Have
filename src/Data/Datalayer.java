@@ -2,6 +2,7 @@ package Data;
 
 import Logic.League;
 import Logic.Match;
+import Logic.Event;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -110,6 +111,34 @@ public class Datalayer {
         }
     }
 
+    public ArrayList<Event> getEvents(int matchID) {
+        try {
+            ArrayList<Event> eventList = new ArrayList<>();
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("EXEC getEvents "+ matchID);
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("Event");
+                String team = resultSet.getString("Team");
+                String time = resultSet.getString("Time");
+                String realtime = resultSet.getString("RealTime");
+
+                Event event = new Event(name, team, time, realtime);
+                eventList.add(event);
+            }
+
+            statement.close();
+            return eventList;
+
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    /*create the event and if there is a goal*/
     public void setEvent(int eventType, int matchID, int teamID, String time)  {
         try {
             String parameters =
@@ -127,6 +156,7 @@ public class Datalayer {
         }
     }
 
+    /*delete the event and the goal*/
     public void deleteEvent(int eventType, int matchID, int teamID)  {
         try {
             String parameters =
@@ -149,12 +179,10 @@ public class Datalayer {
             String sql = "INSERT INTO Team VALUES ()";
 
             //Statement statement = connection.createStatement();
-            //statement.executeUpdate("setEvent "+parameters);
-            return true;
+            //statement.executeQuery("setEvent "+parameters);
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
-            return false;
         }
          */
     }

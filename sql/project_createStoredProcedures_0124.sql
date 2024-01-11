@@ -4,6 +4,8 @@ DROP PROCEDURE IF EXISTS getMatches;
 DROP PROCEDURE IF EXISTS getLeague;
 DROP PROCEDURE IF EXISTS createMatch;
 DROP PROCEDURE IF EXISTS setEvent;
+DROP PROCEDURE IF EXISTS deleteEvent;
+DROP PROCEDURE IF EXISTS getEvents;
 GO
 
 CREATE PROCEDURE getMatches  
@@ -13,7 +15,7 @@ BEGIN
 		SELECT 
 			ROW_NUMBER() OVER (PARTITION BY [Match].ID ORDER BY TeamMatch.Goals DESC) AS RowNo, 
 			[Match].ID, 
-			FORMAT(CONVERT(DATETIME, TimeStart, 121), 'dd.MM. HH:mm')AS [Time], 
+			FORMAT(TimeStart, 'dd.MM. HH:mm') AS [Time], 
 			Team.Name AS Team1, 
 			TeamMatch.Goals AS Goals1, 
 			Team2.Name AS Team2, 
@@ -94,4 +96,22 @@ BEGIN
 					ORDER BY RealTime DESC
 				);
 	DELETE FROM [Event] WHERE ID = @ID;
+END;
+GO
+
+CREATE PROCEDURE getEvents	
+	@matchID INT
+AS
+BEGIN
+	SELECT 
+		EventType.Name AS [Event], 
+		Team.Name AS Team, 
+		FORMAT(CONVERT(DATETIME, [Time], 121), 'mm:ss') AS [Time], 
+		FORMAT(CONVERT(DATETIME, RealTime, 121), 'HH:mm:ss') AS RealTime 
+	FROM [Event]
+
+	LEFT JOIN EventType ON TypeID = EventType.ID
+	LEFT JOIN Team ON TeamID = Team.ID
+
+	WHERE MatchID = 1;
 END;
