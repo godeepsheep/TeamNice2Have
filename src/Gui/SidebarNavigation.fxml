@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.SidebarNavigationController">
    <children>
-      <AnchorPane layoutX="100.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #002d40;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane layoutX="100.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #006600;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <ImageView fx:id="menu" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="5.0">
                <image>
@@ -22,19 +22,19 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-ball-50.png" />
+                        <Image url="@ball.png" />
                      </image></ImageView>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-sport-44.png" />
+                        <Image url="@clock.png" />
                      </image></ImageView>
                   <ImageView fitHeight="45.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-handball-50.png" />
+                        <Image url="@handball.png" />
                      </image></ImageView>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-whistle-96.png" />
+                        <Image url="@whistle.png" />
                      </image></ImageView>
                </children></VBox>
          </children></AnchorPane>
