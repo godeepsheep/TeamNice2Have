@@ -3,6 +3,7 @@ use eamvstudie23_dk_db_project
 DROP PROCEDURE IF EXISTS getMatches;
 DROP PROCEDURE IF EXISTS getLeague;
 DROP PROCEDURE IF EXISTS createMatch;
+DROP PROCEDURE IF EXISTS setEvent;
 GO
 
 CREATE PROCEDURE getMatches  
@@ -58,4 +59,39 @@ BEGIN
 	SET @ID = SCOPE_IDENTITY();
 	INSERT INTO TeamMatch (MatchID, TeamID) VALUES (@ID, @t1);
 	INSERT INTO TeamMatch (MatchID, TeamID) VALUES (@ID, @t2);
+END;
+GO
+
+CREATE PROCEDURE setEvent	
+	@type INT,
+	@matchID INT,
+	@teamID INT,
+	@time TIME
+AS
+BEGIN
+	IF @type = 1 BEGIN 
+		UPDATE TeamMatch SET Goals = Goals+1 WHERE MatchID = @matchID AND TeamID = @teamID;
+	END
+
+	DECLARE @realTime TIME = CONVERT(TIME, GETDATE());
+	INSERT INTO [Event] VALUES (@type, @matchID, @teamID, @time, @realTime);
+END;
+GO
+
+CREATE PROCEDURE deleteEvent	
+	@type INT,
+	@matchID INT,
+	@teamID INT
+AS
+BEGIN
+	IF @type = 1 BEGIN 
+		UPDATE TeamMatch SET Goals = Goals-1 WHERE MatchID = @matchID AND TeamID = @teamID;
+	END
+
+	DECLARE @ID INT;
+	SET @ID = (SELECT TOP 1 ID FROM [Event] 
+					WHERE MatchID = @matchID AND TeamID = @teamID AND TypeID = @type
+					ORDER BY RealTime DESC
+				);
+	DELETE FROM [Event] WHERE ID = @ID;
 END;

@@ -66,15 +66,23 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 
+		/*liste over alle kampe*/
 		ArrayList<Match> list = db.getMatches();
 		System.out.println("\n\nGetMatches");
 		for (Match m : list)
 			System.out.println(m);
 
+		/*liste over alle hold*/
 		ArrayList<League> list2 = db.getLeague();
 		System.out.println("\n\nGetLeague");
 		for (League l : list2)
 			System.out.println(l);
+
+		/*sætter event. eventType : 1 er mål 2 er udvisning*/
+		//db.setEvent(2,1,11, "00:11");
+
+		/*sletter event. eventType : 1 er mål 2 er udvisning*/
+		//db.deleteEvent(1,1,11);
 
 		launch(args);
 	}
