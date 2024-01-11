@@ -85,22 +85,22 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-ball-50.png" />
+                        <Image url="@ball.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-sport-44.png" />
+                        <Image url="@clock.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="45.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-handball-50.png" />
+                        <Image url="@handball.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons8-whistle-96.png" />
+                        <Image url="@whistle.png" />
                      </image>
                   </ImageView>
                </children>
