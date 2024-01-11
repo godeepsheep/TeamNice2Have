@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Datalayer {
+    public class Datalayer {
     private Connection connection;
 
     public Datalayer() {
@@ -79,5 +79,15 @@ public class Datalayer {
             return null;
         }
     }
+
+    public void PrintAction(int ID, int Time, String Name){
+
+        String sql = "INSERT INTO Event VALUES ("+ ID +"," + Time + "," + Name + ")";
+        System.out.println(sql);
+
+    }
+
+
+
 
 }
