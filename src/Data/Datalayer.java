@@ -173,29 +173,6 @@ public class Datalayer {
         }
     }
 
-
-    public String testme() {
-        try {
-            String testmexx = "";
-
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("EXEC getEvents 1");
-
-            while (resultSet.next()) {
-                testmexx = resultSet.getString("Event");
-                //System.out.println(testmexx);
-            }
-
-            statement.close();
-            return testmexx;
-
-        }
-        catch (SQLException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
-
     public int startMatch(int teamID1, int teamID2)  {
         try {
             String parameters = "@t1="+teamID1+", @t2="+teamID2;
@@ -222,7 +199,7 @@ public class Datalayer {
 
             Statement statement = connection.createStatement();
             int rows = statement.executeUpdate(sql);
-            
+
             statement.close();
         }
         catch (SQLException e) {
