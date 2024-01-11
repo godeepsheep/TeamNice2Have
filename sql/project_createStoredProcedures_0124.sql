@@ -12,7 +12,7 @@ BEGIN
 		SELECT 
 			ROW_NUMBER() OVER (PARTITION BY [Match].ID ORDER BY TeamMatch.Goals DESC) AS RowNo, 
 			[Match].ID, 
-			[Match].TimeStart AS [Date], 
+			FORMAT(CONVERT(DATETIME, TimeStart, 121), 'dd.MM. HH:mm')AS [Time], 
 			Team.Name AS Team1, 
 			TeamMatch.Goals AS Goals1, 
 			Team2.Name AS Team2, 
@@ -26,7 +26,7 @@ BEGIN
 		LEFT JOIN Team AS Team2 ON TeamMatch2.TeamID = Team2.ID
 	)
 
-	SELECT ID, [Date], Team1, Goals1, Team2, Goals2 FROM tempResult WHERE RowNo = 1;
+	SELECT ID, [Time], Team1, Goals1, Team2, Goals2 FROM tempResult WHERE RowNo = 1;
 END;
 GO
 

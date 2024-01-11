@@ -2,11 +2,11 @@ package Logic;
 
 public class League {
     private int standing, matches, goalsDiff, points;
-    private String Name;
+    private String name;
 
     public League(int standing, String Name, int matches, int goalsDiff, int points) {
         this.standing = standing;
-        this.Name = Name;
+        this.name = Name;
         this.matches = matches;
         this.goalsDiff = goalsDiff;
         this.points = points;
@@ -16,7 +16,7 @@ public class League {
         return Integer.toString(standing);
     }
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getMatches() {
@@ -34,6 +34,9 @@ public class League {
     @Override
     public String toString() {
         return "[League: standing=" + standing +
-                ", Name=" + Name + "]";
+                ", Name=" + name +
+                ", Matches=" + matches +
+                ", GoalsDiff=" + goalsDiff +
+                ", Points=" + points + "]";
     }
 }

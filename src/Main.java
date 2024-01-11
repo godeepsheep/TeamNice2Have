@@ -2,6 +2,7 @@ import Data.DBconnection;
 import Data.Datalayer;
 import Gui.SidebarNavigationController;
 import Logic.League;
+import Logic.Match;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -65,11 +66,15 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 
-		Datalayer data = new Datalayer();
-		ArrayList<League> list = data.getLeague();
+		ArrayList<Match> list = db.getMatches();
+		System.out.println("\n\nGetMatches");
+		for (Match m : list)
+			System.out.println(m);
 
-		for (League league : list)
-			System.out.println(league);
+		ArrayList<League> list2 = db.getLeague();
+		System.out.println("\n\nGetLeague");
+		for (League l : list2)
+			System.out.println(l);
 
 		launch(args);
 	}

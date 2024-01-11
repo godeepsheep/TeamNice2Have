@@ -1,6 +1,7 @@
 package Data;
 
 import Logic.League;
+import Logic.Match;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -35,7 +36,7 @@ import java.util.ArrayList;
                                 "integratedSecurity=true;" + // bruger Windows credentials
                                 "trustServerCertificate=true;"; // afht. SSL forbindelse
             }
-            System.out.println(connectionString);
+
             System.out.println("Connecting to database...");
 
             connection = DriverManager.getConnection(connectionString);
@@ -80,6 +81,36 @@ import java.util.ArrayList;
                 return null;
             }
         }
+
+        public ArrayList<Match> getMatches() {
+            try {
+                ArrayList<Match> matchList = new ArrayList<>();
+
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("EXEC getMatches");
+
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("ID");
+                    String time = resultSet.getString("Time");
+                    String team1 = resultSet.getString("Team1");
+                    int goals1 = resultSet.getInt("Goals1");
+                    String team2 = resultSet.getString("Team2");
+                    int goals2 = resultSet.getInt("Goals2");
+
+                    Match match = new Match(id, time, team1, goals1, team2, goals2);
+                    matchList.add(match);
+                }
+
+                statement.close();
+                return matchList;
+
+            }
+            catch (SQLException e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
+        }
+
 /*
     public ArrayList<TeamScore> getTeamScore(int ligaID) {
         try {
