@@ -1,6 +1,6 @@
 package Data;
 
-import Logic.TeamScore;
+import Logic.League;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -42,6 +42,7 @@ import java.util.ArrayList;
             System.out.println("Connected to database");
 
             return true;
+
         } catch (SQLException e) {
             System.out.println("Could not connect to database: " + databaseName);
             System.out.println(e.getMessage());
@@ -51,6 +52,35 @@ import java.util.ArrayList;
 
     }
 
+
+        public ArrayList<League> getLeague() {
+            try {
+                ArrayList<League> leagueList = new ArrayList<>();
+
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery("EXEC getLeague");
+
+                while (resultSet.next()) {
+                    int standing = resultSet.getInt("Standing");
+                    String name = resultSet.getString("Name");
+                    int matches = resultSet.getInt("Matches");
+                    int goalsDiff = resultSet.getInt("GoalsDiff");
+                    int points = resultSet.getInt("Points");
+
+                    League league = new League(standing, name, matches, goalsDiff, points);
+                    leagueList.add(league);
+                }
+
+                statement.close();
+                return leagueList;
+
+            }
+            catch (SQLException e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
+        }
+/*
     public ArrayList<TeamScore> getTeamScore(int ligaID) {
         try {
             ArrayList<TeamScore> teamscores = new ArrayList<>();
@@ -79,7 +109,7 @@ import java.util.ArrayList;
             return null;
         }
     }
-
+*/
     public void PrintAction(int ID, int Time, String Name){
 
         String sql = "INSERT INTO Event VALUES ("+ ID +"," + Time + "," + Name + ")";

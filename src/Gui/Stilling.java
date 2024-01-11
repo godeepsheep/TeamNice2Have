@@ -1,5 +1,7 @@
 package Gui;
 
+import Data.Datalayer;
+import Logic.League;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.util.ArrayList;
 
 
 public class Stilling {
@@ -29,12 +33,14 @@ public class Stilling {
 
     public void AddEntry(){
 
-        final ObservableList<StandingEntry> data = FXCollections.observableArrayList(
-                //Get data from database and enter it here.
-                new StandingEntry("1", "Hello World!", "1", "1", "1"),
-                new StandingEntry("2", "Hello World!", "1", "1", "1")
-        );
+        final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
+        //new StandingEntry("1", "Hello World!", "1", "1", "1")
 
+        Datalayer datalayer = new Datalayer();
+        ArrayList<League> list = datalayer.getLeague();
+
+        for (League l : list)
+            data.add(new StandingEntry(l.getStanding(), l.getName(), l.getMatches(), l.getGoalsDiff(), l.getPoints()) );
 
         Stilling.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Standing"));
         HoldNavn.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Name"));

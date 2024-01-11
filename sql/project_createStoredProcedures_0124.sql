@@ -8,10 +8,25 @@ GO
 CREATE PROCEDURE getMatches  
 AS  
 BEGIN  
-	SELECT STRING_AGG(Name, '  - vs - ') AS Teams, STRING_AGG(Goals, ' - ') AS Goals FROM [Match]  
-	LEFT JOIN TeamMatch ON [Match].ID = TeamMatch.MatchID  
-	LEFT JOIN Team ON TeamMatch.TeamID = Team.ID  
-	GROUP BY [Match].ID  
+	WITH tempResult AS (	
+		SELECT 
+			ROW_NUMBER() OVER (PARTITION BY [Match].ID ORDER BY TeamMatch.Goals DESC) AS RowNo, 
+			[Match].ID, 
+			[Match].TimeStart AS [Date], 
+			Team.Name AS Team1, 
+			TeamMatch.Goals AS Goals1, 
+			Team2.Name AS Team2, 
+			TeamMatch2.Goals AS Goals2 
+		FROM [Match]  
+
+		LEFT JOIN TeamMatch ON [Match].ID = TeamMatch.MatchID  
+		LEFT JOIN Team ON TeamMatch.TeamID = Team.ID  
+
+		LEFT JOIN TeamMatch AS TeamMatch2 ON [Match].ID = TeamMatch2.MatchID AND TeamMatch.TeamID <> TeamMatch2.TeamID
+		LEFT JOIN Team AS Team2 ON TeamMatch2.TeamID = Team2.ID
+	)
+
+	SELECT ID, [Date], Team1, Goals1, Team2, Goals2 FROM tempResult WHERE RowNo = 1;
 END;
 GO
 

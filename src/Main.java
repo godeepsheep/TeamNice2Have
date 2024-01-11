@@ -1,9 +1,7 @@
 import Data.DBconnection;
 import Data.Datalayer;
-import Data.Student;
 import Gui.SidebarNavigationController;
-import Logic.Liga;
-import Logic.TeamScore;
+import Logic.League;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -67,10 +65,11 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 
+		Datalayer data = new Datalayer();
+		ArrayList<League> list = data.getLeague();
 
-		Liga liga = new Liga();
-		liga.show();
-
+		for (League league : list)
+			System.out.println(league);
 
 		launch(args);
 	}
