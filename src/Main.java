@@ -1,13 +1,16 @@
 import Data.DBconnection;
 import Data.Datalayer;
 import Data.Student;
+import Gui.SidebarNavigationController;
 import Logic.Liga;
 import Logic.TeamScore;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.StageStyle;
 
 import java.util.ArrayList;
 
@@ -16,11 +19,20 @@ public class Main extends Application {
 
 	static Datalayer db = new Datalayer();
 
-	@Override
+	/* @Override
 	public void start(Stage primaryStage) {
 		try {
 //			BorderPane root = new BorderPane();
-			FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Gui/Interface.fxml"));
+
+			FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Gui/SidebarNavigation.fxml"));
+			Parent root = fxmlLoader.load();
+
+			// Access the controller from the FXMLLoader
+			SidebarNavigationController sidebarController = fxmlLoader.getController();
+
+			// Pass the Datalayer instance to the controller
+			sidebarController.setDatalayer(db);
+			//FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Gui/SidebarNavigation.fxml"));
 			Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 			//Scene scene = new Scene(root,400,400);
 			//scene.getStylesheets().add(getClass().getResource("Gui/application.css").toExternalForm());
@@ -31,7 +43,28 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+*/
+	double x,y = 0;
+	@Override
+	public void start(Stage primaryStage) throws Exception{
+		Parent root = FXMLLoader.load(getClass().getResource("Gui/SidebarNavigation.fxml"));
+		primaryStage.initStyle(StageStyle.UNDECORATED);
+
+		root.setOnMousePressed(event -> {
+			x = event.getSceneX();
+			y = event.getSceneY();
+		});
+
+		root.setOnMouseDragged(event -> {
+			primaryStage.setX(event.getScreenX() - x);
+			primaryStage.setY(event.getScreenY() - y);
+		});
+
+		primaryStage.setScene(new Scene(root, 600, 400));
+		primaryStage.show();
+	}
+
+
 	public static void main(String[] args) {
 
 
