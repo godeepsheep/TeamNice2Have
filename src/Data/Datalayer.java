@@ -148,7 +148,8 @@ public class Datalayer {
                     "@time='"+time+"'";
 
             Statement statement = connection.createStatement();
-            int rows = statement.executeUpdate("setEvent "+parameters);
+            statement.executeUpdate("setEvent "+parameters);
+
             statement.close();
         }
         catch (SQLException e) {
@@ -165,7 +166,8 @@ public class Datalayer {
                     "@teamID="+teamID;
 
             Statement statement = connection.createStatement();
-            int rows = statement.executeUpdate("deleteEvent "+parameters);
+            statement.executeUpdate("deleteEvent "+parameters);
+
             statement.close();
         }
         catch (SQLException e) {
@@ -198,7 +200,7 @@ public class Datalayer {
             String sql = "UPDATE [Match] SET TimeEnd = GETDATE() WHERE ID = "+matchID;
 
             Statement statement = connection.createStatement();
-            int rows = statement.executeUpdate(sql);
+            statement.executeUpdate(sql);
 
             statement.close();
         }
