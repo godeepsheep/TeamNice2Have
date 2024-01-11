@@ -86,12 +86,12 @@ public class Main extends Application {
 		for (Event e : list3)
 			System.out.println(e);
 
-		/*Starter en kamp*/
+		/*Starter en kamp med teamid 4 og teamid 8*/
 		//int matchID = db.startMatch(4, 8);
 		//System.out.println(matchID);
 
-		/*slutter en kamp*/
-		db.endMatch(30);
+		/*slutter en kamp med id 30*/
+		//db.endMatch(30);
 
 
 		/*sætter event. eventType : 1 er mål 2 er udvisning*/

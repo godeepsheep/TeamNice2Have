@@ -33,8 +33,8 @@ public class Datalayer {
                         "localhost:1433;" +
                         "instanceName=SQLEXPRESS;" +
                         "databaseName=" + databaseName + ";" +
-                        "integratedSecurity=true;" + // bruger Windows credentials
-                        "trustServerCertificate=true;"; // afht. SSL forbindelse
+                        "integratedSecurity=true;" +
+                        "trustServerCertificate=true;";
             }
 
             System.out.println("Connecting to database...");
