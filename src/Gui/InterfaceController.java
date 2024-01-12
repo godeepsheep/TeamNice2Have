@@ -30,7 +30,7 @@ public class InterfaceController implements Initializable {
 
     public int penaltiesTeam2, Team1Goals, Team2Goals, penaltiesTeam1 = 0;
     public int team1ID, team2ID = -2;
-    public int matchID;
+    public int matchID = -1;
 
 
 
@@ -64,19 +64,19 @@ public class InterfaceController implements Initializable {
         GenerateTeamList(Team2Name);
 
         Team1Name.setOnAction(event -> {
-            removeItemFromList(Team1Name, Team2Name, team1ID);
+            team1ID = getTeamID(Team1Name, Team2Name, team1ID);
         });
 
         Team2Name.setOnAction(event -> {
-            removeItemFromList(Team2Name, Team1Name, team2ID);
+            team2ID = getTeamID(Team2Name, Team1Name, team2ID);
         });
 
     }
 
-    private void removeItemFromList(ChoiceBox box1, ChoiceBox box2, int teamID) {
+    private int getTeamID(ChoiceBox box1, ChoiceBox box2, int teamID) {
         //finder valgte værdi for choice box 1
         Team team = (Team) box1.getSelectionModel().getSelectedItem();
-        if(team==null) return;
+        if(team==null) return teamID;
         teamID = team.getID();
 
         //finder valgte værdi for choice box 2, sletter og bygger listen igen og sætter værdien igen
@@ -84,6 +84,8 @@ public class InterfaceController implements Initializable {
         GenerateTeamList(box2);
         box2.setValue(selectedTeam);
         box2.getItems().remove(getIndex(box2, teamID));
+
+        return teamID;
     }
 
     private int getIndex(ChoiceBox box, int teamID) {
@@ -145,22 +147,35 @@ public class InterfaceController implements Initializable {
 */
 
     public void GameStart() {
-
+        System.out.println("test");
         matchID = datalayer.startMatch(totalTeams.get(team1ID).getID(), totalTeams.get(team1ID).getID());
-
+        System.out.println(matchID);
     }
 
-
     public void AddGoalTeam1() {
-        Team1Goals += 1;
+        Team1Goals = AddGoal(Team1Goals, Team1Score, team1ID);
+
+        /*Team1Goals += 1;
         Team1Score.setText("" + Team1Goals);
-        datalayer.setEvent(1, matchID, team1ID, CurrentGameTime());
+        datalayer.setEvent(1, matchID, team1ID, CurrentGameTime());*/
     }
 
     public void AddGoalTeam2() {
+        Team2Goals = AddGoal(Team2Goals, Team2Score, team2ID);
+        /*
         Team2Goals += 1;
-        Team2Score.setText("" + Team2Goals);
+        Team2Score.setText("" + Team2Goals);*/
     }
+
+    private int AddGoal(int Goals, TextField TeamScore, int teamID) {
+        if(!TimerRunning) return Goals;
+        Goals += 1;
+        TeamScore.setText("" + Goals);
+        datalayer.setEvent(1, matchID, teamID, CurrentGameTime());
+
+        return Goals;
+    }
+
 
     public void RemoveGoalTeam1() {
         if (Team1Goals > 0)
