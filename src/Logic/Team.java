@@ -9,8 +9,8 @@ public class Team {
         this.name = Name;
     }
 
-    public String getID() {
-        return Integer.toString(id);
+    public int getID() {
+        return id;
     }
     public String getName() {
         return name;
@@ -18,7 +18,7 @@ public class Team {
 
     @Override
     public String toString() {
-        return "[League: id=" + id +
+        return "[TeamID : " + id +
                 ", Name=" + name + "]";
     }
 }

@@ -1,10 +1,10 @@
 package Gui;
 
 import Data.Datalayer;
+import Logic.Team;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -14,7 +14,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class InterfaceController {
+public class InterfaceController{
 
 
     int elapsedSeconds = 0;
@@ -53,13 +53,13 @@ public class InterfaceController {
     public int team1ID, team2ID;
 
 
-    public void GetTeams()
-    {
-        ArrayList<Team> totalTeams = Team.getTeams();
-    }
+
     public void AddNamesToChoiceBox(){
-        for(Team team : totalTeams)
-        Team1Name.getItems().add(team);
+        ArrayList<Team> totalTeams = datalayer.getTeams();
+        for(Team team : totalTeams){
+            Team1Name.getItems().add(team.getName());
+            Team2Name.getItems().add(team.getName());
+        }
     }
 
 
