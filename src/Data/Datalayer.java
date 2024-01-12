@@ -63,7 +63,6 @@ public class Datalayer {
             ResultSet resultSet = statement.executeQuery("EXEC getLeague");
 
             while (resultSet.next()) {
-                int ID = resultSet.getInt("ID");
                 int standing = resultSet.getInt("Standing");
                 String name = resultSet.getString("Name");
                 int matches = resultSet.getInt("Matches");
@@ -236,10 +235,9 @@ public class Datalayer {
             System.out.println(e.getMessage());
         }
     }
-
+/*
     //følgende mangler at blive lavet:
     public void createTeam()  {
-        /*
         try {
             String sql = "INSERT INTO Team VALUES ()";
 
@@ -250,9 +248,8 @@ public class Datalayer {
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-         */
     }
-
+*/
     public void deleteTeam()  {
 
     }
