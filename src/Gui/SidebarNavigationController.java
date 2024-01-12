@@ -21,6 +21,8 @@ public class SidebarNavigationController implements Initializable{
 
         @FXML
         private ImageView menu;
+        @FXML
+        Label StillingLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,6 +66,8 @@ public class SidebarNavigationController implements Initializable{
     private void showPane1() {
         pane1.setVisible(true);
 
+        //**Potentiel fix for doublet click**
+        //pane.setPosition = startPosition;
         FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(0.5), pane1);
         fadeTransition1.setFromValue(0);
         fadeTransition1.setToValue(0.15);
@@ -88,4 +92,9 @@ public class SidebarNavigationController implements Initializable{
         fadeTransition1.play();
         translateTransition1.play();
     }
+
+    public void AddUnderline(){
+        StillingLabel.setUnderline(true);
+    }
+
 }
