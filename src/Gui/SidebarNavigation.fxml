@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.SidebarNavigationController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.SidebarNavigationController">
    <children>
       <AnchorPane layoutX="100.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #006600;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -43,7 +45,7 @@
          <children>
             <VBox layoutX="14.0" prefHeight="350.0" prefWidth="154.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" prefHeight="40.0" prefWidth="162.0" text="Stilling" textAlignment="CENTER">
+                  <Label fx:id="StillingLabel" accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseEntered="#AddUnderline" prefHeight="40.0" prefWidth="162.0" text="Stilling" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>

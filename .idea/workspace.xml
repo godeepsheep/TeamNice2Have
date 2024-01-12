@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5d6abc0c-19c1-4a95-88e9-b5d5abbca72a" name="Changes" comment="Made classes from the ER diagram.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/InterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/InterfaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/SidebarNavigation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/SidebarNavigation.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,6 +107,7 @@
       <workItem from="1704799176579" duration="2306000" />
       <workItem from="1704805451162" duration="2748000" />
       <workItem from="1704840827489" duration="1640000" />
+      <workItem from="1705045309689" duration="3243000" />
     </task>
     <task id="LOCAL-00001" summary="Made classes from the ER diagram.">
       <option name="closed" value="true" />
