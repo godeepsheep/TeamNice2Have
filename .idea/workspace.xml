@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5d6abc0c-19c1-4a95-88e9-b5d5abbca72a" name="Changes" comment="Made classes from the ER diagram.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Datalayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Datalayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Team.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui/Interface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/Interface.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui/InterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/InterfaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/SidebarNavigation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/SidebarNavigation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,5 +137,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made classes from the ER diagram." />
     <option name="LAST_COMMIT_MESSAGE" value="Made classes from the ER diagram." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

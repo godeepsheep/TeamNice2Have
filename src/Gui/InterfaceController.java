@@ -1,20 +1,23 @@
 package Gui;
 
 import Data.Datalayer;
+import Logic.Team;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class InterfaceController {
+public class InterfaceController implements Initializable{
 
 
     int elapsedSeconds = 0;
@@ -48,27 +51,41 @@ public class InterfaceController {
     @FXML
     ImageView PauseButton;
 
+    ArrayList<Team> totalTeams = datalayer.getTeams();
 
     public int penaltiesTeam2, Team1Goals, Team2Goals, penaltiesTeam1 = 0;
     public int team1ID, team2ID;
+    public int Team1ID, Team2ID;
 
 
-    public void GetTeams()
-    {
-        ArrayList<Team> totalTeams = Team.getTeams();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        AddNamesToChoiceBox();
     }
+
     public void AddNamesToChoiceBox(){
-        for(Team team : totalTeams)
-        Team1Name.getItems().add(team);
+        for(Team team : totalTeams){
+            System.out.println(team.getName());
+            Team1Name.getItems().add(team.getName());
+            Team2Name.getItems().add(team.getName());
+        }
+        Team1Name.setOnAction(event -> {Team1ID = Team1Name.getSelectionModel().getSelectedIndex();
+            System.out.println(Team1ID);});
+        Team2Name.setOnAction(event -> {Team2ID = Team1Name.getSelectionModel().getSelectedIndex();
+            System.out.println(Team2ID);});
     }
+
+    public void FindTeamName(){
+
+
+        }
 
 
     public void GameStart() {
-        /*
-        team1ID = datalayer.getTeamID(Team1Name);
-        team2ID = datalayer.getTeamID(Team2Name);
+
         datalayer.startMatch(team1ID, team2ID);
-         */
+
     }
 
 
@@ -170,6 +187,7 @@ public class InterfaceController {
             PauseButton.setImage(pauseImage);
         }
     }
+
 
 
 }

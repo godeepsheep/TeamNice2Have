@@ -11,10 +11,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.InterfaceController">
    <children>
-      <Button layoutX="56.0" layoutY="274.0" mnemonicParsing="false" onAction="#AddPenaltiesTeam1" prefWidth="80.0" text="Penalty" />
-      <Button layoutX="454.0" layoutY="274.0" mnemonicParsing="false" onAction="#AddPenaltiesTeam2" prefWidth="80.0" text="Penalty" />
+      <Button layoutX="56.0" layoutY="268.0" mnemonicParsing="false" onAction="#AddPenaltiesTeam1" text=" + ">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
       <ImageView fx:id="PauseButton" fitHeight="52.0" fitWidth="55.0" layoutX="274.0" layoutY="128.0" onMouseClicked="#UpdateTimer" pickOnBounds="true" preserveRatio="true">
-         <image>
+         <image> 
             <Image url="@PlayIcon.png" />
          </image>
       </ImageView>
@@ -38,11 +40,6 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="penaltiesTeam2x" alignment="CENTER" editable="false" layoutX="454.0" layoutY="306.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text="0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
       <TextField fx:id="Team1Score" alignment="CENTER" editable="false" layoutX="56.0" layoutY="128.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
          <font>
             <Font size="18.0" />
@@ -53,11 +50,6 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="penaltiesTeam1x" alignment="CENTER" editable="false" layoutX="56.0" layoutY="308.0" prefHeight="37.0" prefWidth="80.0" promptText="Score" text="0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
       <Button layoutX="454.0" layoutY="182.0" mnemonicParsing="false" onAction="#AddGoalTeam2" text=" + ">
          <font>
             <Font size="16.0" />
@@ -73,7 +65,32 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <ChoiceBox fx:id="Team1Name" layoutX="30.0" layoutY="63.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="Team2Name" layoutX="419.0" layoutY="63.0" prefWidth="150.0" />
+      <TextField fx:id="Team1PenaltyTextField" alignment="CENTER" editable="false" layoutX="56.0" layoutY="310.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="Team2PenaltyTextField" alignment="CENTER" editable="false" layoutX="455.0" layoutY="310.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button layoutX="105.0" layoutY="268.0" mnemonicParsing="false" onAction="#RemovePenaltiesTeam1" prefWidth="30.0" text="-">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="455.0" layoutY="268.0" mnemonicParsing="false" onAction="#AddPenaltiesTeam2" text=" + ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="504.0" layoutY="268.0" mnemonicParsing="false" onAction="#RemovePenaltiesTeam2" prefWidth="30.0" text="-">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <ChoiceBox fx:id="Team1Name" layoutX="30.0" layoutY="44.0" onMouseClicked="#FindTeamName" prefWidth="150.0" />
+      <ChoiceBox fx:id="Team2Name" layoutX="419.0" layoutY="44.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
