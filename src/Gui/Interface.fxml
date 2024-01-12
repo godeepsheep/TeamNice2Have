@@ -90,7 +90,7 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="Team1Name" layoutX="30.0" layoutY="44.0" onMouseClicked="#FindTeamName" prefWidth="150.0" />
+      <ChoiceBox fx:id="Team1Name" layoutX="30.0" layoutY="44.0" prefWidth="150.0" />
       <ChoiceBox fx:id="Team2Name" layoutX="419.0" layoutY="44.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

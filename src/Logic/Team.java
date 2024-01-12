@@ -18,7 +18,6 @@ public class Team {
 
     @Override
     public String toString() {
-        return "[TeamID : " + id +
-                ", Name=" + name + "]";
+        return name;
     }
 }

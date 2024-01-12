@@ -17,7 +17,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class InterfaceController implements Initializable{
+public class InterfaceController implements Initializable {
 
 
     int elapsedSeconds = 0;
@@ -54,37 +54,64 @@ public class InterfaceController implements Initializable{
     ArrayList<Team> totalTeams = datalayer.getTeams();
 
     public int penaltiesTeam2, Team1Goals, Team2Goals, penaltiesTeam1 = 0;
-    public int team1ID, team2ID;
-    public int Team1ID, Team2ID;
-
+    public int team1ID, team2ID = -2;
+    public int matchID;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AddNamesToChoiceBox();
+        GenerateTeam1List();
+        GenerateTeam2List();
     }
 
-    public void AddNamesToChoiceBox(){
-        for(Team team : totalTeams){
-            System.out.println(team.getName());
+    public void AddNamesToChoiceBox() {
+
+
+        /*
+        Team1Name.setOnAction(event -> {
+            team1ID = Team1Name.getSelectionModel().getSelectedIndex();
+            System.out.println(team1ID);
+            if (team2ID > -1) {
+                Team1Name.getItems().remove(team2ID);
+            }
+        });
+        Team2Name.setOnAction(event -> {
+            team2ID = Team2Name.getSelectionModel().getSelectedIndex();
+            System.out.println(team2ID);
+
+            if (team1ID > -1) {
+                Team2Name.getItems().remove(team1ID);
+            }
+        })
+    */
+
+    }
+
+    public void GenerateTeam1List() {
+        Team1Name.getItems().clear();
+        for (Team team : totalTeams) {
             Team1Name.getItems().add(team.getName());
+        }
+        if (team2ID > -1) {
+            Team1Name.getItems().remove(team2ID);
+        }
+    }
+
+    public void GenerateTeam2List() {
+        Team2Name.getItems().clear();
+        for (Team team : totalTeams) {
             Team2Name.getItems().add(team.getName());
         }
-        Team1Name.setOnAction(event -> {Team1ID = Team1Name.getSelectionModel().getSelectedIndex();
-            System.out.println(Team1ID);});
-        Team2Name.setOnAction(event -> {Team2ID = Team1Name.getSelectionModel().getSelectedIndex();
-            System.out.println(Team2ID);});
-    }
-
-    public void FindTeamName(){
-
-
+        if (team1ID > -1) {
+            Team2Name.getItems().remove(team1ID);
         }
+    }
 
 
     public void GameStart() {
 
-        datalayer.startMatch(team1ID, team2ID);
+        matchID = datalayer.startMatch(totalTeams.get(team1ID).getID(), totalTeams.get(team1ID).getID());
 
     }
 
@@ -92,7 +119,7 @@ public class InterfaceController implements Initializable{
     public void AddGoalTeam1() {
         Team1Goals += 1;
         Team1Score.setText("" + Team1Goals);
-        //datalayer.setEvent(1, ?, teamID, CurrentGameTime());
+        datalayer.setEvent(1, matchID, team1ID, CurrentGameTime());
     }
 
     public void AddGoalTeam2() {
@@ -151,8 +178,10 @@ public class InterfaceController implements Initializable{
     }
 
     public void UpdateTimer() {
-        if (!gameStart)
+        if (!gameStart && team2ID > 0 && team1ID > 0) {
             gameStart = true;
+            GameStart();
+        }
         if (!TimerRunning) {
             Timer time = new Timer();
             _time = time;
@@ -168,14 +197,17 @@ public class InterfaceController implements Initializable{
                             elapsedMinutes += 1;
                             elapsedSeconds = 0;
                         }
-
-
                         elapsedSeconds += 1;
                         totalTime += 1;
                         timerTextField.setText(CurrentGameTime());
                     } else {
                         _time.cancel();
                         _time.purge();
+                        elapsedMinutes = 1;
+                        elapsedSeconds = 0;
+                        timerTextField.setText(CurrentGameTime());
+                        Image pauseImage = new Image(getClass().getResourceAsStream("PlayIcon.png"));
+                        PauseButton.setImage(pauseImage);
                     }
                 }
             }, 0L, 1000L);
@@ -187,7 +219,6 @@ public class InterfaceController implements Initializable{
             PauseButton.setImage(pauseImage);
         }
     }
-
 
 
 }

@@ -7,15 +7,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Stilling">
    <children>
-      <TableView fx:id="tableView" layoutX="172.0" layoutY="51.0" prefHeight="307.0" prefWidth="379.0">
+      <TableView fx:id="tableView" layoutX="54.0" layoutY="51.0" prefHeight="290.0" prefWidth="498.0">
         <columns>
-          <TableColumn fx:id="Stilling" prefWidth="75.0" text="Stilling" />
-          <TableColumn fx:id="HoldNavn" prefWidth="75.0" text="HoldNavn" />
-            <TableColumn fx:id="Kampe" prefWidth="75.0" text="Kampe" />
-            <TableColumn fx:id="Goals" prefWidth="75.0" text="Goals" />
-            <TableColumn fx:id="Pts" prefWidth="75.0" text="Pts" />
+          <TableColumn fx:id="Stilling" editable="false" prefWidth="75.0" sortable="false" text="Stilling" />
+          <TableColumn fx:id="HoldNavn" editable="false" prefWidth="208.00006103515625" sortable="false" text="HoldNavn" />
+            <TableColumn fx:id="Kampe" editable="false" prefWidth="62.39996337890625" sortable="false" text="Kampe" />
+            <TableColumn fx:id="Goals" editable="false" prefWidth="70.4000244140625" sortable="false" text="Goals" />
+            <TableColumn fx:id="Pts" editable="false" minWidth="0.0" prefWidth="43.199951171875" sortable="false" text="Pts" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <Button layoutX="41.0" layoutY="306.0" mnemonicParsing="false" onAction="#AddEntry" text="Button" />
+      <Button layoutX="481.0" layoutY="352.0" mnemonicParsing="false" onAction="#AddEntry" text="Add Team" />
    </children>
 </AnchorPane>
