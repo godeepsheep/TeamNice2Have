@@ -2,12 +2,14 @@ package Gui;
 
 import Data.Datalayer;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -30,9 +32,9 @@ public class InterfaceController {
     Timer _time;
 
     @FXML
-    TextField Team1Name;
+    ChoiceBox Team1Name;
     @FXML
-    TextField Team2Name;
+    ChoiceBox Team2Name;
     @FXML
     TextField Team1Score;
     @FXML
@@ -46,8 +48,19 @@ public class InterfaceController {
     @FXML
     ImageView PauseButton;
 
+
     public int penaltiesTeam2, Team1Goals, Team2Goals, penaltiesTeam1 = 0;
     public int team1ID, team2ID;
+
+
+    public void GetTeams()
+    {
+        ArrayList<Team> totalTeams = Team.getTeams();
+    }
+    public void AddNamesToChoiceBox(){
+        for(Team team : totalTeams)
+        Team1Name.getItems().add(team);
+    }
 
 
     public void GameStart() {
@@ -55,7 +68,6 @@ public class InterfaceController {
         team1ID = datalayer.getTeamID(Team1Name);
         team2ID = datalayer.getTeamID(Team2Name);
         datalayer.startMatch(team1ID, team2ID);
-
          */
     }
 
