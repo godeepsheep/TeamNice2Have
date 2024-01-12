@@ -1,19 +1,9 @@
-import Data.DBconnection;
 import Data.Datalayer;
-import Gui.SidebarNavigationController;
-import Logic.League;
-import Logic.Match;
-import Logic.Event;
-import Logic.Team;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.StageStyle;
-
-import java.util.ArrayList;
 
 
 public class Main extends Application {
@@ -48,7 +38,7 @@ public class Main extends Application {
 	double x,y = 0;
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		Parent root = FXMLLoader.load(getClass().getResource("Gui/SidebarNavigation.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/SidebarNavigation.fxml"));
 
 
 		root.setOnMousePressed(event -> {

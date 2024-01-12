@@ -46,12 +46,12 @@ public class SidebarNavigationController implements Initializable{
         pane1.setOnMouseExited(event -> setCursorDefault());
         pane1.setOnMouseClicked(event -> hidePane1());
 
-        loadScene("Stilling.fxml");
+        loadScene("fxml/Stilling.fxml");
     }
 
     public void pageStilling(MouseEvent mouseEvent) {
         hidePane1();
-        loadScene("Stilling.fxml");
+        loadScene("fxml/Stilling.fxml");
     }
 
     private void loadScene(String fxml) {
@@ -66,7 +66,7 @@ public class SidebarNavigationController implements Initializable{
 
     public void pageKamp(MouseEvent mouseEvent) {
         hidePane1();
-        loadScene("Interface.fxml");
+        loadScene("fxml/Interface.fxml");
     }
     private void setupTransitions() {
         pane1.setVisible(false);
