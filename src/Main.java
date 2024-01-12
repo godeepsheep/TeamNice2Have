@@ -4,6 +4,7 @@ import Gui.SidebarNavigationController;
 import Logic.League;
 import Logic.Match;
 import Logic.Event;
+import Logic.Team;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -85,6 +86,12 @@ public class Main extends Application {
 		System.out.println("\n\nGetEvents");
 		for (Event e : list3)
 			System.out.println(e);
+
+		ArrayList<Team> list4 = db.getTeams();
+		System.out.println("\n\nGetTeams");
+		for (Team t : list4)
+			System.out.println(t);
+
 
 		/*Starter en kamp med teamid 4 og teamid 8*/
 		//int matchID = db.startMatch(4, 8);

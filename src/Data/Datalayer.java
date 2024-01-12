@@ -3,6 +3,7 @@ package Data;
 import Logic.League;
 import Logic.Match;
 import Logic.Event;
+import Logic.Team;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -130,6 +131,32 @@ public class Datalayer {
 
             statement.close();
             return eventList;
+
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+
+    public ArrayList<Team> getTeams() {
+        try {
+            ArrayList<Team> teamList = new ArrayList<>();
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Team");
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ID");
+                String name = resultSet.getString("Name");
+
+                Team team = new Team(id, name);
+                teamList.add(team);
+            }
+
+            statement.close();
+            return teamList;
 
         }
         catch (SQLException e) {
