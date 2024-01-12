@@ -63,6 +63,7 @@ public class Datalayer {
             ResultSet resultSet = statement.executeQuery("EXEC getLeague");
 
             while (resultSet.next()) {
+                int ID = resultSet.getInt("ID");
                 int standing = resultSet.getInt("Standing");
                 String name = resultSet.getString("Name");
                 int matches = resultSet.getInt("Matches");
