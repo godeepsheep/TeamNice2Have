@@ -154,7 +154,6 @@ public class InterfaceController implements Initializable {
 
     public void AddGoalTeam1() {
         Team1Goals = AddGoal(Team1Goals, Team1Score, team1ID);
-
         /*Team1Goals += 1;
         Team1Score.setText("" + Team1Goals);
         datalayer.setEvent(1, matchID, team1ID, CurrentGameTime());*/
@@ -169,7 +168,7 @@ public class InterfaceController implements Initializable {
 
     private int AddGoal(int Goals, TextField TeamScore, int teamID) {
         if(!TimerRunning) return Goals;
-        Goals += 1;
+        Goals ++;
         TeamScore.setText("" + Goals);
         datalayer.setEvent(1, matchID, teamID, CurrentGameTime());
 
@@ -178,41 +177,74 @@ public class InterfaceController implements Initializable {
 
 
     public void RemoveGoalTeam1() {
-        if (Team1Goals > 0)
+        Team1Goals = RemoveGoal(Team1Goals, Team1Score, team1ID);
+        /*if (Team1Goals > 0)
             Team1Goals -= 1;
-        Team1Score.setText("" + Team1Goals);
+        Team1Score.setText("" + Team1Goals);*/
     }
 
     public void RemoveGoalTeam2() {
-        if (Team2Goals > 0)
+        Team2Goals = RemoveGoal(Team2Goals, Team2Score, team2ID);
+       /* if (Team2Goals > 0)
             Team2Goals -= 1;
-        Team2Score.setText("" + Team2Goals);
+        Team2Score.setText("" + Team2Goals);*/
+    }
+
+    public int RemoveGoal(int Goals, TextField TeamScore, int teamID) {
+        if (Goals > 0)
+            Goals --;
+
+        TeamScore.setText("" + Goals);
+        datalayer.deleteEvent(1, matchID, teamID);
+
+        return Goals;
     }
 
 
     public void AddPenaltiesTeam1() {
-        penaltiesTeam1 += 1;
-        Team1PenaltyTextField.setText("" + penaltiesTeam1);
-
+        penaltiesTeam1 = AddPenalties(penaltiesTeam1, Team1PenaltyTextField, team1ID);
+        /*penaltiesTeam1 += 1;
+        Team1PenaltyTextField.setText("" + penaltiesTeam1);*/
     }
 
     public void AddPenaltiesTeam2() {
-        penaltiesTeam2 += 1;
-        Team2PenaltyTextField.setText("" + penaltiesTeam2);
+        penaltiesTeam2 = AddPenalties(penaltiesTeam2, Team2PenaltyTextField, team2ID);
+        /*penaltiesTeam2 += 1;
+        Team2PenaltyTextField.setText("" + penaltiesTeam2);*/
+    }
+
+    public int  AddPenalties(int penalties, TextField PenaltyText, int teamID) {
+        if(!TimerRunning) return penalties;
+        penalties ++;
+        PenaltyText.setText("" + penalties);
+        datalayer.setEvent(2, matchID, teamID, CurrentGameTime());
+
+        return penalties;
     }
 
     public void RemovePenaltiesTeam1() {
-        if (penaltiesTeam1 > 0)
+        penaltiesTeam1 = RemovePenalties(penaltiesTeam1, Team1PenaltyTextField, team1ID);
+        /*if (penaltiesTeam1 > 0)
             penaltiesTeam1 -= 1;
-        Team1PenaltyTextField.setText("" + penaltiesTeam1);
+        Team1PenaltyTextField.setText("" + penaltiesTeam1);*/
 
     }
 
     public void RemovePenaltiesTeam2() {
-        if (penaltiesTeam2 > 0)
+        penaltiesTeam2 = RemovePenalties(penaltiesTeam2, Team2PenaltyTextField, team2ID);
+        /*if (penaltiesTeam2 > 0)
             penaltiesTeam2 -= 1;
         Team2PenaltyTextField.setText("" + penaltiesTeam2);
-        System.out.println(CurrentGameTime());
+        System.out.println(CurrentGameTime());*/
+    }
+
+    public int RemovePenalties(int penalties, TextField PenaltyText, int teamID) {
+        if (penalties > 0)
+            penalties --;
+        PenaltyText.setText("" + penalties);
+        datalayer.deleteEvent(2, matchID, teamID);
+
+        return penalties;
     }
 
 
@@ -220,12 +252,15 @@ public class InterfaceController implements Initializable {
         String zeroString;
         if (elapsedSeconds < 10) {
             zeroString = "0";
-
         } else {
             zeroString = "";
         }
         return "0" + elapsedMinutes + ":" + zeroString + elapsedSeconds;
     }
+
+
+
+    public Image pauseImage = new Image(getClass().getResourceAsStream("images/pauseicon.png"));
 
     public void UpdateTimer() {
         if (!gameStart && team2ID > 0 && team1ID > 0) {
@@ -241,7 +276,7 @@ public class InterfaceController implements Initializable {
                 public void run() {
                     if (totalTime != targetTime) {
                         //changes image on the button
-                        Image pauseImage = new Image(getClass().getResourceAsStream("images/pauseicon.png"));
+                        //Image pauseImage = new Image(getClass().getResourceAsStream("images/pauseicon.png"));
                         PauseButton.setImage(pauseImage);
                         if (elapsedSeconds == 60) {
                             elapsedMinutes += 1;
@@ -256,7 +291,7 @@ public class InterfaceController implements Initializable {
                         elapsedMinutes = 1;
                         elapsedSeconds = 0;
                         timerTextField.setText(CurrentGameTime());
-                        Image pauseImage = new Image(getClass().getResourceAsStream("images/PlayIcon.png"));
+                        //Image pauseImage = new Image(getClass().getResourceAsStream("images/PlayIcon.png"));
                         PauseButton.setImage(pauseImage);
                     }
                 }
@@ -265,7 +300,7 @@ public class InterfaceController implements Initializable {
             TimerRunning = false;
             _time.cancel();
             _time.purge();
-            Image pauseImage = new Image(getClass().getResourceAsStream("images/PlayIcon.png"));
+            //Image pauseImage = new Image(getClass().getResourceAsStream("images/PlayIcon.png"));
             PauseButton.setImage(pauseImage);
         }
     }
