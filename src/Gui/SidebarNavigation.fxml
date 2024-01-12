@@ -47,7 +47,7 @@
          <children>
             <VBox layoutX="14.0" prefHeight="350.0" prefWidth="154.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <Label fx:id="StillingLabel" accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageStilling" styleClass="mybut" stylesheets="@application.css" prefHeight="40.0" prefWidth="162.0" text="Stilling" textAlignment="CENTER">
+                  <Label fx:id="StillingLabel" accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageStilling" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@application.css" text="Stilling" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -55,7 +55,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageKamp" styleClass="mybut" stylesheets="@application.css" prefHeight="40.0" prefWidth="162.0" text="Kamp" textAlignment="CENTER">
+                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageKamp" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@application.css" text="Kamp" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -63,7 +63,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageHold" styleClass="mybut" stylesheets="@application.css" prefHeight="40.0" prefWidth="162.0" text="Hold" textAlignment="CENTER">
+                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageHold" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@application.css" text="Hold" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageKamprapport" styleClass="mybut" stylesheets="@application.css" prefHeight="40.0" prefWidth="162.0" text="Kamprapport" textAlignment="CENTER">
+                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageKamprapport" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@application.css" text="Kamprapport" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -45,9 +45,14 @@ public class SidebarNavigationController implements Initializable{
         pane1.setOnMouseEntered(event -> setCursorHand());
         pane1.setOnMouseExited(event -> setCursorDefault());
         pane1.setOnMouseClicked(event -> hidePane1());
+
+        loadScene("Stilling.fxml");
     }
+
     public void pageStilling(MouseEvent mouseEvent) {
-        loadScene("Stilling.fxml");}
+        hidePane1();
+        loadScene("Stilling.fxml");
+    }
 
     private void loadScene(String fxml) {
         try {
@@ -57,6 +62,11 @@ public class SidebarNavigationController implements Initializable{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void pageKamp(MouseEvent mouseEvent) {
+        hidePane1();
+        loadScene("Interface.fxml");
     }
     private void setupTransitions() {
         pane1.setVisible(false);
@@ -110,25 +120,7 @@ public class SidebarNavigationController implements Initializable{
         translateTransition1.play();
     }
 
-    public void AddUnderline(){
-        StillingLabel.setUnderline(true);
-        //KampLabel.setUnderline(true);
-        //HoldLabel.setUnderline(true);
-        //KamprapportLabel.setUnderline(true);
-    }
 
-    public void RemoveUnderline() {
-        StillingLabel.setUnderline(false);
-        //KampLabel.setUnderline(false);
-        //HoldLabel.setUnderline(false);
-        //KamprapportLabel.setUnderline(false);
-    }
-
-
-
-
-    public void pageKamp(MouseEvent mouseEvent) {
-    }
 
     public void pageHold(MouseEvent mouseEvent) {
     }
