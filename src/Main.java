@@ -38,7 +38,11 @@ public class Main extends Application {
 	double x,y = 0;
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/SidebarNavigation.fxml"));
+
+		String fxmlfile = "Interface";
+		//String fxmlfile = "SidebarNavigation";
+		//String fxmlfile = "Stilling";
+		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
 
 
 		root.setOnMousePressed(event -> {

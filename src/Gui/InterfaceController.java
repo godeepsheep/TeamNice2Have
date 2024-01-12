@@ -8,8 +8,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-
+import java.util.function.Predicate;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -29,10 +28,11 @@ public class InterfaceController implements Initializable {
     boolean TimerRunning = false;
     boolean gameStart = false;
 
+    public int penaltiesTeam2, Team1Goals, Team2Goals, penaltiesTeam1 = 0;
+    public int team1ID, team2ID = -2;
+    public int matchID;
 
-    Datalayer datalayer = new Datalayer();
 
-    Timer _time;
 
     @FXML
     ChoiceBox Team1Name;
@@ -51,22 +51,56 @@ public class InterfaceController implements Initializable {
     @FXML
     ImageView PauseButton;
 
-    ArrayList<Team> totalTeams = datalayer.getTeams();
 
-    public int penaltiesTeam2, Team1Goals, Team2Goals, penaltiesTeam1 = 0;
-    public int team1ID, team2ID = -2;
-    public int matchID;
+    Datalayer datalayer = new Datalayer();
+    Timer _time;
+    ArrayList<Team> totalTeams = datalayer.getTeams();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        AddNamesToChoiceBox();
-        GenerateTeam1List();
-        GenerateTeam2List();
+
+        GenerateTeamList(Team1Name);
+        GenerateTeamList(Team2Name);
+
+        Team1Name.setOnAction(event -> {
+            removeItemFromList(Team1Name, Team2Name, team1ID);
+        });
+
+        Team2Name.setOnAction(event -> {
+            removeItemFromList(Team2Name, Team1Name, team2ID);
+        });
+
     }
 
-    public void AddNamesToChoiceBox() {
+    private void removeItemFromList(ChoiceBox box1, ChoiceBox box2, int teamID) {
+        //finder valgte værdi for choice box 1
+        Team team = (Team) box1.getSelectionModel().getSelectedItem();
+        if(team==null) return;
+        teamID = team.getID();
 
+        //finder valgte værdi for choice box 2, sletter og bygger listen igen og sætter værdien igen
+        Team selectedTeam = (Team) box2.getSelectionModel().getSelectedItem();
+        GenerateTeamList(box2);
+        box2.setValue(selectedTeam);
+        box2.getItems().remove(getIndex(box2, teamID));
+    }
+
+    private int getIndex(ChoiceBox box, int teamID) {
+        for(int i=0; i<totalTeams.size(); i++)
+            if(totalTeams.get(i).getID() == teamID)
+                return i;
+
+        return -1;
+    }
+
+    public void GenerateTeamList(ChoiceBox box) {
+        box.getItems().clear();
+        box.getItems().addAll(totalTeams);
+    }
+
+
+    public void AddNamesToChoiceBox() {
 
         /*
         Team1Name.setOnAction(event -> {
@@ -88,6 +122,7 @@ public class InterfaceController implements Initializable {
 
     }
 
+/*
     public void GenerateTeam1List() {
         Team1Name.getItems().clear();
         for (Team team : totalTeams) {
@@ -107,7 +142,7 @@ public class InterfaceController implements Initializable {
             Team2Name.getItems().remove(team1ID);
         }
     }
-
+*/
 
     public void GameStart() {
 
@@ -191,7 +226,7 @@ public class InterfaceController implements Initializable {
                 public void run() {
                     if (totalTime != targetTime) {
                         //changes image on the button
-                        Image pauseImage = new Image(getClass().getResourceAsStream("pauseicon.png"));
+                        Image pauseImage = new Image(getClass().getResourceAsStream("images/pauseicon.png"));
                         PauseButton.setImage(pauseImage);
                         if (elapsedSeconds == 60) {
                             elapsedMinutes += 1;
@@ -206,7 +241,7 @@ public class InterfaceController implements Initializable {
                         elapsedMinutes = 1;
                         elapsedSeconds = 0;
                         timerTextField.setText(CurrentGameTime());
-                        Image pauseImage = new Image(getClass().getResourceAsStream("PlayIcon.png"));
+                        Image pauseImage = new Image(getClass().getResourceAsStream("images/PlayIcon.png"));
                         PauseButton.setImage(pauseImage);
                     }
                 }
@@ -215,7 +250,7 @@ public class InterfaceController implements Initializable {
             TimerRunning = false;
             _time.cancel();
             _time.purge();
-            Image pauseImage = new Image(getClass().getResourceAsStream("PlayIcon.png"));
+            Image pauseImage = new Image(getClass().getResourceAsStream("images/PlayIcon.png"));
             PauseButton.setImage(pauseImage);
         }
     }
