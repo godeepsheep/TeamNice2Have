@@ -48,7 +48,7 @@ public class Main extends Application {
 	double x,y = 0;
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-		Parent root = FXMLLoader.load(getClass().getResource("Gui/SidebarNavigation.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Gui/Interface.fxml"));
 		primaryStage.initStyle(StageStyle.UNDECORATED);
 
 		root.setOnMousePressed(event -> {
@@ -67,7 +67,7 @@ public class Main extends Application {
 
 
 	public static void main(String[] args) {
-
+		launch(args);
 
 		/*liste over alle hold*/
 		ArrayList<League> list1 = db.getLeague();
@@ -107,7 +107,7 @@ public class Main extends Application {
 		/*sletter event. eventType : 1 er mål 2 er udvisning*/
 		//db.deleteEvent(1,1,11);
 
-		launch(args);
+
 	}
 
 

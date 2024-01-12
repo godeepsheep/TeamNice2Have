@@ -39,7 +39,7 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="penaltiesTeam2" alignment="CENTER" editable="false" layoutX="454.0" layoutY="306.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text="0">
+      <TextField fx:id="penaltiesTeam2x" alignment="CENTER" editable="false" layoutX="454.0" layoutY="306.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text="0">
          <font>
             <Font size="16.0" />
          </font>
@@ -54,7 +54,7 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="penaltiesTeam1" alignment="CENTER" editable="false" layoutX="56.0" layoutY="308.0" prefHeight="37.0" prefWidth="80.0" promptText="Score" text="0">
+      <TextField fx:id="penaltiesTeam1x" alignment="CENTER" editable="false" layoutX="56.0" layoutY="308.0" prefHeight="37.0" prefWidth="80.0" promptText="Score" text="0">
          <font>
             <Font size="16.0" />
          </font>
