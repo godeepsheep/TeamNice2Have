@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
 
 public class Datalayer {
     private Connection connection;
@@ -235,27 +236,47 @@ public class Datalayer {
             System.out.println(e.getMessage());
         }
     }
-/*
+
     //følgende mangler at blive lavet:
-    public void createTeam()  {
+    public void createTeam(String name)  {
         try {
-            String sql = "INSERT INTO Team VALUES ()";
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Team (Name, LeagueID) VALUES (?, 1)");
+            preparedStatement.setString(1, name);
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteTeam(int teamID)  {
+        try {
+            String sql = "DELETE FROM Team WHERE ID = "+teamID;
 
             Statement statement = connection.createStatement();
-            statement.executeQuery("setEvent "+parameters);
+            statement.executeUpdate(sql);
+
             statement.close();
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-*/
-    public void deleteTeam()  {
 
-    }
+    public void editTeam(int teamID, String name)  {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Team SET Name = ? WHERE ID = ?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, teamID);
+            preparedStatement.executeUpdate();
 
-    public void renameTeam()  {
-
+            preparedStatement.close();
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 

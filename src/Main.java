@@ -67,21 +67,21 @@ public class Main extends Application {
 
 
 	public static void main(String[] args) {
-		launch(args);
 
-		/*liste over alle hold*/
+/*
+
 		ArrayList<League> list1 = db.getLeague();
 		System.out.println("\n\nGetLeague");
 		for (League l : list1)
 			System.out.println(l);
 
-		/*liste over alle kampe*/
+
 		ArrayList<Match> list2 = db.getMatches();
 		System.out.println("\n\nGetMatches");
 		for (Match m : list2)
 			System.out.println(m);
 
-		/*liste over alle events fra hold 1*/
+
 		ArrayList<Event> list3 = db.getEvents(1);
 		System.out.println("\n\nGetEvents");
 		for (Event e : list3)
@@ -91,7 +91,7 @@ public class Main extends Application {
 		System.out.println("\n\nGetTeams");
 		for (Team t : list4)
 			System.out.println(t);
-
+*/
 
 		/*Starter en kamp med teamid 4 og teamid 8*/
 		//int matchID = db.startMatch(4, 8);
@@ -108,6 +108,12 @@ public class Main extends Application {
 		//db.deleteEvent(1,1,11);
 
 
+		//db.createTeam("bingoholdet2");
+		//db.editTeam(17, "bingoholdet_test");
+
+		//db.deleteTeam(17);
+
+		launch(args);
 	}
 
 
