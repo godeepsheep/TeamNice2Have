@@ -39,8 +39,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 
-		String fxmlfile = "Interface";
-		//String fxmlfile = "SidebarNavigation";
+		//String fxmlfile = "Interface";
+		String fxmlfile = "SidebarNavigation";
 		//String fxmlfile = "Stilling";
 		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
 

@@ -63,7 +63,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageHold" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Hold" textAlignment="CENTER">
+                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageKamprapport" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Kamprapport" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageKamprapport" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Kamprapport" textAlignment="CENTER">
+                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageHold" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Hold" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -97,14 +97,14 @@
                         <Image url="@../images/clock.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="45.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/handball.png" />
-                     </image>
-                  </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/whistle.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/handball.png" />
                      </image>
                   </ImageView>
                </children>
