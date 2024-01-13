@@ -4,23 +4,29 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class StandingEntry {
 
- public SimpleStringProperty Standing;
- public SimpleStringProperty Name;
- public SimpleStringProperty GoalDiff;
- public SimpleStringProperty Points;
- public SimpleStringProperty Matches;
+    private int Id;
+    private SimpleStringProperty Standing;
+    private SimpleStringProperty Name;
+    private SimpleStringProperty GoalDiff;
+    private SimpleStringProperty Points;
+    private SimpleStringProperty Matches;
 
-    public StandingEntry(String _Standing,String _Name,String _Matches,String _GoalDiff,String _Points)
+    public StandingEntry(int id, String Standing,String Name,String Matches,String GoalDiff,String Points)
     {
-        Standing = new SimpleStringProperty(_Standing);
-        Name = new SimpleStringProperty(_Name);
-        Matches = new SimpleStringProperty(_Matches);
-        GoalDiff = new SimpleStringProperty(_GoalDiff);
-        Points = new SimpleStringProperty(_Points);
+        this.Id = id;
+        this.Standing = new SimpleStringProperty(Standing);
+        this.Name = new SimpleStringProperty(Name);
+        this.Matches = new SimpleStringProperty(Matches);
+        this.GoalDiff = new SimpleStringProperty(GoalDiff);
+        this.Points = new SimpleStringProperty(Points);
     }
 
     public String getStanding() {
         return Standing.get();
+    }
+
+    public int getID() {
+        return Id;
     }
 
     public String getGoalDiff() {
@@ -37,5 +43,9 @@ public class StandingEntry {
 
     public String getPoints() {
         return Points.get();
+    }
+
+    public void setName(String Name) {
+        this.Name = new SimpleStringProperty(Name);
     }
 }

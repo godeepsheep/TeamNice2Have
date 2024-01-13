@@ -6,7 +6,9 @@ DROP PROCEDURE IF EXISTS createMatch;
 DROP PROCEDURE IF EXISTS setEvent;
 DROP PROCEDURE IF EXISTS deleteEvent;
 DROP PROCEDURE IF EXISTS getEvents;
+DROP PROCEDURE IF EXISTS addTeam;
 GO
+
 
 CREATE PROCEDURE getMatches  
 AS  
@@ -38,15 +40,15 @@ AS
 BEGIN
 	SELECT 
 		ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS Standing, 
+		Team.ID,
 		Team.Name, 
 		Count(Points.MatchID) AS Matches, 
-		SUM(GoalsDiff) AS GoalsDiff,
-		SUM(Points) AS Points
+		SUM(ISNULL(GoalsDiff,0)) AS GoalsDiff,
+		SUM(ISNULL(Points,0)) AS Points
 	FROM Team
-
 	LEFT JOIN Points ON Team.ID = Points.TeamID
 
-	GROUP BY Team.Name
+	GROUP BY Team.ID, Team.Name
 	ORDER BY Points DESC, GoalsDiff DESC, Matches ASC;
 END;
 GO
@@ -62,8 +64,6 @@ BEGIN
 	SET @ID = SCOPE_IDENTITY();
 	INSERT INTO TeamMatch (MatchID, TeamID) VALUES (@ID, @t1);
 	INSERT INTO TeamMatch (MatchID, TeamID) VALUES (@ID, @t2);
-
-	SELECT @ID AS matchID;
 END;
 GO
 
@@ -118,3 +118,31 @@ BEGIN
 
 	WHERE MatchID = @matchID;
 END;
+GO
+
+CREATE PROCEDURE addTeam	
+	@teamName NVARCHAR (50),
+	@league INT
+AS
+BEGIN
+	DECLARE @ID INT;
+	INSERT INTO Team (Name, LeagueID) VALUES (@teamName,@league);
+	SET @ID = (SELECT SCOPE_IDENTITY());
+
+    DECLARE @tmpTable TABLE (
+        Standing INT,
+		ID INT,
+        Name NVARCHAR(255),
+		Matches INT,
+		GoalsDiff INT,
+		Points INT
+    );
+
+	INSERT INTO @tmpTable
+	exec getLeague;
+
+	SELECT * FROM @tmpTable WHERE ID = @ID;
+END;
+
+
+	

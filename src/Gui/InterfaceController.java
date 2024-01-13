@@ -2,9 +2,11 @@ package Gui;
 
 import Data.Datalayer;
 import Logic.Team;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,7 +37,7 @@ public class InterfaceController implements Initializable {
     @FXML ChoiceBox<Team> Team1Name, Team2Name;
     @FXML TextField Team1Score, Team2Score, timerTextField, Team1PenaltyTextField, Team2PenaltyTextField;
     @FXML ImageView PauseButton;
-
+    @FXML Label timerLabelText;
 
     Datalayer datalayer = new Datalayer();
     Timer _time;
@@ -47,13 +49,8 @@ public class InterfaceController implements Initializable {
         GenerateTeamList(Team1Name);
         GenerateTeamList(Team2Name);
 
-        Team1Name.setOnAction(event -> {team1ID = getTeamID(Team1Name, Team2Name, team1ID);
-            System.out.println("team1ID:"+team1ID);
-
-        });
-        Team2Name.setOnAction(event -> {team2ID = getTeamID(Team2Name, Team1Name, team2ID);
-            System.out.println("team2ID:"+team2ID);
-        });
+        Team1Name.setOnAction(event -> team1ID = getTeamID(Team1Name, Team2Name, team1ID));
+        Team2Name.setOnAction(event -> team2ID = getTeamID(Team2Name, Team1Name, team2ID));
     }
 
     private int getTeamID(ChoiceBox<Team> box1, ChoiceBox<Team> box2, int teamID) {
@@ -161,7 +158,6 @@ public class InterfaceController implements Initializable {
         Goals ++;
         TeamScore.setText("" + Goals);
         datalayer.setEvent(1, matchID, teamID, CurrentGameTime());
-
         return Goals;
     }
 
@@ -248,6 +244,7 @@ public class InterfaceController implements Initializable {
 
 
     public void UpdateTimer() {
+        if(team1ID == 0 || team2ID == 0) return;
 
         if (!gameStart && team2ID > 0 && team1ID > 0) {
             gameStart = true;
@@ -265,23 +262,27 @@ public class InterfaceController implements Initializable {
 
                     if (totalTime != targetTime) {
                         //start game
-                        PauseButton.setImage(getImage(imagePause));
+
                         if (elapsedSeconds == 60) {
                             elapsedMinutes += 1;
                             elapsedSeconds = 0;
                         }
                         elapsedSeconds += 1;
                         totalTime += 1;
-                        timerTextField.setText(CurrentGameTime());
+                        //timerTextField.setText(CurrentGameTime());
+                        Platform.runLater(() -> timerLabelText.setText(CurrentGameTime()));
+                        PauseButton.setImage(getImage(imagePause));
 
                     } else {
 
                         //End game
+                        TimerRunning = false;
                         _time.cancel();
                         _time.purge();
                         elapsedMinutes = 1;
                         elapsedSeconds = 0;
-                        timerTextField.setText(CurrentGameTime());
+                        //timerTextField.setText(CurrentGameTime());
+                        Platform.runLater(() -> timerLabelText.setText(CurrentGameTime()));
                         PauseButton.setImage(getImage(imagePlay));
                         GameEnd();
                     }
@@ -298,14 +299,7 @@ public class InterfaceController implements Initializable {
     }
 
     private Image getImage(String image) {
-        InputStream stream = getClass().getResourceAsStream(image);
-
-        if (stream != null) {
-            return new Image(stream);
-        } else {
-            System.err.println("Image not found: " + image);
-            return null;
-        }
+        return new Image(getClass().getResourceAsStream(image));
     }
 
 }

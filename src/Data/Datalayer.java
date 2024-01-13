@@ -4,13 +4,9 @@ import Logic.League;
 import Logic.Match;
 import Logic.Event;
 import Logic.Team;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.ArrayList;
-import java.sql.PreparedStatement;
 
 public class Datalayer {
     private Connection connection;
@@ -65,12 +61,13 @@ public class Datalayer {
 
             while (resultSet.next()) {
                 int standing = resultSet.getInt("Standing");
+                int id = resultSet.getInt("ID");
                 String name = resultSet.getString("Name");
                 int matches = resultSet.getInt("Matches");
                 int goalsDiff = resultSet.getInt("GoalsDiff");
                 int points = resultSet.getInt("Points");
 
-                League league = new League(standing, name, matches, goalsDiff, points);
+                League league = new League(standing, id, name, matches, goalsDiff, points);
                 leagueList.add(league);
             }
 
@@ -173,7 +170,7 @@ public class Datalayer {
                     "@type="+eventType+","+
                     "@matchID="+matchID+","+
                     "@teamID="+teamID+","+
-                    "@time='"+time+"'";
+                    "@time=\"00:"+time+"\"";
 
             Statement statement = connection.createStatement();
             statement.executeUpdate("setEvent "+parameters);
@@ -237,17 +234,28 @@ public class Datalayer {
         }
     }
 
-    //følgende mangler at blive lavet:
-    public void createTeam(String name)  {
+    public League createTeam(String name)  {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Team (Name, LeagueID) VALUES (?, 1)");
-            preparedStatement.setString(1, name);
-            preparedStatement.executeUpdate();
+            //PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Team (Name, LeagueID) VALUES (?, 1)");
+            CallableStatement callableStatement  = connection.prepareCall("addTeam ?, 1");
+            callableStatement.setString(1, name);
+            //preparedStatement.executeUpdate();
+            callableStatement.executeQuery();
+            ResultSet resultSet = callableStatement.getResultSet();
+            League league = null;
 
-            preparedStatement.close();
+            while (resultSet.next()) {
+                int standing = resultSet.getInt("Standing");
+                int id = resultSet.getInt("ID");
+                league = new League(standing, id, name, 0, 0, 0);
+            }
+
+            callableStatement.close();
+            return league;
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
+            return null;
         }
     }
 

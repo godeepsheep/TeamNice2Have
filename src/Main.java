@@ -39,11 +39,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 
-		String fxmlfile = "Interface";
-		//String fxmlfile = "SidebarNavigation";
+		//String fxmlfile = "Interface";
+		String fxmlfile = "SidebarNavigation";
 		//String fxmlfile = "Stilling";
 		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
-
 
 		root.setOnMousePressed(event -> {
 			x = event.getSceneX();
@@ -55,7 +54,10 @@ public class Main extends Application {
 			primaryStage.setY(event.getScreenY() - y);
 		});
 
-		primaryStage.setScene(new Scene(root, 600, 400));
+		Scene scene = new Scene(root, 600, 400);
+		primaryStage.setScene(scene);
+		scene.getStylesheets().add(getClass().getResource("Gui/css/application.css").toExternalForm());
+
 		primaryStage.show();
 	}
 
