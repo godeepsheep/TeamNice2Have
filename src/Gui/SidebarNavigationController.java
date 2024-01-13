@@ -48,12 +48,6 @@ public class SidebarNavigationController implements Initializable{
 
         loadScene("fxml/Stilling.fxml");
     }
-
-    public void pageStilling(MouseEvent mouseEvent) {
-        hidePane1();
-        loadScene("fxml/Stilling.fxml");
-    }
-
     private void loadScene(String fxml) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
@@ -63,11 +57,21 @@ public class SidebarNavigationController implements Initializable{
             e.printStackTrace();
         }
     }
+    public void pageStilling(MouseEvent mouseEvent) {
+        hidePane1();
+        loadScene("fxml/Stilling.fxml");
+    }
 
     public void pageKamp(MouseEvent mouseEvent) {
         hidePane1();
         loadScene("fxml/Interface.fxml");
     }
+
+    public void pageKamprapport(MouseEvent mouseEvent) {
+        hidePane1();
+        loadScene("fxml/Kamprapport.fxml");
+    }
+
     private void setupTransitions() {
         pane1.setVisible(false);
 
@@ -121,10 +125,6 @@ public class SidebarNavigationController implements Initializable{
     }
 
 
-
     public void pageHold(MouseEvent mouseEvent) {
-    }
-
-    public void pageKamprapport(MouseEvent mouseEvent) {
     }
 }
