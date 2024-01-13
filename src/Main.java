@@ -2,6 +2,7 @@ import Data.Datalayer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
@@ -38,7 +39,7 @@ public class Main extends Application {
 	double x,y = 0;
 	@Override
 	public void start(Stage primaryStage) throws Exception{
-
+		primaryStage.getIcons().add(new Image("/Gui/images/ball.png"));
 		//String fxmlfile = "Interface";
 		String fxmlfile = "SidebarNavigation";
 		//String fxmlfile = "Stilling";

@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6abc0c-19c1-4a95-88e9-b5d5abbca72a" name="Changes" comment="Made classes from the ER diagram.">
-      <change afterPath="$PROJECT_DIR$/src/Gui/KamprapportController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Gui/fxml/Kamprapport.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui/fxml/SidebarNavigation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/fxml/SidebarNavigation.fxml" afterDir="false" />
