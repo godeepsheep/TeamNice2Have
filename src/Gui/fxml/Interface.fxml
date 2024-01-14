@@ -12,14 +12,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.InterfaceController">
    <children>
-      <Button layoutX="94.0" layoutY="290.0" mnemonicParsing="false" onAction="#AddPenaltiesTeam1" text=" + ">
+      <Button layoutX="94.0" layoutY="302.0" mnemonicParsing="false" onAction="#AddPenaltiesTeam1" text=" + ">
          <font>
             <Font size="16.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <ImageView fx:id="PauseButton" fitHeight="52.0" fitWidth="55.0" layoutX="277.0" layoutY="116.0" onMouseClicked="#UpdateTimer" pickOnBounds="true" preserveRatio="true" styleClass="pauseButton">
+      <ImageView fx:id="PauseButton" fitHeight="52.0" fitWidth="55.0" layoutX="277.0" layoutY="128.0" onMouseClicked="#UpdateTimer" pickOnBounds="true" preserveRatio="true" styleClass="pauseButton">
          <image> 
             <Image url="@../images/PlayIcon.png" />
          </image>
@@ -32,7 +32,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button layoutX="97.0" layoutY="173.0" mnemonicParsing="false" onAction="#AddGoalTeam1" text=" + ">
+      <Button layoutX="97.0" layoutY="185.0" mnemonicParsing="false" onAction="#AddGoalTeam1" text=" + ">
          <font>
             <Font size="16.0" />
          </font>
@@ -40,7 +40,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="146.0" layoutY="173.0" mnemonicParsing="false" onAction="#RemoveGoalTeam1" prefWidth="30.0" text="-">
+      <Button layoutX="146.0" layoutY="185.0" mnemonicParsing="false" onAction="#RemoveGoalTeam1" prefWidth="30.0" text="-">
          <font>
             <Font size="16.0" />
          </font>
@@ -48,17 +48,17 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="Team1Score" alignment="CENTER" editable="false" layoutX="97.0" layoutY="119.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
+      <TextField fx:id="Team1Score" alignment="CENTER" editable="false" layoutX="97.0" layoutY="131.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label layoutX="113.0" layoutY="85.0" text="Goals">
+      <Label layoutX="113.0" layoutY="97.0" text="Goals">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Button layoutX="423.0" layoutY="173.0" mnemonicParsing="false" onAction="#AddGoalTeam2" text=" + ">
+      <Button layoutX="423.0" layoutY="185.0" mnemonicParsing="false" onAction="#AddGoalTeam2" text=" + ">
          <font>
             <Font size="16.0" />
          </font>
@@ -66,7 +66,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="472.0" layoutY="173.0" mnemonicParsing="false" onAction="#RemoveGoalTeam2" prefWidth="30.0" text="-">
+      <Button layoutX="472.0" layoutY="185.0" mnemonicParsing="false" onAction="#RemoveGoalTeam2" prefWidth="30.0" text="-">
          <font>
             <Font size="16.0" />
          </font>
@@ -74,22 +74,22 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="Team2Score" alignment="CENTER" editable="false" layoutX="423.0" layoutY="119.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
+      <TextField fx:id="Team2Score" alignment="CENTER" editable="false" layoutX="423.0" layoutY="131.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="Team1PenaltyTextField" alignment="CENTER" editable="false" layoutX="94.0" layoutY="240.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
+      <TextField fx:id="Team1PenaltyTextField" alignment="CENTER" editable="false" layoutX="94.0" layoutY="252.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="Team2PenaltyTextField" alignment="CENTER" editable="false" layoutX="421.0" layoutY="241.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
+      <TextField fx:id="Team2PenaltyTextField" alignment="CENTER" editable="false" layoutX="421.0" layoutY="253.0" prefHeight="26.0" prefWidth="80.0" promptText="Score" text=" 0 ">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button layoutX="143.0" layoutY="290.0" mnemonicParsing="false" onAction="#RemovePenaltiesTeam1" prefWidth="30.0" text="-">
+      <Button layoutX="143.0" layoutY="302.0" mnemonicParsing="false" onAction="#RemovePenaltiesTeam1" prefWidth="30.0" text="-">
          <font>
             <Font size="16.0" />
          </font>
@@ -97,7 +97,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="421.0" layoutY="291.0" mnemonicParsing="false" onAction="#AddPenaltiesTeam2" text=" + ">
+      <Button layoutX="421.0" layoutY="303.0" mnemonicParsing="false" onAction="#AddPenaltiesTeam2" text=" + ">
          <font>
             <Font size="16.0" />
          </font>
@@ -105,7 +105,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="470.0" layoutY="291.0" mnemonicParsing="false" onAction="#RemovePenaltiesTeam2" prefWidth="30.0" text="-">
+      <Button layoutX="470.0" layoutY="303.0" mnemonicParsing="false" onAction="#RemovePenaltiesTeam2" prefWidth="30.0" text="-">
          <font>
             <Font size="16.0" />
          </font>
@@ -113,20 +113,20 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ChoiceBox fx:id="Team1Name" layoutX="66.0" layoutY="43.0" prefWidth="150.0">
+      <ChoiceBox fx:id="Team1Name" layoutX="66.0" layoutY="55.0" prefWidth="150.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ChoiceBox>
-      <ChoiceBox fx:id="Team2Name" layoutX="383.0" layoutY="43.0" prefWidth="150.0">
+      <ChoiceBox fx:id="Team2Name" layoutX="383.0" layoutY="55.0" prefWidth="150.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></ChoiceBox>
-      <Label fx:id="timerLabelText" layoutX="248.0" layoutY="26.0" text="00:00">
+      <Label fx:id="timerLabelText" layoutX="248.0" layoutY="38.0" text="00:00">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="441.0" layoutY="85.0" text="Goals">
+      <Label layoutX="441.0" layoutY="97.0" text="Goals">
          <font>
             <Font size="19.0" />
          </font>

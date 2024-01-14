@@ -49,8 +49,14 @@ public class InterfaceController implements Initializable {
         GenerateTeamList(Team1Name);
         GenerateTeamList(Team2Name);
 
-        Team1Name.setOnAction(event -> team1ID = getTeamID(Team1Name, Team2Name, team1ID));
-        Team2Name.setOnAction(event -> team2ID = getTeamID(Team2Name, Team1Name, team2ID));
+        Team1Name.setOnAction(event -> {
+            team1ID = getTeamID(Team1Name, Team2Name, team1ID);
+            activateButton();
+        });
+        Team2Name.setOnAction(event -> {
+            team2ID = getTeamID(Team2Name, Team1Name, team2ID);
+            activateButton();
+        });
     }
 
     private int getTeamID(ChoiceBox<Team> box1, ChoiceBox<Team> box2, int teamID) {
@@ -136,6 +142,13 @@ public class InterfaceController implements Initializable {
     private void setDisableBox(boolean value) {
         Team1Name.setDisable(value);
         Team2Name.setDisable(value);
+    }
+
+    private void activateButton() {
+        if(team1ID > 0 && team2ID > 0)
+            PauseButton.getStyleClass().add("pauseButtonActive");
+        else
+            PauseButton.getStyleClass().remove("pauseButtonActive");
     }
 
     public void AddGoalTeam1() {

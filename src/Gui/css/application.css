@@ -4,11 +4,19 @@
     -fx-cursor: hand;
 }
 
-.pauseButton:hover {
+.pauseButton{
+    -fx-opacity: 0.3;
+}
+
+.pauseButtonActive {
+    -fx-opacity: 1;
+}
+
+.pauseButtonActive:hover {
     -fx-effect: dropshadow(three-pass-box, #888, 8, 0, 0, 0);
 }
 
-.pauseButton:pressed {
+.pauseButtonActive:pressed {
     -fx-effect: innershadow(gaussian, #777, 20, 0, 0, 0);
 }
 

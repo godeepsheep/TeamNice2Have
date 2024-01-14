@@ -236,11 +236,10 @@ public class Datalayer {
 
     public League createTeam(String name)  {
         try {
-            //PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Team (Name, LeagueID) VALUES (?, 1)");
             CallableStatement callableStatement  = connection.prepareCall("addTeam ?, 1");
             callableStatement.setString(1, name);
-            //preparedStatement.executeUpdate();
             callableStatement.executeQuery();
+
             ResultSet resultSet = callableStatement.getResultSet();
             League league = null;
 

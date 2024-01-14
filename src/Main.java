@@ -45,6 +45,7 @@ public class Main extends Application {
 		//String fxmlfile = "Interface";
 		String fxmlfile = "SidebarNavigation";
 		//String fxmlfile = "Stilling";
+		//String fxmlfile = "Kamprapport";
 		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
 
 		root.setOnMousePressed(event -> {

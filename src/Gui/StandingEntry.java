@@ -5,47 +5,57 @@ import javafx.beans.property.SimpleStringProperty;
 public class StandingEntry {
 
     private int Id;
-    private SimpleStringProperty Standing;
-    private SimpleStringProperty Name;
-    private SimpleStringProperty GoalDiff;
-    private SimpleStringProperty Points;
-    private SimpleStringProperty Matches;
+    private SimpleStringProperty col1;
+    private SimpleStringProperty col2;
+    private SimpleStringProperty col3;
+    private SimpleStringProperty col4;
+    private SimpleStringProperty col5;
 
-    public StandingEntry(int id, String Standing,String Name,String Matches,String GoalDiff,String Points)
+    public StandingEntry(int id, String c1,String c2,String c3,String c4,String c5)
     {
-        this.Id = id;
-        this.Standing = new SimpleStringProperty(Standing);
-        this.Name = new SimpleStringProperty(Name);
-        this.Matches = new SimpleStringProperty(Matches);
-        this.GoalDiff = new SimpleStringProperty(GoalDiff);
-        this.Points = new SimpleStringProperty(Points);
+        setEntry(id,c1,c2,c3,c4,c5);
     }
 
-    public String getStanding() {
-        return Standing.get();
+    public StandingEntry(int id, String c1,String c2,String c3,String c4)
+    {
+        setEntry(id,c1,c2,c3,c4,"");
+    }
+
+    public void setEntry(int id, String c1,String c2,String c3,String c4,String c5) {
+        this.Id = id;
+        this.col1 = new SimpleStringProperty(c1);
+        this.col2 = new SimpleStringProperty(c2);
+        this.col3 = new SimpleStringProperty(c3);
+        this.col4 = new SimpleStringProperty(c4);
+        this.col5 = new SimpleStringProperty(c5);
+    }
+
+    public void setCol2(String value) {
+        this.col2 = new SimpleStringProperty(value);
     }
 
     public int getID() {
         return Id;
     }
 
-    public String getGoalDiff() {
-        return GoalDiff.get();
+    public String getCol1() {
+        return col1.get();
     }
 
-    public String getMatches() {
-        return Matches.get();
+    public String getCol2() {
+        return col2.get();
     }
 
-    public String getName() {
-        return Name.get();
+    public String getCol3() {
+        return col3.get();
     }
 
-    public String getPoints() {
-        return Points.get();
+    public String getCol4() {
+        return col4.get();
     }
 
-    public void setName(String Name) {
-        this.Name = new SimpleStringProperty(Name);
+    public String getCol5() {
+        return col5.get();
     }
+
 }

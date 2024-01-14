@@ -13,20 +13,28 @@ public class Match {
         this.goals2 = goals2;
     }
 
-    public String getId() {
-        return Integer.toString(id);
+    public int getID() {
+        return id;
     }
+
+    public String getTime() {
+        return time;
+    }
+
     public String getTeam1() {
         return team1;
     }
-    public int getGoals1() {
-        return goals1;
+
+    public String getGoals1() {
+        return Integer.toString(goals1);
     }
+
     public String getTeam2() {
         return team2;
     }
-    public int getGoals2() {
-        return goals2;
+
+    public String getGoals2() {
+        return Integer.toString(goals2);
     }
 
 
