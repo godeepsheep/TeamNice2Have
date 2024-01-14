@@ -43,9 +43,10 @@ public class Main extends Application {
 		primaryStage.getIcons().add(new Image("/Gui/images/ball.png"));
 
 		//String fxmlfile = "Interface";
-		String fxmlfile = "SidebarNavigation";
+		//String fxmlfile = "SidebarNavigation";
 		//String fxmlfile = "Stilling";
 		//String fxmlfile = "Kamprapport";
+		String fxmlfile = "Events";
 		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
 
 		root.setOnMousePressed(event -> {
