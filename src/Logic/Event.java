@@ -3,14 +3,22 @@ package Logic;
 public class Event {
 
     private String event, team, time, realtime;
+    private int id, teamID;
 
-    public Event(String event, String team, String time, String realtime) {
+    public Event(int id, String event, int teamID, String team, String time, String realtime) {
+        this.id = id;
+        this.teamID = teamID;
         this.event = event;
         this.team = team;
         this.time = time;
         this.realtime = realtime;
     }
-
+    public int getID() {
+        return id;
+    }
+    public int getTeamID() {
+        return teamID;
+    }
     public String getName() {
         return event;
     }

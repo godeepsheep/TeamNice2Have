@@ -20,13 +20,13 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="500.0" layoutY="344.0" mnemonicParsing="false" onAction="#importFile" text="Import">
+      <Button fx:id="importButton" layoutX="500.0" layoutY="344.0" mnemonicParsing="false" onAction="#importFile" text="Import">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
       <Accordion layoutX="35.0" layoutY="8.0" />
-      <Button layoutX="426.0" layoutY="344.0" mnemonicParsing="false" onAction="#exportFile" text="Eksport">
+      <Button fx:id="exportButton" layoutX="426.0" layoutY="344.0" mnemonicParsing="false" onAction="#exportFile" text="Eksport">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

@@ -107,7 +107,9 @@ CREATE PROCEDURE getEvents
 AS
 BEGIN
 	SELECT 
+		TypeID AS Event_ID,
 		EventType.Name AS [Event], 
+		Team.ID AS Team_ID,
 		Team.Name AS Team, 
 		FORMAT(CONVERT(DATETIME, [Time], 121), 'mm:ss') AS [Time], 
 		FORMAT(CONVERT(DATETIME, RealTime, 121), 'HH:mm:ss') AS RealTime 

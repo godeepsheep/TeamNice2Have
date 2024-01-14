@@ -8,7 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -18,13 +28,12 @@ public class Stilling implements Initializable  {
 
     @FXML TableColumn<StandingEntry, String> Stilling, HoldNavn, Kampe, Goals, Pts;
     @FXML TableView<StandingEntry> tableView;
-
+    @FXML Button exportButton;
     Datalayer datalayer = new Datalayer();
+    ArrayList<League> list = datalayer.getLeague();
     final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
 
     public void AddEntry() {
-
-        ArrayList<League> list = datalayer.getLeague();
 
         for (League l : list)
             data.add(new StandingEntry(l.getID(), l.getStanding(), l.getName(), l.getMatches(), l.getGoalsDiff(), l.getPoints()) );
@@ -105,6 +114,34 @@ public class Stilling implements Initializable  {
         Optional<String> result = inputdialog.showAndWait();
 
         return result.orElse(defaultValue);
+    }
+
+    public void exportFile(){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Vælg mappe til eksport");
+
+        Stage primaryStage = (Stage) exportButton.getScene().getWindow();
+        File dir = directoryChooser.showDialog(primaryStage);
+
+        if(dir != null) {
+            StringBuilder data = new StringBuilder();
+            data.append("Stilling;Holdnavn;Kampe;Mål;Point\n");
+
+            for (League l : list)
+                data.append(l.getStanding() + ";" + l.getName() + ";" + l.getMatches() + ";" + l.getGoalsDiff() + ";" + l.getPoints() + "\n");
+
+            writeToFile(data, dir + "\\Standing_league.csv");
+        }
+    }
+
+    public void writeToFile(StringBuilder data, String filePath) {
+        Path path = Paths.get(filePath);
+
+        try {
+            Files.write(path, data.toString().getBytes(StandardCharsets.ISO_8859_1));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
 
     public void AddEntry(String _HoldNavn) {

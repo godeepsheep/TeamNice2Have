@@ -4,9 +4,12 @@ import Logic.League;
 import Logic.Match;
 import Logic.Event;
 import Logic.Team;
-
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Datalayer {
     private Connection connection;
@@ -118,12 +121,14 @@ public class Datalayer {
             ResultSet resultSet = statement.executeQuery("EXEC getEvents "+ matchID);
 
             while (resultSet.next()) {
+                int id = resultSet.getInt("Event_ID");
+                int teamID = resultSet.getInt("Team_ID");
                 String name = resultSet.getString("Event");
                 String team = resultSet.getString("Team");
                 String time = resultSet.getString("Time");
                 String realtime = resultSet.getString("RealTime");
 
-                Event event = new Event(name, team, time, realtime);
+                Event event = new Event(id, name, teamID, team, time, realtime);
                 eventList.add(event);
             }
 
@@ -287,8 +292,30 @@ public class Datalayer {
     }
 
 
+    public void importData(List<String[]> data, int matchID)  {
 
+        for (String[] row : data)
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Event (TypeID, MatchID, TeamID, Time, RealTime) VALUES (?,?,?,?,?)");
+                preparedStatement.setInt(1, Integer.parseInt(row[1]));
+                preparedStatement.setInt(2, matchID);
+                preparedStatement.setInt(3, Integer.parseInt(row[3]));
+                preparedStatement.setTime(4, toTime("00:"+row[0]));
+                preparedStatement.setTime(5, toTime(row[5]));
 
+                preparedStatement.executeUpdate();
+                preparedStatement.close();
+
+            }
+            catch (SQLException | ParseException e) {
+                System.out.println(e.getMessage());
+            }
+    }
+
+    private Time toTime(String time) throws ParseException {
+        DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+        return new Time(formatter.parse(time).getTime());
+    }
 
     public void PrintAction(int ID, int Time, String Name){
 

@@ -21,11 +21,12 @@ public class KamprapportController implements Initializable  {
     @FXML TableView<StandingEntry> tableView;
 
     Datalayer datalayer = new Datalayer();
+    ArrayList<Match> list = datalayer.getMatches();
     final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
 
     public void AddEntry() {
 
-        ArrayList<Match> list = datalayer.getMatches();
+
 
         for (Match m : list)
            data.add(new StandingEntry(m.getID(), m.getTime(), m.getTeam1(), m.getGoals1(), m.getTeam2(), m.getGoals2()));

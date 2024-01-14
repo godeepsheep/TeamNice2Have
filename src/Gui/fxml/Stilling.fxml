@@ -21,20 +21,25 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="addTeamButton" layoutX="348.0" layoutY="336.0" mnemonicParsing="false" onAction="#addTeam" text="Opret Hold">
+      <Button fx:id="addTeamButton" layoutX="51.0" layoutY="338.0" mnemonicParsing="false" onAction="#addTeam" text="Opret Hold">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button layoutX="506.0" layoutY="336.0" mnemonicParsing="false" onAction="#deleteTeam" text="Slet">
+      <Button layoutX="209.0" layoutY="338.0" mnemonicParsing="false" onAction="#deleteTeam" text="Slet">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="437.0" layoutY="336.0" mnemonicParsing="false" onAction="#editTeam" text="Omdøb">
+      <Button layoutX="140.0" layoutY="338.0" mnemonicParsing="false" onAction="#editTeam" text="Omdøb">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
       <Accordion layoutX="35.0" layoutY="8.0" />
+      <Button fx:id="exportButton" layoutX="492.0" layoutY="338.0" mnemonicParsing="false" onAction="#exportFile" text="Eksport">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
