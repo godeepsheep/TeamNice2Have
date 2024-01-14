@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -13,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -56,7 +59,7 @@ public class EventsController implements Initializable  {
         column.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>(name));
     }
 
-    public void exportFile() {
+    public void exportFile() throws IOException {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Vælg mappe til eksport");
 
@@ -71,6 +74,8 @@ public class EventsController implements Initializable  {
                 data.append(e.getTime() + ";" + e.getID() + ";" + e.getName() + ";" + e.getTeamID() + ";" + e.getTeam() + ";" + e.getRealTime() + "\n");
 
             writeToFile(data, dir + "\\Match_events.csv");
+            Desktop.getDesktop().open(new File(dir.toString()));
+            alertBox("Export færdig!", "Export");
         }
     }
 
@@ -108,6 +113,7 @@ public class EventsController implements Initializable  {
                         data.add(lines.get(i).split(";"));
 
                     datalayer.importData(data, matchID);
+                    alertBox("Import færdig!", "Import");
                     break;
 
                 } catch (IOException e) {
@@ -117,6 +123,16 @@ public class EventsController implements Initializable  {
 
         }
     }
+
+
+    private void alertBox(String message, String title) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

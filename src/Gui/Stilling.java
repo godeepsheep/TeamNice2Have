@@ -7,10 +7,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -116,7 +118,7 @@ public class Stilling implements Initializable  {
         return result.orElse(defaultValue);
     }
 
-    public void exportFile(){
+    public void exportFile() throws IOException {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Vælg mappe til eksport");
 
@@ -131,7 +133,18 @@ public class Stilling implements Initializable  {
                 data.append(l.getStanding() + ";" + l.getName() + ";" + l.getMatches() + ";" + l.getGoalsDiff() + ";" + l.getPoints() + "\n");
 
             writeToFile(data, dir + "\\Standing_league.csv");
+            Desktop.getDesktop().open(new File(dir.toString()));
+            alertBox("Export færdig!", "Export");
+
         }
+    }
+
+    private void alertBox(String message, String title) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public void writeToFile(StringBuilder data, String filePath) {
