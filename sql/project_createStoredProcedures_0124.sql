@@ -31,7 +31,7 @@ BEGIN
 		LEFT JOIN Team AS Team2 ON TeamMatch2.TeamID = Team2.ID
 	)
 
-	SELECT ID, [Time], Team1, Goals1, Team2, Goals2 FROM tempResult WHERE RowNo = 1;
+	SELECT ID, [Time], Team1, Goals1, Team2, Goals2 FROM tempResult WHERE RowNo = 1 ORDER BY [Time] DESC;
 END;
 GO
 
@@ -118,7 +118,8 @@ BEGIN
 	LEFT JOIN EventType ON TypeID = EventType.ID
 	LEFT JOIN Team ON TeamID = Team.ID
 
-	WHERE MatchID = @matchID;
+	WHERE @matchID = 0 OR MatchID = @matchID
+	ORDER BY RealTime DESC;
 END;
 GO
 

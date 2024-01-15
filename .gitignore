@@ -28,3 +28,4 @@ out/
 .DS_Store
 project0124/
 
+*.xml

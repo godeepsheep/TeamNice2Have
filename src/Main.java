@@ -59,52 +59,6 @@ public class Main extends Application {
 
 
 	public static void main(String[] args) {
-
-/*
-
-		ArrayList<League> list1 = db.getLeague();
-		System.out.println("\n\nGetLeague");
-		for (League l : list1)
-			System.out.println(l);
-
-
-		ArrayList<Match> list2 = db.getMatches();
-		System.out.println("\n\nGetMatches");
-		for (Match m : list2)
-			System.out.println(m);
-
-
-		ArrayList<Event> list3 = db.getEvents(1);
-		System.out.println("\n\nGetEvents");
-		for (Event e : list3)
-			System.out.println(e);
-
-		ArrayList<Team> list4 = db.getTeams();
-		System.out.println("\n\nGetTeams");
-		for (Team t : list4)
-			System.out.println(t);
-*/
-
-		/*Starter en kamp med teamid 4 og teamid 8*/
-		//int matchID = db.startMatch(4, 8);
-		//System.out.println(matchID);
-
-		/*slutter en kamp med id 30*/
-		//db.endMatch(30);
-
-
-		/*sætter event. eventType : 1 er mål 2 er udvisning*/
-		//db.setEvent(2,1,11, "00:00:11");
-
-		/*sletter event. eventType : 1 er mål 2 er udvisning*/
-		//db.deleteEvent(1,1,11);
-
-
-		//db.createTeam("bingoholdet2");
-		//db.editTeam(17, "bingoholdet_test");
-
-		//db.deleteTeam(17);
-
 		launch(args);
 	}
 

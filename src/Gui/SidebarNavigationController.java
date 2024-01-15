@@ -5,7 +5,6 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -23,7 +22,6 @@ public class SidebarNavigationController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //setupTransitions();
         menu.setOnMouseClicked(event -> showPane(true));
         pane1.setOnMouseClicked(event -> showPane(false));
         pageStilling();
@@ -83,48 +81,4 @@ public class SidebarNavigationController implements Initializable{
         translateTransition.play();
     }
 
-/*
-    private void setupTransitions() {
-        pane1.setVisible(false);
-
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), pane1);
-        fadeTransition.setFromValue(1);
-        fadeTransition.setToValue(0);
-
-        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), pane2);
-        translateTransition.setByX(-600);
-
-        fadeTransition.play();
-        translateTransition.play();
-    }
-
-    private void showPane1() {
-        pane1.setVisible(true);
-
-        FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(0.5), pane1);
-        fadeTransition1.setFromValue(0);
-        fadeTransition1.setToValue(0.15);
-
-        TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), pane2);
-        translateTransition1.setByX(+600);
-
-        fadeTransition1.play();
-        translateTransition1.play();
-    }
-
-    private void hidePane1() {
-        FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(0.5), pane1);
-        fadeTransition1.setFromValue(0.15);
-        fadeTransition1.setToValue(0);
-
-        fadeTransition1.setOnFinished(event1 -> pane1.setVisible(false));
-
-        TranslateTransition translateTransition1 = new TranslateTransition(Duration.seconds(0.5), pane2);
-        translateTransition1.setByX(-600);
-
-        fadeTransition1.play();
-        translateTransition1.play();
-    }
-
- */
 }
