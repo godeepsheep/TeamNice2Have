@@ -49,17 +49,8 @@ public class Main extends Application {
 		//String fxmlfile = "Events";
 		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
 
-		root.setOnMousePressed(event -> {
-			x = event.getSceneX();
-			y = event.getSceneY();
-		});
-
-		root.setOnMouseDragged(event -> {
-			primaryStage.setX(event.getScreenX() - x);
-			primaryStage.setY(event.getScreenY() - y);
-		});
-
-		Scene scene = new Scene(root, 600, 400);
+	
+		Scene scene = new Scene(root, 800, 600);
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add(getClass().getResource("Gui/css/application.css").toExternalForm());
 

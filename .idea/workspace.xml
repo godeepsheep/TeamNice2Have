@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6abc0c-19c1-4a95-88e9-b5d5abbca72a" name="Changes" comment="Made classes from the ER diagram.">
-      <change beforePath="$PROJECT_DIR$/src/Gui/InterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/InterfaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/fxml/Interface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/fxml/Interface.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/fxml/SidebarNavigation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/fxml/SidebarNavigation.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
