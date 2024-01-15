@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -18,14 +19,10 @@ import java.util.ResourceBundle;
 
 public class SidebarNavigationController implements Initializable{
 
-    @FXML
-    private AnchorPane pane1, pane2;
-
-    @FXML
-    private ImageView menu;
-
-    @FXML
-    private StackPane scenesStackPane;
+    @FXML private AnchorPane pane1, pane2;
+    @FXML private ImageView menu;
+    @FXML Label StillingLabel;
+    @FXML private StackPane scenesStackPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,33 +38,37 @@ public class SidebarNavigationController implements Initializable{
 
         pane1.setOnMouseEntered(event -> setCursorHand());
         pane1.setOnMouseExited(event -> setCursorDefault());
+
         pane1.setOnMouseClicked(event -> hidePane1());
 
-        loadScene("fxml/Stilling.fxml");
+        pageStilling();
     }
+
     private void loadScene(String fxml) {
+        hidePane1();
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/"+fxml+".fxml"));
             AnchorPane scene = loader.load();
             scenesStackPane.getChildren().setAll(scene);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void pageStilling(MouseEvent mouseEvent) {
-        hidePane1();
-        loadScene("fxml/Stilling.fxml");
+
+    public void pageStilling() {
+        loadScene("Stilling");
     }
 
-    public void pageKamp(MouseEvent mouseEvent) {
-        hidePane1();
-        loadScene("fxml/Interface.fxml");
+    public void pageKamp() {
+        loadScene("Interface");
     }
 
-    public void pageKamprapport(MouseEvent mouseEvent) {
-        hidePane1();
-        loadScene("fxml/Kamprapport.fxml");
+    public void pageKamprapport() {
+        loadScene("Kamprapport");
     }
+
 
     private void setupTransitions() {
         pane1.setVisible(false);
@@ -121,4 +122,7 @@ public class SidebarNavigationController implements Initializable{
         translateTransition1.play();
     }
 
+
+    public void pageHold(MouseEvent mouseEvent) {
+    }
 }
