@@ -69,14 +69,6 @@ public class SidebarNavigationController implements Initializable{
         translateTransition.play();
     }
 
-    private void setCursorHand() {
-        menu.getScene().setCursor(Cursor.HAND);
-    }
-
-    private void setCursorDefault() {
-        menu.getScene().setCursor(Cursor.DEFAULT);
-    }
-
     private void showPane1() {
         pane1.setVisible(true);
 
