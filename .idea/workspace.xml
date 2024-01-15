@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6abc0c-19c1-4a95-88e9-b5d5abbca72a" name="Changes" comment="Made classes from the ER diagram.">
+      <change afterPath="$PROJECT_DIR$/src/Gui/StaticData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/EventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/EventsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/KamprapportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/KamprapportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/Stilling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/Stilling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/fxml/Kamprapport.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/fxml/Kamprapport.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/fxml/SidebarNavigation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/fxml/SidebarNavigation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +53,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/stine/Downloads/sidebar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mark-/Desktop&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -108,6 +116,7 @@
       <workItem from="1704805451162" duration="2748000" />
       <workItem from="1704840827489" duration="1640000" />
       <workItem from="1705045309689" duration="4769000" />
+      <workItem from="1705322318980" duration="839000" />
     </task>
     <task id="LOCAL-00001" summary="Made classes from the ER diagram.">
       <option name="closed" value="true" />

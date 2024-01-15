@@ -38,13 +38,7 @@ public class Stilling implements Initializable  {
 
         for (League l : list)
             data.add(new StandingEntry(l.getID(), l.getStanding(), l.getName(), l.getMatches(), l.getGoalsDiff(), l.getPoints()) );
-/*
-        Stilling.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Standing"));
-        HoldNavn.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Name"));
-        Kampe.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Matches"));
-        Goals.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("GoalDiff"));
-        Pts.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Points"));
-*/
+
         setCellValue(Stilling, "col1");
         setCellValue(HoldNavn, "col2");
         setCellValue(Kampe, "col3");

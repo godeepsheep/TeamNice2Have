@@ -38,10 +38,19 @@ public class KamprapportController implements Initializable  {
         setCellValue(goal2, "col5");
 
         tableView.setItems(data);
+        SetMatchID();
     }
 
     private void setCellValue(TableColumn<StandingEntry, String> column, String name) {
         column.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>(name));
+    }
+
+    private void SetMatchID(){
+        if (tableView.getSelectionModel().getSelectedItem() != null) {
+
+            StaticData.MatchID = tableView.getSelectionModel().getSelectedItem().getID();
+        }
+
     }
 
     public void showEventList() {
