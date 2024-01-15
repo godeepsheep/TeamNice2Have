@@ -115,7 +115,12 @@ public class EventsController implements Initializable  {
                         data.add(lines.get(i).split(";"));
 
                     datalayer.importData(data, matchID);
+
                     alertBox("Import færdig!", "Import");
+                    AddEntry();
+                    int index = tableView.getItems().size();
+                    tableView.scrollTo(index);
+
                     break;
 
                 } catch (IOException e) {

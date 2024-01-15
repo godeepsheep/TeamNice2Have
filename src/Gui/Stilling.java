@@ -38,13 +38,7 @@ public class Stilling implements Initializable  {
 
         for (League l : list)
             data.add(new StandingEntry(l.getID(), l.getStanding(), l.getName(), l.getMatches(), l.getGoalsDiff(), l.getPoints()) );
-/*
-        Stilling.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Standing"));
-        HoldNavn.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Name"));
-        Kampe.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Matches"));
-        Goals.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("GoalDiff"));
-        Pts.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>("Points"));
-*/
+
         setCellValue(Stilling, "col1");
         setCellValue(HoldNavn, "col2");
         setCellValue(Kampe, "col3");
@@ -63,7 +57,7 @@ public class Stilling implements Initializable  {
         String name = inputDialog("");
         League l = datalayer.createTeam(name);
 
-        int index = tableView.getItems().size()-1;
+        int index = tableView.getItems().size();
         //bruger index til standing i stedet for data fra databasen, for at undgå at to hold har samme standing
         data.add(new StandingEntry(l.getID(), Integer.toString(index), name, "0", "0", "0"));
 
