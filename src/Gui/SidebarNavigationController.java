@@ -23,14 +23,14 @@ public class SidebarNavigationController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setupTransitions();
-        menu.setOnMouseClicked(event -> showPane1());
-        pane1.setOnMouseClicked(event -> hidePane1());
+        //setupTransitions();
+        menu.setOnMouseClicked(event -> showPane(true));
+        pane1.setOnMouseClicked(event -> showPane(false));
         pageStilling();
     }
 
     public void loadScene(String fxml) {
-        hidePane1();
+        showPane(false);
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/"+fxml+".fxml"));
@@ -55,6 +55,35 @@ public class SidebarNavigationController implements Initializable{
     }
 
 
+    private void showPane(boolean show) {
+        double fromValue, toValue;
+        int x;
+        double y = pane1.getLayoutX();
+        System.out.println(y);
+        pane1.setVisible(show);
+
+        if(show) {
+            fromValue = 0;
+            toValue = 0.15;
+            x = 600;
+        } else {
+            fromValue = 0.15;
+            toValue = 0;
+            x = -600;
+        }
+
+        FadeTransition fadeTrans = new FadeTransition(Duration.seconds(0.5), pane1);
+        fadeTrans.setFromValue(fromValue);
+        fadeTrans.setToValue(toValue);
+
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), pane2);
+        translateTransition.setByX(x);
+
+        fadeTrans.play();
+        translateTransition.play();
+    }
+
+/*
     private void setupTransitions() {
         pane1.setVisible(false);
 
@@ -80,8 +109,6 @@ public class SidebarNavigationController implements Initializable{
     private void showPane1() {
         pane1.setVisible(true);
 
-        //**Potentiel fix for doublet click**
-        //pane.setPosition = startPosition;
         FadeTransition fadeTransition1 = new FadeTransition(Duration.seconds(0.5), pane1);
         fadeTransition1.setFromValue(0);
         fadeTransition1.setToValue(0.15);
@@ -106,4 +133,6 @@ public class SidebarNavigationController implements Initializable{
         fadeTransition1.play();
         translateTransition1.play();
     }
+
+ */
 }

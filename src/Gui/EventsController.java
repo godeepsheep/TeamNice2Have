@@ -59,6 +59,8 @@ public class EventsController implements Initializable  {
         column.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>(name));
     }
 
+
+
     public void exportFile() throws IOException {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Vælg mappe til eksport");
