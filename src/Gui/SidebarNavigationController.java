@@ -40,6 +40,10 @@ public class SidebarNavigationController implements Initializable{
         }
     }
 
+    public void pageEvents() {
+
+    }
+    
     public void pageStilling() {
         loadScene("Stilling");
     }
