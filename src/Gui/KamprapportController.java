@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -29,13 +28,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class KamprapportController implements Initializable {
+public class KamprapportController extends controller implements Initializable {
 
-    @FXML TableColumn<StandingEntry, String> time, team1, goal1, team2, goal2; //kampe
-    @FXML TableColumn<StandingEntry, String> timeEvent, event, team, realtime; //events
-    @FXML TableView<StandingEntry> tableView, tableViewEvents;
-    @FXML Button exportButton, importButton;
-    @FXML Tab tabReport;
+    @FXML private TableColumn<StandingEntry, String> time, team1, goal1, team2, goal2, timeEvent, event, team, realtime;
+    @FXML private TableView<StandingEntry> tableView, tableViewEvents;
+    @FXML private Button exportButton, importButton;
+    @FXML private Tab tabReport;
 
     int matchID = -1;
     Datalayer datalayer = new Datalayer();
@@ -82,11 +80,11 @@ public class KamprapportController implements Initializable {
         tableViewEvents.setItems(dataEvent);;
         showhideButton();
     }
-
+/*
     private void setCellValue(TableColumn<StandingEntry, String> column, String name) {
         column.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>(name));
     }
-
+*/
 
     public EventHandler<javafx.event.Event> tabReport() {
         StandingEntry entry = tableView.getSelectionModel().getSelectedItem();
@@ -117,7 +115,7 @@ public class KamprapportController implements Initializable {
 
 
     }
-
+/*
     public void writeToFile(StringBuilder data, String filePath) {
         Path path = Paths.get(filePath);
 
@@ -127,7 +125,7 @@ public class KamprapportController implements Initializable {
             System.out.println(e);
         }
     }
-
+*/
     public void importFile() {
 
         FileChooser fileChooser = new FileChooser();
@@ -166,7 +164,7 @@ public class KamprapportController implements Initializable {
         }
     }
 
-
+/*
     private void alertBox(String message, String title) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -174,7 +172,7 @@ public class KamprapportController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

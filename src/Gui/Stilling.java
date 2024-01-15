@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
@@ -25,11 +24,11 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class Stilling implements Initializable  {
+public class Stilling extends controller implements Initializable  {
 
-    @FXML TableColumn<StandingEntry, String> Stilling, HoldNavn, Kampe, Goals, Pts;
-    @FXML TableView<StandingEntry> tableView;
-    @FXML Button exportButton;
+    @FXML private TableColumn<StandingEntry, String> Stilling, HoldNavn, Kampe, Goals, Pts;
+    @FXML private TableView<StandingEntry> tableView;
+    @FXML private Button exportButton;
     Datalayer datalayer = new Datalayer();
     ArrayList<League> list = datalayer.getLeague();
     final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
@@ -49,10 +48,11 @@ public class Stilling implements Initializable  {
 
     }
 
-    private void setCellValue(TableColumn<StandingEntry, String> column, String name) {
+
+    /*private void setCellValue(TableColumn<StandingEntry, String> column, String name) {
         column.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>(name));
     }
-
+*/
     public void addTeam() {
         String name = inputDialog("");
         League l = datalayer.createTeam(name);
@@ -131,7 +131,7 @@ public class Stilling implements Initializable  {
 
         }
     }
-
+/*
     private void alertBox(String message, String title) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -149,16 +149,7 @@ public class Stilling implements Initializable  {
             System.out.println(e);
         }
     }
-
-    public void AddEntry(String _HoldNavn) {
-
-    }
-
-    public void getKampe(String _HoldNavn){
-
-
-    }
-
+*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         AddEntry();

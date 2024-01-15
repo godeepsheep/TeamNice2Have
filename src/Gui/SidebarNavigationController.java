@@ -1,6 +1,5 @@
 package Gui;
 
-import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -54,7 +53,6 @@ public class SidebarNavigationController implements Initializable{
     public void pageKamprapport() {
         loadScene("Kamprapport");
     }
-
 
     private void showPane(boolean show) {
         double fromValue, toValue;

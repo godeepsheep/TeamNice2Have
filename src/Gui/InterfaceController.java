@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -23,7 +22,6 @@ public class InterfaceController implements Initializable {
 
     private int penaltiesTeam1, penaltiesTeam2, Team1Goals, Team2Goals;
     private int team1ID, team2ID, matchID;
-
     int elapsedSeconds = 58, elapsedMinutes = 0;  //how long the match has run
     int targetTime = 60; //total amount of seconds the match will take
     int totalTime = 58;
@@ -32,14 +30,10 @@ public class InterfaceController implements Initializable {
     private String imagePlay = "images/PlayIcon.png";
 
 
-    @FXML
-    ChoiceBox<Team> Team1Name, Team2Name;
-    @FXML
-    TextField Team1Score, Team2Score, timerTextField, Team1PenaltyTextField, Team2PenaltyTextField;
-    @FXML
-    ImageView PauseButton;
-    @FXML
-    Label timerLabelText;
+    @FXML private ChoiceBox<Team> Team1Name, Team2Name;
+    @FXML private TextField Team1Score, Team2Score, Team1PenaltyTextField, Team2PenaltyTextField;
+    @FXML private ImageView PauseButton;
+    @FXML private Label timerLabelText;
 
     Datalayer datalayer = new Datalayer();
     Timer _time;
