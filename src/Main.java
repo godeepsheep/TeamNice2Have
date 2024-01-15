@@ -50,7 +50,7 @@ public class Main extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
 
 	
-		Scene scene = new Scene(root, 600, 400);
+		Scene scene = new Scene(root, 800, 600);
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add(getClass().getResource("Gui/css/application.css").toExternalForm());
 

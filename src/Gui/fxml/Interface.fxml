@@ -27,11 +27,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <TextField fx:id="timerTextField" alignment="CENTER" editable="false" layoutX="652.0" layoutY="91.0" prefHeight="26.0" prefWidth="70.0" promptText="00:00">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
       <Button layoutX="97.0" layoutY="185.0" mnemonicParsing="false" onAction="#AddGoalTeam1" text=" + ">
          <font>
             <Font size="16.0" />

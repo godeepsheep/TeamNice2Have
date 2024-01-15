@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -24,8 +23,6 @@ public class SidebarNavigationController implements Initializable{
 
     @FXML
     private ImageView menu;
-    @FXML
-    Label StillingLabel;
 
     @FXML
     private StackPane scenesStackPane;
@@ -124,7 +121,4 @@ public class SidebarNavigationController implements Initializable{
         translateTransition1.play();
     }
 
-
-    public void pageHold(MouseEvent mouseEvent) {
-    }
 }

@@ -52,14 +52,6 @@
          <children>
             <VBox layoutX="14.0" prefHeight="350.0" prefWidth="154.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <Label fx:id="StillingLabel" accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageStilling" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Stilling" textAlignment="CENTER">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="5.0" />
-                     </VBox.margin>
-                  </Label>
                   <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageKamp" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Kamp" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
@@ -68,7 +60,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageKamprapport" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Kamprapport" textAlignment="CENTER">
+                  <Label fx:id="StillingLabel" accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageStilling" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Stilling" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -76,7 +68,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageHold" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Hold" textAlignment="CENTER">
+                  <Label accessibleRole="BUTTON" alignment="BASELINE_LEFT" onMouseClicked="#pageKamprapport" prefHeight="40.0" prefWidth="162.0" styleClass="mybut" stylesheets="@../css/application.css" text="Kamprapport" textAlignment="CENTER">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -94,22 +86,17 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/ball.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../images/clock.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/whistle.png" />
+                        <Image url="@../images/ball.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="45.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/handball.png" />
+                        <Image url="@../images/whistle.png" />
                      </image>
                   </ImageView>
                </children>
