@@ -1,5 +1,6 @@
 package Gui;
 
+import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ public class SidebarNavigationController implements Initializable{
     @FXML private AnchorPane pane1, pane2;
     @FXML private ImageView menu;
     @FXML private StackPane scenesStackPane;
+
+    boolean idleMenu = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,8 +59,8 @@ public class SidebarNavigationController implements Initializable{
     private void showPane(boolean show) {
         double fromValue, toValue;
         int x;
-        double y = pane1.getLayoutX();
-        System.out.println(y);
+
+        if(!idleMenu) return;
         pane1.setVisible(show);
 
         if(show) {
@@ -76,6 +79,9 @@ public class SidebarNavigationController implements Initializable{
 
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), pane2);
         translateTransition.setByX(x);
+
+        fadeTrans.setOnFinished(event -> idleMenu = true);
+        idleMenu = false;
 
         fadeTrans.play();
         translateTransition.play();
