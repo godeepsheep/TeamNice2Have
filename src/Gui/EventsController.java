@@ -40,8 +40,13 @@ public class EventsController implements Initializable  {
     private ArrayList<Event> list;
     final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
 
+    public void GetMatchID(){
+        matchID = StaticData.MatchID;
+    }
+
     public void AddEntry() {
 
+        GetMatchID();
         list = datalayer.getEvents(matchID);
 
         for (Event e : list)

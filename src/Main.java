@@ -49,9 +49,11 @@ public class Main extends Application {
 		//String fxmlfile = "Events";
 		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
 
-	
+
+
 		Scene scene = new Scene(root, 800, 600);
 		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 		scene.getStylesheets().add(getClass().getResource("Gui/css/application.css").toExternalForm());
 
 		primaryStage.show();
@@ -61,6 +63,8 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+
 
 
 	public static void WriteActionsToDB(int id, int time, String Name){
