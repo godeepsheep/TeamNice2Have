@@ -126,5 +126,15 @@
             <Font size="19.0" />
          </font>
       </Label>
+      <Label layoutX="100.0" layoutY="340.0" text="Penalties">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="427.0" layoutY="340.0" text="Penalties">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

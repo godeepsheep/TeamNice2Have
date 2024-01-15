@@ -24,19 +24,22 @@ public class InterfaceController implements Initializable {
     private int penaltiesTeam1, penaltiesTeam2, Team1Goals, Team2Goals;
     private int team1ID, team2ID, matchID;
 
-    int elapsedSeconds, elapsedMinutes = 0;  //how long the match has run
+    int elapsedSeconds = 58, elapsedMinutes = 0;  //how long the match has run
     int targetTime = 60; //total amount of seconds the match will take
-    int totalTime = 0;
+    int totalTime = 58;
     boolean TimerRunning, gameStart;
     private String imagePause = "images/pauseicon.png";
     private String imagePlay = "images/PlayIcon.png";
 
 
-
-    @FXML ChoiceBox<Team> Team1Name, Team2Name;
-    @FXML TextField Team1Score, Team2Score, timerTextField, Team1PenaltyTextField, Team2PenaltyTextField;
-    @FXML ImageView PauseButton;
-    @FXML Label timerLabelText;
+    @FXML
+    ChoiceBox<Team> Team1Name, Team2Name;
+    @FXML
+    TextField Team1Score, Team2Score, timerTextField, Team1PenaltyTextField, Team2PenaltyTextField;
+    @FXML
+    ImageView PauseButton;
+    @FXML
+    Label timerLabelText;
 
     Datalayer datalayer = new Datalayer();
     Timer _time;
@@ -61,7 +64,7 @@ public class InterfaceController implements Initializable {
     private int getTeamID(ChoiceBox<Team> box1, ChoiceBox<Team> box2, int teamID) {
         //finder valgte værdi for choice box 1
         Team team = box1.getSelectionModel().getSelectedItem();
-        if(team==null) return teamID;
+        if (team == null) return teamID;
         teamID = team.getID();
 
         //sletter værdien i choice box 2
@@ -74,8 +77,8 @@ public class InterfaceController implements Initializable {
     }
 
     private int getIndex(int teamID) {
-        for(int i=0; i<totalTeams.size(); i++)
-            if(totalTeams.get(i).getID() == teamID)
+        for (int i = 0; i < totalTeams.size(); i++)
+            if (totalTeams.get(i).getID() == teamID)
                 return i;
 
         return -1;
@@ -87,50 +90,11 @@ public class InterfaceController implements Initializable {
     }
 
 
-        /*
-    public void AddNamesToChoiceBox() {
-
-        Team1Name.setOnAction(event -> {
-            team1ID = Team1Name.getSelectionModel().getSelectedIndex();
-            System.out.println(team1ID);
-            if (team2ID > -1) {
-                Team1Name.getItems().remove(team2ID);
-            }
-        });
-        Team2Name.setOnAction(event -> {
-            team2ID = Team2Name.getSelectionModel().getSelectedIndex();
-            System.out.println(team2ID);
-
-            if (team1ID > -1) {
-                Team2Name.getItems().remove(team1ID);
-            }
-        })
-    }
-
-    public void GenerateTeam1List() {
-        Team1Name.getItems().clear();
-        for (Team team : totalTeams) {
-            Team1Name.getItems().add(team.getName());
-        }
-        if (team2ID > -1) {
-            Team1Name.getItems().remove(team2ID);
-        }
-    }
-
-    public void GenerateTeam2List() {
-        Team2Name.getItems().clear();
-        for (Team team : totalTeams) {
-            Team2Name.getItems().add(team.getName());
-        }
-        if (team1ID > -1) {
-            Team2Name.getItems().remove(team1ID);
-        }
-    }
-*/
-
     public void GameStart() {
+        ClearGame();
         matchID = datalayer.startMatch(team1ID, team2ID);
         setDisableBox(true);
+
     }
 
     public void GameEnd() {
@@ -144,7 +108,7 @@ public class InterfaceController implements Initializable {
     }
 
     private void activateButton() {
-        if(team1ID > 0 && team2ID > 0)
+        if (team1ID > 0 && team2ID > 0)
             PauseButton.getStyleClass().add("pauseButtonActive");
         else
             PauseButton.getStyleClass().remove("pauseButtonActive");
@@ -152,44 +116,42 @@ public class InterfaceController implements Initializable {
 
     public void AddGoalTeam1() {
         Team1Goals = AddGoal(Team1Goals, Team1Score, team1ID);
-        /*Team1Goals += 1;
-        Team1Score.setText("" + Team1Goals);
-        datalayer.setEvent(1, matchID, team1ID, CurrentGameTime());*/
     }
 
     public void AddGoalTeam2() {
         Team2Goals = AddGoal(Team2Goals, Team2Score, team2ID);
-        /*
-        Team2Goals += 1;
-        Team2Score.setText("" + Team2Goals);*/
     }
 
     private int AddGoal(int Goals, TextField TeamScore, int teamID) {
-        if(!TimerRunning) return Goals;
+        if (!TimerRunning) return Goals;
 
-        Goals ++;
+        Goals++;
         TeamScore.setText("" + Goals);
         datalayer.setEvent(1, matchID, teamID, CurrentGameTime());
         return Goals;
     }
 
+    private void ClearGame() {
+        elapsedMinutes = elapsedSeconds = totalTime = 0;
+        Team2Goals = Team1Goals = 0;
+        penaltiesTeam1 = penaltiesTeam2 = 0;
+        Team1Score.setText("0");
+        Team2Score.setText("0");
+        Team1PenaltyTextField.setText("0");
+        Team2PenaltyTextField.setText("0");
+    }
+
 
     public void RemoveGoalTeam1() {
         Team1Goals = RemoveGoal(Team1Goals, Team1Score, team1ID);
-        /*if (Team1Goals > 0)
-            Team1Goals -= 1;
-        Team1Score.setText("" + Team1Goals);*/
     }
 
     public void RemoveGoalTeam2() {
         Team2Goals = RemoveGoal(Team2Goals, Team2Score, team2ID);
-       /* if (Team2Goals > 0)
-            Team2Goals -= 1;
-        Team2Score.setText("" + Team2Goals);*/
     }
 
     public int RemoveGoal(int Goals, TextField TeamScore, int teamID) {
-        if (Goals > 0) Goals --;
+        if (Goals > 0) Goals--;
         TeamScore.setText("" + Goals);
         datalayer.deleteEvent(1, matchID, teamID);
 
@@ -199,20 +161,16 @@ public class InterfaceController implements Initializable {
 
     public void AddPenaltiesTeam1() {
         penaltiesTeam1 = AddPenalties(penaltiesTeam1, Team1PenaltyTextField, team1ID);
-        /*penaltiesTeam1 += 1;
-        Team1PenaltyTextField.setText("" + penaltiesTeam1);*/
     }
 
     public void AddPenaltiesTeam2() {
         penaltiesTeam2 = AddPenalties(penaltiesTeam2, Team2PenaltyTextField, team2ID);
-        /*penaltiesTeam2 += 1;
-        Team2PenaltyTextField.setText("" + penaltiesTeam2);*/
     }
 
-    public int  AddPenalties(int penalties, TextField PenaltyText, int teamID) {
-        if(!TimerRunning) return penalties;
+    public int AddPenalties(int penalties, TextField PenaltyText, int teamID) {
+        if (!TimerRunning) return penalties;
 
-        penalties ++;
+        penalties++;
         PenaltyText.setText("" + penalties);
         datalayer.setEvent(2, matchID, teamID, CurrentGameTime());
 
@@ -221,22 +179,15 @@ public class InterfaceController implements Initializable {
 
     public void RemovePenaltiesTeam1() {
         penaltiesTeam1 = RemovePenalties(penaltiesTeam1, Team1PenaltyTextField, team1ID);
-        /*if (penaltiesTeam1 > 0)
-            penaltiesTeam1 -= 1;
-        Team1PenaltyTextField.setText("" + penaltiesTeam1);*/
-
     }
 
     public void RemovePenaltiesTeam2() {
         penaltiesTeam2 = RemovePenalties(penaltiesTeam2, Team2PenaltyTextField, team2ID);
-        /*if (penaltiesTeam2 > 0)
-            penaltiesTeam2 -= 1;
-        Team2PenaltyTextField.setText("" + penaltiesTeam2);
-        System.out.println(CurrentGameTime());*/
+
     }
 
     public int RemovePenalties(int penalties, TextField PenaltyText, int teamID) {
-        if (penalties > 0) penalties --;
+        if (penalties > 0) penalties--;
         PenaltyText.setText("" + penalties);
         datalayer.deleteEvent(2, matchID, teamID);
 
@@ -256,7 +207,7 @@ public class InterfaceController implements Initializable {
 
 
     public void UpdateTimer() {
-        if(team1ID == 0 || team2ID == 0) return;
+        if (team1ID == 0 || team2ID == 0) return;
 
         if (!gameStart && team2ID > 0 && team1ID > 0) {
             gameStart = true;
@@ -274,14 +225,12 @@ public class InterfaceController implements Initializable {
 
                     if (totalTime != targetTime) {
                         //start game
-
                         if (elapsedSeconds == 60) {
                             elapsedMinutes += 1;
                             elapsedSeconds = 0;
                         }
                         elapsedSeconds += 1;
                         totalTime += 1;
-                        //timerTextField.setText(CurrentGameTime());
                         Platform.runLater(() -> timerLabelText.setText(CurrentGameTime()));
                         PauseButton.setImage(getImage(imagePause));
 
@@ -291,12 +240,14 @@ public class InterfaceController implements Initializable {
                         TimerRunning = false;
                         _time.cancel();
                         _time.purge();
-                        elapsedMinutes = 1;
-                        elapsedSeconds = 0;
-                        //timerTextField.setText(CurrentGameTime());
+                        if (elapsedSeconds == 60) {
+                            elapsedMinutes += 1;
+                            elapsedSeconds = 0;
+                        }
                         Platform.runLater(() -> timerLabelText.setText(CurrentGameTime()));
                         PauseButton.setImage(getImage(imagePlay));
                         GameEnd();
+                        gameStart = false;
                     }
                 }
             }, 0L, 1000L);
