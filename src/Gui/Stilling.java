@@ -57,7 +57,7 @@ public class Stilling implements Initializable  {
         String name = inputDialog("");
         League l = datalayer.createTeam(name);
 
-        int index = tableView.getItems().size()-1;
+        int index = tableView.getItems().size();
         //bruger index til standing i stedet for data fra databasen, for at undgå at to hold har samme standing
         data.add(new StandingEntry(l.getID(), Integer.toString(index), name, "0", "0", "0"));
 
