@@ -27,3 +27,8 @@
 .columnString {
     -fx-padding: 0 0 0 10;
 }
+
+#pane1 {
+    -fx-background-color: #00;
+    -fx-cursor: hand;
+}
