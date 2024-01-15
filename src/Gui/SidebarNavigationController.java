@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -21,30 +19,17 @@ public class SidebarNavigationController implements Initializable{
 
     @FXML private AnchorPane pane1, pane2;
     @FXML private ImageView menu;
-    @FXML Label StillingLabel;
     @FXML private StackPane scenesStackPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setupTransitions();
-
-        //Actions for cursorchange when over menu
-        menu.setOnMouseEntered(event -> setCursorHand());
-        menu.setOnMouseExited(event -> setCursorDefault());
-        menu.setOnMousePressed(event -> setCursorDefault());
-        menu.setOnMouseReleased(event -> setCursorHand());
-
         menu.setOnMouseClicked(event -> showPane1());
-
-        pane1.setOnMouseEntered(event -> setCursorHand());
-        pane1.setOnMouseExited(event -> setCursorDefault());
-
         pane1.setOnMouseClicked(event -> hidePane1());
-
         pageStilling();
     }
 
-    private void loadScene(String fxml) {
+    public void loadScene(String fxml) {
         hidePane1();
 
         try {
@@ -120,9 +105,5 @@ public class SidebarNavigationController implements Initializable{
 
         fadeTransition1.play();
         translateTransition1.play();
-    }
-
-
-    public void pageHold(MouseEvent mouseEvent) {
     }
 }

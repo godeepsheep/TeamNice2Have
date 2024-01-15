@@ -29,6 +29,10 @@
 }
 
 #pane1 {
-    -fx-background-color: #00;
+    -fx-background-color: #000;
+    -fx-cursor: hand;
+}
+
+#menu {
     -fx-cursor: hand;
 }

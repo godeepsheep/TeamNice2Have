@@ -18,7 +18,7 @@
                   <Image url="@../images/menu.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="menu" fitHeight="40.0" fitWidth="49.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="menu" fx:id="menu" fitHeight="40.0" fitWidth="49.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/menu.png" />
                </image>
@@ -46,7 +46,7 @@
                      </image></ImageView>
                </children></VBox>
          </children></AnchorPane>
-      <AnchorPane fx:id="pane1" layoutX="211.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane id="pane1" fx:id="pane1" layoutX="211.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane1" stylesheets="@../css/application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <StackPane fx:id="scenesStackPane" layoutX="41.0" layoutY="40.0" prefHeight="360.0" prefWidth="559.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
       <AnchorPane fx:id="pane2" prefHeight="360.0" prefWidth="130.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
          <children>
