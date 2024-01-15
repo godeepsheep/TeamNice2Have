@@ -24,9 +24,8 @@ public class InterfaceController implements Initializable {
     private int penaltiesTeam1, penaltiesTeam2, Team1Goals, Team2Goals;
     private int team1ID, team2ID, matchID;
 
-    int elapsedSeconds, elapsedMinutes = 0;  //elapsedMinutes: how long the match will be
-    int targetTime = 60;
-    //total amount of seconds the match has lasted
+    int elapsedSeconds, elapsedMinutes = 0;  //how long the match has run
+    int targetTime = 60; //total amount of seconds the match will take
     int totalTime = 0;
     boolean TimerRunning, gameStart;
     private String imagePause = "images/pauseicon.png";

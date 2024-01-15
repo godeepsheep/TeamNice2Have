@@ -43,22 +43,13 @@ public class Main extends Application {
 		primaryStage.getIcons().add(new Image("/Gui/images/ball.png"));
 
 		//String fxmlfile = "Interface";
-		//String fxmlfile = "SidebarNavigation";
+		String fxmlfile = "SidebarNavigation";
 		//String fxmlfile = "Stilling";
 		//String fxmlfile = "Kamprapport";
-		String fxmlfile = "Events";
+		//String fxmlfile = "Events";
 		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
 
-		root.setOnMousePressed(event -> {
-			x = event.getSceneX();
-			y = event.getSceneY();
-		});
-
-		root.setOnMouseDragged(event -> {
-			primaryStage.setX(event.getScreenX() - x);
-			primaryStage.setY(event.getScreenY() - y);
-		});
-
+	
 		Scene scene = new Scene(root, 600, 400);
 		primaryStage.setScene(scene);
 		scene.getStylesheets().add(getClass().getResource("Gui/css/application.css").toExternalForm());
