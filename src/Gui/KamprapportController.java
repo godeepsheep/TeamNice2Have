@@ -11,9 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -38,13 +40,12 @@ public class KamprapportController implements Initializable {
     int matchID = -1;
     Datalayer datalayer = new Datalayer();
     ArrayList<Match> list = datalayer.getMatches();
+    ArrayList<Event> eventlist;
 
     final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
     final ObservableList<StandingEntry> dataEvent = FXCollections.observableArrayList();
 
     public void AddEntry() {
-
-
 
         for (Match m : list)
            data.add(new StandingEntry(m.getID(), m.getTime(), m.getTeam1(), m.getGoals1(), m.getTeam2(), m.getGoals2()));
@@ -57,15 +58,20 @@ public class KamprapportController implements Initializable {
 
         tableView.setItems(data);
         tableView.getSelectionModel().selectFirst();
-
+        showhideButton();
     }
 
+    public void showhideButton() {
+        boolean show = !exportButton.isVisible();
+        exportButton.setVisible(show);
+        importButton.setVisible(show);
+    }
 
     public void setEventTable() {
-        ArrayList<Event> list = datalayer.getEvents(matchID);
+        eventlist = datalayer.getEvents(matchID);
         dataEvent.clear();
 
-        for (Event e : list)
+        for (Event e : eventlist)
             dataEvent.add(new StandingEntry(0, e.getTime(), e.getName(), e.getTeam(), e.getRealTime()));
 
         setCellValue(timeEvent, "col1");
@@ -74,6 +80,7 @@ public class KamprapportController implements Initializable {
         setCellValue(realtime, "col4");
 
         tableViewEvents.setItems(dataEvent);;
+        showhideButton();
     }
 
     private void setCellValue(TableColumn<StandingEntry, String> column, String name) {
@@ -89,7 +96,7 @@ public class KamprapportController implements Initializable {
     }
 
     public void exportFile() throws IOException {
-        /*
+
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Vælg mappe til eksport");
 
@@ -100,14 +107,14 @@ public class KamprapportController implements Initializable {
             StringBuilder data = new StringBuilder();
             data.append("Tid;ID;Handling;HoldID;Hold;Realtid\n");
 
-            for (Event e : list)
+            for (Event e : eventlist)
                 data.append(e.getTime() + ";" + e.getID() + ";" + e.getName() + ";" + e.getTeamID() + ";" + e.getTeam() + ";" + e.getRealTime() + "\n");
 
             writeToFile(data, dir + "\\Match_events.csv");
             Desktop.getDesktop().open(new File(dir.toString()));
             alertBox("Export færdig!", "Export");
         }
-        */
+
 
     }
 
@@ -147,9 +154,7 @@ public class KamprapportController implements Initializable {
                     datalayer.importData(data, matchID);
 
                     alertBox("Import færdig!", "Import");
-                    AddEntry();
-                    int index = tableView.getItems().size();
-                    tableView.scrollTo(index);
+                    setEventTable();
 
                     break;
 
