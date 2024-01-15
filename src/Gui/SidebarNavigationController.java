@@ -39,10 +39,6 @@ public class SidebarNavigationController implements Initializable{
             e.printStackTrace();
         }
     }
-
-    public void pageEvents() {
-
-    }
     
     public void pageStilling() {
         loadScene("Stilling");
