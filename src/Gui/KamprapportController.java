@@ -1,10 +1,8 @@
 package Gui;
 
-import Data.Datalayer;
-import Data.Event;
+import Data.*;
 import Logic.Export;
 import Logic.Import;
-import Data.Match;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -19,7 +17,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class KamprapportController extends controller implements Initializable {
+public class KamprapportController extends Controller implements Initializable {
 
     @FXML private TableColumn<StandingEntry, String> time, team1, goal1, team2, goal2, timeEvent, event, team, realtime;
     @FXML private TableView<StandingEntry> tableView, tableViewEvents;
@@ -27,10 +25,12 @@ public class KamprapportController extends controller implements Initializable {
     @FXML private Tab tabReport;
 
     private int matchID = -1;
-    Datalayer datalayer = new Datalayer();
+    DBimport importDB = new DBimport();
+    DBmatch matchDB = new DBmatch();
+    DBevent eventDB = new DBevent();
 
     private final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
-    private final ArrayList<Match> list = datalayer.getMatches();
+    private final ArrayList<Match> list = matchDB.getMatches();
 
     private final ObservableList<StandingEntry> dataEvent = FXCollections.observableArrayList();
     private ArrayList<Event> eventlist;
@@ -65,7 +65,7 @@ public class KamprapportController extends controller implements Initializable {
     }
 
     public void setEventTable() {
-        eventlist = datalayer.getEvents(matchID);
+        eventlist = eventDB.getEvents(matchID);
         dataEvent.clear();
 
         for (Event e : eventlist)
@@ -85,11 +85,6 @@ public class KamprapportController extends controller implements Initializable {
         tableViewEvents.setItems(dataEvent);;
         showhideButton();
     }
-/*
-    private void setCellValue(TableColumn<StandingEntry, String> column, String name) {
-        column.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>(name));
-    }
-*/
 
     public EventHandler<javafx.event.Event> tabReport() {
         StandingEntry entry = tableView.getSelectionModel().getSelectedItem();
@@ -103,7 +98,7 @@ public class KamprapportController extends controller implements Initializable {
     }
 
     public void importFile() {
-        Import.importFile(importButton, datalayer, matchID);
+        Import.importFile(importButton, importDB, matchID);
         setEventTable();
     }
 

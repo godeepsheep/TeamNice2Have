@@ -2,7 +2,7 @@ package Logic;
 
 import Data.Event;
 import Data.League;
-import javafx.scene.control.Alert;
+import Gui.AlertBox;
 import javafx.scene.control.Button;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class Export {
+public class Export extends AlertBox {
 
     public static void league(Button exportButton, ArrayList<League> list) throws IOException {
         DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -40,7 +40,7 @@ public class Export {
 
             Export.writeToFile(data, dir + "\\Standing_league.csv");
             Desktop.getDesktop().open(new File(dir.toString()));
-            Export.alertBox("Export færdig!", "Export");
+            AlertBox.showDialog("Export færdig!", "Export");
 
         }
     }
@@ -69,18 +69,10 @@ public class Export {
 
             Export.writeToFile(data, dir + "\\Match_events.csv");
             Desktop.getDesktop().open(new File(dir.toString()));
-            Export.alertBox("Export færdig!", "Export");
+            AlertBox.showDialog("Export færdig!", "Export");
         }
 
 
-    }
-
-    public static void alertBox(String message, String title) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     private static void writeToFile(StringBuilder data, String filePath) {

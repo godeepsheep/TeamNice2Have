@@ -1,6 +1,7 @@
 package Gui;
 
-import Data.Datalayer;
+import Data.DBleague;
+import Data.DBteam;
 import Logic.Export;
 import Data.League;
 import Logic.Team;
@@ -17,13 +18,16 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class Stilling extends controller implements Initializable {
+public class Stilling extends Controller implements Initializable {
 
     @FXML private TableColumn<StandingEntry, String> Stilling, HoldNavn, Kampe, Goals, Pts;
     @FXML private TableView<StandingEntry> tableView;
     @FXML private Button exportButton;
-    Datalayer datalayer = new Datalayer();
-    private final ArrayList<League> list = datalayer.getLeague();
+
+    private DBleague leagueDB = new DBleague();
+    private DBteam teamDB = new DBteam();
+
+    private final ArrayList<League> list = leagueDB.getLeague();
     private final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
 
     public void AddEntry() {
@@ -45,24 +49,18 @@ public class Stilling extends controller implements Initializable {
         setCellValue(Pts, "col5");
 
         tableView.setItems(data);
-
     }
-
-    /*private void setCellValue(TableColumn<StandingEntry, String> column, String name) {
-        column.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>(name));
-    }
-*/
 
     public void addTeam() {
-        Team.add(tableView, data, datalayer);
+        Team.add(tableView, data, teamDB);
     }
 
     public void editTeam() {
-        Team.edit(tableView, data, datalayer);
+        Team.edit(tableView, data, teamDB);
     }
 
     public void deleteTeam() {
-        Team.delete(tableView, data, datalayer);
+        Team.delete(tableView, data, teamDB);
     }
 
     public void exportFile() throws IOException {

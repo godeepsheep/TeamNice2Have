@@ -1,8 +1,7 @@
 package Logic;
 
-import Data.Datalayer;
+import Data.*;
 import Data.Event;
-import Data.League;
 import Gui.StandingEntry;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
@@ -22,7 +21,7 @@ import java.util.Optional;
 
 public class Team {
 
-    public static void add(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, Datalayer datalayer) {
+    public static void add(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
         String name = inputDialog("");
         League l = datalayer.createTeam(name);
 
@@ -41,7 +40,7 @@ public class Team {
         tableView.scrollTo(index);
     }
 
-    public static void edit(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, Datalayer datalayer) {
+    public static void edit(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
         StandingEntry entry = tableView.getSelectionModel().getSelectedItem();
         int index = tableView.getSelectionModel().getSelectedIndex();
 
@@ -54,7 +53,7 @@ public class Team {
         tableView.refresh();
     }
 
-    public static void delete(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, Datalayer datalayer) {
+    public static void delete(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
         ButtonType yesBut = new ButtonType("Ok");
         ButtonType noBut = new ButtonType("Annullere");
 

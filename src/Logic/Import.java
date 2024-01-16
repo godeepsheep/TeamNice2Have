@@ -1,7 +1,7 @@
 package Logic;
 
-import Data.Datalayer;
-import javafx.scene.control.Alert;
+import Data.DBimport;
+import Gui.AlertBox;
 import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -16,9 +16,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Import {
+public class Import extends AlertBox {
 
-    public static void importFile(Button importButton, Datalayer datalayer, int matchID) {
+    public static void importFile(Button importButton, DBimport db, int matchID) {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Vælg import CSV fil!");
@@ -41,9 +41,9 @@ public class Import {
                     for (int i=1; i<lines.size(); i++)
                         data.add(lines.get(i).split(";"));
 
-                    datalayer.importData(data, matchID);
+                    db.importData(data, matchID);
 
-                    Export.alertBox("Import færdig!", "Import");
+                    AlertBox.showDialog("Import færdig!", "Import");
                     break;
 
                 } catch (IOException e) {

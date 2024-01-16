@@ -1,4 +1,3 @@
-import Data.Datalayer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,19 +7,13 @@ import javafx.scene.Scene;
 
 
 public class Main extends Application {
-	static Datalayer db = new Datalayer();
 
 	@Override
 	public void start(Stage primaryStage) throws Exception{
 
 		primaryStage.getIcons().add(new Image("/Gui/images/ball.png"));
 
-		//String fxmlfile = "Interface";
-		String fxmlfile = "SidebarNavigation";
-		//String fxmlfile = "Stilling";
-		//String fxmlfile = "Kamprapport";
-		//String fxmlfile = "Events";
-		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/"+fxmlfile+".fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Gui/fxml/SidebarNavigation.fxml"));
 
 		Scene scene = new Scene(root, 800, 600);
 		primaryStage.setScene(scene);

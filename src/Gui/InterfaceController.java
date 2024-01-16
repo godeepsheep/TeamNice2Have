@@ -1,7 +1,6 @@
 package Gui;
 
-import Data.Datalayer;
-import Data.Team;
+import Data.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,22 +21,25 @@ public class InterfaceController implements Initializable {
 
     private int penaltiesTeam1, penaltiesTeam2, Team1Goals, Team2Goals;
     private int team1ID, team2ID, matchID;
-    int elapsedSeconds = 58, elapsedMinutes = 0;  //how long the match has run
-    int targetTime = 60; //total amount of seconds the match will take
-    int totalTime = 58;
-    boolean TimerRunning, gameStart;
+    private int elapsedSeconds = 58, elapsedMinutes = 0;  //how long the match has run
+    private int targetTime = 60; //total amount of seconds the match will take
+    private int totalTime = 58;
+    private boolean TimerRunning, gameStart;
+    Timer _time;
+
     private String imagePause = "images/pauseicon.png";
     private String imagePlay = "images/PlayIcon.png";
-
 
     @FXML private ChoiceBox<Team> Team1Name, Team2Name;
     @FXML private TextField Team1Score, Team2Score, Team1PenaltyTextField, Team2PenaltyTextField;
     @FXML private ImageView PauseButton;
     @FXML private Label timerLabelText;
 
-    Datalayer datalayer = new Datalayer();
-    Timer _time;
-    ArrayList<Team> totalTeams = datalayer.getTeams();
+    DBteam teamDB = new DBteam();
+    DBmatch matchDB = new DBmatch();
+    DBevent eventDB = new DBevent();
+
+    ArrayList<Team> totalTeams = teamDB.getTeams();
 
 
     @Override
@@ -86,13 +88,13 @@ public class InterfaceController implements Initializable {
 
     public void GameStart() {
         ClearGame();
-        matchID = datalayer.startMatch(team1ID, team2ID);
+        matchID = matchDB.startMatch(team1ID, team2ID);
         setDisableBox(true);
 
     }
 
     public void GameEnd() {
-        datalayer.endMatch(matchID);
+        matchDB.endMatch(matchID);
         setDisableBox(false);
     }
 
@@ -121,7 +123,7 @@ public class InterfaceController implements Initializable {
 
         Goals++;
         TeamScore.setText("" + Goals);
-        datalayer.setEvent(1, matchID, teamID, CurrentGameTime());
+        eventDB.setEvent(1, matchID, teamID, CurrentGameTime());
         return Goals;
     }
 
@@ -147,7 +149,7 @@ public class InterfaceController implements Initializable {
     public int RemoveGoal(int Goals, TextField TeamScore, int teamID) {
         if (Goals > 0) Goals--;
         TeamScore.setText("" + Goals);
-        datalayer.deleteEvent(1, matchID, teamID);
+        eventDB.deleteEvent(1, matchID, teamID);
 
         return Goals;
     }
@@ -166,7 +168,7 @@ public class InterfaceController implements Initializable {
 
         penalties++;
         PenaltyText.setText("" + penalties);
-        datalayer.setEvent(2, matchID, teamID, CurrentGameTime());
+        eventDB.setEvent(2, matchID, teamID, CurrentGameTime());
 
         return penalties;
     }
@@ -183,7 +185,7 @@ public class InterfaceController implements Initializable {
     public int RemovePenalties(int penalties, TextField PenaltyText, int teamID) {
         if (penalties > 0) penalties--;
         PenaltyText.setText("" + penalties);
-        datalayer.deleteEvent(2, matchID, teamID);
+        eventDB.deleteEvent(2, matchID, teamID);
 
         return penalties;
     }
