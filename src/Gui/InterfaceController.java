@@ -98,6 +98,16 @@ public class InterfaceController implements Initializable {
         setDisableBox(false);
     }
 
+    private void ClearGame() {
+        elapsedMinutes = elapsedSeconds = totalTime = 0;
+        Team2Goals = Team1Goals = 0;
+        penaltiesTeam1 = penaltiesTeam2 = 0;
+        Team1Score.setText("0");
+        Team2Score.setText("0");
+        Team1PenaltyTextField.setText("0");
+        Team2PenaltyTextField.setText("0");
+    }
+
     private void setDisableBox(boolean value) {
         Team1Name.setDisable(value);
         Team2Name.setDisable(value);
@@ -119,24 +129,13 @@ public class InterfaceController implements Initializable {
     }
 
     private int AddGoal(int Goals, TextField TeamScore, int teamID) {
-        if (!TimerRunning) return Goals;
-
-        Goals++;
-        TeamScore.setText("" + Goals);
-        eventDB.setEvent(1, matchID, teamID, CurrentGameTime());
+        if (TimerRunning) {
+            Goals++;
+            TeamScore.setText("" + Goals);
+            eventDB.setEvent(1, matchID, teamID, CurrentGameTime());
+        }
         return Goals;
     }
-
-    private void ClearGame() {
-        elapsedMinutes = elapsedSeconds = totalTime = 0;
-        Team2Goals = Team1Goals = 0;
-        penaltiesTeam1 = penaltiesTeam2 = 0;
-        Team1Score.setText("0");
-        Team2Score.setText("0");
-        Team1PenaltyTextField.setText("0");
-        Team2PenaltyTextField.setText("0");
-    }
-
 
     public void RemoveGoalTeam1() {
         Team1Goals = RemoveGoal(Team1Goals, Team1Score, team1ID);
@@ -147,13 +146,13 @@ public class InterfaceController implements Initializable {
     }
 
     public int RemoveGoal(int Goals, TextField TeamScore, int teamID) {
-        if (Goals > 0) Goals--;
-        TeamScore.setText("" + Goals);
-        eventDB.deleteEvent(1, matchID, teamID);
-
+        if (TimerRunning && Goals > 0) {
+            Goals--;
+            TeamScore.setText("" + Goals);
+            eventDB.deleteEvent(1, matchID, teamID);
+        }
         return Goals;
     }
-
 
     public void AddPenaltiesTeam1() {
         penaltiesTeam1 = AddPenalties(penaltiesTeam1, Team1PenaltyTextField, team1ID);
@@ -164,12 +163,11 @@ public class InterfaceController implements Initializable {
     }
 
     public int AddPenalties(int penalties, TextField PenaltyText, int teamID) {
-        if (!TimerRunning) return penalties;
-
-        penalties++;
-        PenaltyText.setText("" + penalties);
-        eventDB.setEvent(2, matchID, teamID, CurrentGameTime());
-
+        if (TimerRunning) {
+            penalties++;
+            PenaltyText.setText("" + penalties);
+            eventDB.setEvent(2, matchID, teamID, CurrentGameTime());
+        }
         return penalties;
     }
 
@@ -183,10 +181,11 @@ public class InterfaceController implements Initializable {
     }
 
     public int RemovePenalties(int penalties, TextField PenaltyText, int teamID) {
-        if (penalties > 0) penalties--;
-        PenaltyText.setText("" + penalties);
-        eventDB.deleteEvent(2, matchID, teamID);
-
+        if (TimerRunning && penalties > 0) {
+            penalties--;
+            PenaltyText.setText("" + penalties);
+            eventDB.deleteEvent(2, matchID, teamID);
+        }
         return penalties;
     }
 
