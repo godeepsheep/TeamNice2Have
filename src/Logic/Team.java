@@ -1,16 +1,16 @@
 package Logic;
 
 import Data.*;
-import Gui.InputBox;
+import Gui.DialogBox;
 import Gui.StandingEntry;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import java.util.Optional;
 
-public class Team extends InputBox {
+public class Team extends DialogBox {
 
     public static void add(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
-        String name = inputDialog("");
+        String name = textInputDialog("");
         League l = datalayer.createTeam(name);
 
         int index = tableView.getItems().size();
@@ -32,7 +32,7 @@ public class Team extends InputBox {
         StandingEntry entry = tableView.getSelectionModel().getSelectedItem();
         int index = tableView.getSelectionModel().getSelectedIndex();
 
-        String name = inputDialog(entry.getCol2());
+        String name = textInputDialog(entry.getCol2());
         datalayer.editTeam(entry.getID(), name);
 
         //ændre navnet i gui

@@ -2,10 +2,8 @@ package Logic;
 
 import Data.Event;
 import Data.League;
-import Gui.AlertBox;
+import Gui.DialogBox;
 import javafx.scene.control.Button;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.File;
@@ -16,14 +14,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class Export extends AlertBox {
+public class Export extends DialogBox {
 
     public static void league(Button exportButton, ArrayList<League> list) throws IOException {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Vælg mappe til eksport");
 
-        Stage primaryStage = (Stage) exportButton.getScene().getWindow();
-        File dir = directoryChooser.showDialog(primaryStage);
+        File dir = dirInputDialog(exportButton);
 
         if(dir != null) {
             StringBuilder data = new StringBuilder();
@@ -38,20 +33,19 @@ public class Export extends AlertBox {
                                 l.getPoints() + "\n"
                 );
 
-            Export.writeToFile(data, dir + "\\Standing_league.csv");
-            Desktop.getDesktop().open(new File(dir.toString()));
-            AlertBox.showDialog("Export færdig!", "Export");
-
+            writeFile(data, dir, "Standing_league");
         }
+    }
+
+    private static void writeFile(StringBuilder data, File dir, String name) throws IOException {
+        Export.writeToFile(data, dir + "\\"+name+".csv");
+        Desktop.getDesktop().open(dir);
+        DialogBox.alert("Export færdig!", "Export");
     }
 
     public static void events(Button exportButton, ArrayList<Data.Event> list) throws IOException {
 
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Vælg mappe til eksport");
-
-        Stage primaryStage = (Stage) exportButton.getScene().getWindow();
-        File dir = directoryChooser.showDialog(primaryStage);
+        File dir = dirInputDialog(exportButton);
 
         if(dir != null) {
             StringBuilder data = new StringBuilder();
@@ -67,12 +61,8 @@ public class Export extends AlertBox {
                                 e.getRealTime() + "\n"
                 );
 
-            Export.writeToFile(data, dir + "\\Match_events.csv");
-            Desktop.getDesktop().open(new File(dir.toString()));
-            AlertBox.showDialog("Export færdig!", "Export");
+            writeFile(data, dir, "Match_events");
         }
-
-
     }
 
     private static void writeToFile(StringBuilder data, String filePath) {
