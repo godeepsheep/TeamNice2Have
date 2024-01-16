@@ -8,6 +8,7 @@ public class DBteam {
     private final DBconnect database = DBconnect.getInstance();
     private final Connection db = database.getConnection();
 
+    //Gets list of teams from DB
     public ArrayList<Team> getTeams() {
         try {
             ArrayList<Team> teamList = new ArrayList<>();
@@ -33,6 +34,7 @@ public class DBteam {
         }
     }
 
+    //Creates new team and adds to DB
     public League createTeam(String name)  {
         try {
             CallableStatement callableStatement  = db.prepareCall("addTeam ?, 1");
@@ -57,6 +59,7 @@ public class DBteam {
         }
     }
 
+    //Deletes team from DB
     public void deleteTeam(int teamID)  {
         try {
             String sql = "DELETE FROM Team WHERE ID = "+teamID;
@@ -71,6 +74,7 @@ public class DBteam {
         }
     }
 
+    //Edits team name in DB
     public void editTeam(int teamID, String name)  {
         try {
             PreparedStatement preparedStatement = db.prepareStatement("UPDATE Team SET Name = ? WHERE ID = ?");

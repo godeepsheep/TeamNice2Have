@@ -35,6 +35,7 @@ public class KamprapportController extends Controller implements Initializable {
     private final ObservableList<StandingEntry> dataEvent = FXCollections.observableArrayList();
     private ArrayList<Event> eventlist;
 
+    //Adds match entries to main table
     public void AddEntry() {
 
         for (Match m : list)
@@ -86,6 +87,7 @@ public class KamprapportController extends Controller implements Initializable {
         showhideButton();
     }
 
+    //Handles tab selection for event table
     public EventHandler<javafx.event.Event> tabReport() {
         StandingEntry entry = tableView.getSelectionModel().getSelectedItem();
         matchID = entry.getID();

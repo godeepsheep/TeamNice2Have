@@ -4,6 +4,7 @@ public class League {
     private int id, standing, matches, goalsDiff, points;
     private String name;
 
+    //Constructs a league object
     public League(int standing, int id, String name, int matches, int goalsDiff, int points) {
         this.standing = standing;
         this.id = id;

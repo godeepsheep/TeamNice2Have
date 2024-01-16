@@ -12,7 +12,7 @@ public class DBevent {
     private final Connection db = database.getConnection();
 
 
-
+    //Gets the list of events for a given match from DB
     public ArrayList<Event> getEvents(int matchID) {
         try {
             ArrayList<Event> eventList = new ArrayList<>();
@@ -42,7 +42,7 @@ public class DBevent {
         }
     }
 
-    /*create the event and if there is a goal*/
+    //Create the event and if there is a goal
     public void setEvent(int eventType, int matchID, int teamID, String time)  {
         try {
             String parameters =
@@ -61,7 +61,7 @@ public class DBevent {
         }
     }
 
-    /*delete the event and the goal*/
+    //Delete the event and the goal
     public void deleteEvent(int eventType, int matchID, int teamID)  {
         try {
             String parameters =
@@ -78,6 +78,5 @@ public class DBevent {
             System.out.println(e.getMessage());
         }
     }
-
 
 }

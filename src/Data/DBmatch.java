@@ -9,6 +9,7 @@ public class DBmatch {
     private final Connection db = database.getConnection();
 
 
+    //Gets a list of matches from the DB
     public ArrayList<Match> getMatches() {
         try {
             ArrayList<Match> matchList = new ArrayList<>();
@@ -38,6 +39,7 @@ public class DBmatch {
         }
     }
 
+    //Starts a new match between two teams in the DB
     public int startMatch(int teamID1, int teamID2)  {
         try {
             String parameters = "@t1="+teamID1+", @t2="+teamID2;
@@ -58,6 +60,7 @@ public class DBmatch {
         }
     }
 
+    //Marks the end of a match in the DB
     public void endMatch(int matchID)  {
         try {
             String sql = "UPDATE [Match] SET TimeEnd = GETDATE() WHERE ID = "+matchID;

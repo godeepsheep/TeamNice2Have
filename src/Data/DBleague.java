@@ -8,6 +8,7 @@ public class DBleague {
     private final DBconnect database = DBconnect.getInstance();
     private final Connection db = database.getConnection();
 
+    //Gets league data from the DB
     public ArrayList<League> getLeague() {
         try {
             ArrayList<League> leagueList = new ArrayList<>();

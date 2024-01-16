@@ -11,6 +11,7 @@ public class DBimport {
     private final DBconnect database = DBconnect.getInstance();
     private final Connection db = database.getConnection();
 
+    //Imports data into the DB for a given match
     public void importData(List<String[]> data, int matchID)  {
 
         for (String[] row : data)

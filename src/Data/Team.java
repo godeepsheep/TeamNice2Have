@@ -4,6 +4,7 @@ public class Team {
     private int id;
     private String name;
 
+    //Constructs a Team object
     public Team(int id, String Name) {
         this.id = id;
         this.name = Name;

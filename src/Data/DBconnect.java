@@ -5,9 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBconnect {
-    private static DBconnect instance;
+    private static DBconnect instance; //Singleton instance
     private Connection connection;
 
+    //Constructor to initialize the DB connection
     public DBconnect() {
         openConnection("eamvstudie23_dk_db_project", true);
     }

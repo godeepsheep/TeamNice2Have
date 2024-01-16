@@ -5,21 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6abc0c-19c1-4a95-88e9-b5d5abbca72a" name="Changes" comment="Made classes from the ER diagram.">
-      <change afterPath="$PROJECT_DIR$/src/Data/DBMatch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Data/DBevent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Data/DBimport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Data/DBleague.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Data/DBteam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Gui/AlertBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/Datalayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Datalayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui/InterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/InterfaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBmatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBconnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBconnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBevent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBevent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBimport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBimport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBleague.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBleague.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBteam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBteam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/League.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/League.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Match.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/InputBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/InputBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui/KamprapportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/KamprapportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui/Stilling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/Stilling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui/controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logic/Export.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Export.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logic/Import.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Import.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Logic/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/SidebarNavigationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/StandingEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/StandingEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui/controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -29,6 +29,7 @@ public class SidebarNavigationController implements Initializable {
         pageStilling();
     }
 
+    //Loads scene and hides menu pane
     public void loadScene(String fxml) {
         showPane(false);
 
@@ -55,6 +56,7 @@ public class SidebarNavigationController implements Initializable {
     }
 
 
+    //Shows or hides menu pane with animations
     private void showPane(boolean show) {
         double fromValue, toValue;
         int x;

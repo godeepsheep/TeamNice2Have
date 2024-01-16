@@ -54,8 +54,6 @@ public class StandingEntry {
         return col4.get();
     }
 
-    public String getCol5() {
-        return col5.get();
-    }
+    public String getCol5() { return col5.get(); }
 
 }

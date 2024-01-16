@@ -5,6 +5,7 @@ public class Event {
     private String event, team, time, realtime;
     private int id, teamID;
 
+    //Constructs Event object
     public Event(int id, String event, int teamID, String team, String time, String realtime) {
         this.id = id;
         this.teamID = teamID;

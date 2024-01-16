@@ -4,6 +4,7 @@ public class Match {
     private int id, goals1, goals2;
     private String time, team1, team2;
 
+    //Constructs a Match object
     public Match(int id, String time, String team1, int goals1, String team2, int goals2) {
         this.id = id;
         this.time = time;
