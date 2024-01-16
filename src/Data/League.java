@@ -1,4 +1,4 @@
-package Logic;
+package Data;
 
 public class League {
     private int id, standing, matches, goalsDiff, points;

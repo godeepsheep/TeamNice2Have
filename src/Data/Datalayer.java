@@ -1,9 +1,5 @@
 package Data;
 
-import Logic.League;
-import Logic.Match;
-import Logic.Event;
-import Logic.Team;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.ParseException;

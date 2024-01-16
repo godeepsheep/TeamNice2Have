@@ -1,7 +1,7 @@
 package Gui;
 
 import Data.Datalayer;
-import Logic.Team;
+import Data.Team;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

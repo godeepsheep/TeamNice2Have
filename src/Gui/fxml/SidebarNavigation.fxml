@@ -46,8 +46,8 @@
                      </image></ImageView>
                </children></VBox>
          </children></AnchorPane>
-      <AnchorPane id="pane1" fx:id="pane1" layoutX="211.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane1" stylesheets="@../css/application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <StackPane fx:id="scenesStackPane" layoutX="41.0" layoutY="40.0" prefHeight="360.0" prefWidth="559.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+      <AnchorPane id="pane1" fx:id="pane1" layoutX="211.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" styleClass="pane1" stylesheets="@../css/application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="pane2" prefHeight="360.0" prefWidth="130.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="40.0">
          <children>
             <VBox layoutX="14.0" prefHeight="350.0" prefWidth="154.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">

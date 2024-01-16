@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SidebarNavigationController implements Initializable{
+public class SidebarNavigationController implements Initializable {
 
     @FXML private AnchorPane pane1, pane2;
     @FXML private ImageView menu;
@@ -53,6 +53,7 @@ public class SidebarNavigationController implements Initializable{
     public void pageKamprapport() {
         loadScene("Kamprapport");
     }
+
 
     private void showPane(boolean show) {
         double fromValue, toValue;

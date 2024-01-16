@@ -14,14 +14,14 @@ public class controller {
     public void setCellValue(TableColumn<StandingEntry, String> column, String name) {
         column.setCellValueFactory(new PropertyValueFactory<StandingEntry,String>(name));
     }
-
+/*
     public void writeToFile(StringBuilder data, String filePath) {
         Path path = Paths.get(filePath);
 
         try {
-            Files.write(path, data.toString().getBytes(StandardCharsets.ISO_8859_1));
+            Files.writeString(path, data.toString(), StandardCharsets.ISO_8859_1);
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -33,7 +33,7 @@ public class controller {
         alert.showAndWait();
     }
 
-
+*/
 
 
 
