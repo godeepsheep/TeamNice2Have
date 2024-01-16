@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS EventType;
 
 CREATE TABLE League (
     ID INT PRIMARY KEY IDENTITY(1,1),
-    [Name] NVARCHAR(50) NOT NULL
+    [Name] NVARCHAR(25) NOT NULL
 );
 
 CREATE TABLE [Match] (
@@ -23,7 +23,7 @@ CREATE TABLE [Match] (
 
 CREATE TABLE Team (
     ID INT PRIMARY KEY IDENTITY(1,1),
-    [Name] NVARCHAR(50) NOT NULL,
+    [Name] NVARCHAR(25) NOT NULL,
     LeagueID INT NOT NULL,
 
 	CONSTRAINT FK_LeagueID 
@@ -54,7 +54,7 @@ CREATE TABLE TeamMatch (
 
 create table EventType (
     ID INT PRIMARY KEY IDENTITY(1,1),
-    [Name] NVARCHAR(50) NOT NULL
+    [Name] NVARCHAR(25) NOT NULL
 );
 
 CREATE TABLE [Event] (

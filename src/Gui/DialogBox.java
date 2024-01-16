@@ -12,14 +12,24 @@ import java.util.Optional;
 
 public class DialogBox {
     public static String textInputDialog(String defaultValue) {
-        TextInputDialog inputdialog = new TextInputDialog(defaultValue);
-        inputdialog.setTitle("Opret Hold");
-        inputdialog.setHeaderText("Indtast holdnavn");
-        inputdialog.setContentText("Navn:");
+        String StringResult = "";
 
-        Optional<String> result = inputdialog.showAndWait();
+        for(int i=0;i<2;i++) {
+            TextInputDialog inputdialog = new TextInputDialog(defaultValue);
+            inputdialog.setTitle("Opret Hold");
+            inputdialog.setHeaderText("Indtast holdnavn");
+            inputdialog.setContentText("Navnds:");
 
-        return result.orElse(defaultValue);
+            Optional<String> result = inputdialog.showAndWait();
+            StringResult = result.orElse(defaultValue);
+
+            if (StringResult.length() > 25) {
+                alert("Holdnavn er for langt. Navnet må ikke være mere end 25 tegn", "For mange tegn");
+            } else {
+                return StringResult;
+            }
+        }
+        return defaultValue;
     }
 
     public static File dirInputDialog(Button exportButton) {

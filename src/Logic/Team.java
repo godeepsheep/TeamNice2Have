@@ -5,27 +5,33 @@ import Gui.DialogBox;
 import Gui.StandingEntry;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+
+import java.util.Objects;
 import java.util.Optional;
 
 public class Team extends DialogBox {
 
-    public static void add(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
+    public static void add(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam teamDB) {
+        League l;
         String name = textInputDialog("");
-        League l = datalayer.createTeam(name);
 
-        int index = tableView.getItems().size();
-        //bruger index til standing i stedet for data fra databasen, for at undgå at to hold har samme standing
-        data.add(new StandingEntry(
-                l.getID(),
-                Integer.toString(index),
-                name,
-                "0",
-                "0",
-                "0")
-        );
+        if(!name.isEmpty()) {
+            l = teamDB.createTeam(name);
 
-        tableView.refresh();
-        tableView.scrollTo(index);
+            int index = tableView.getItems().size();
+            //bruger index til standing i stedet for data fra databasen, for at undgå at to hold har samme standing
+            data.add(new StandingEntry(
+                    l.getID(),
+                    Integer.toString(index),
+                    name,
+                    "0",
+                    "0",
+                    "0")
+            );
+
+            tableView.refresh();
+            tableView.scrollTo(index);
+        }
     }
 
     public static void edit(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
@@ -33,12 +39,15 @@ public class Team extends DialogBox {
         int index = tableView.getSelectionModel().getSelectedIndex();
 
         String name = textInputDialog(entry.getCol2());
-        datalayer.editTeam(entry.getID(), name);
 
-        //ændre navnet i gui
-        entry.setCol2(name);
-        data.set(index, entry);
-        tableView.refresh();
+        if(!name.isEmpty()) {
+            datalayer.editTeam(entry.getID(), name);
+
+            //ændre navnet i gui
+            entry.setCol2(name);
+            data.set(index, entry);
+            tableView.refresh();
+        }
     }
 
     public static void delete(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
