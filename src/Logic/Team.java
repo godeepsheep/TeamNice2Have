@@ -1,25 +1,13 @@
 package Logic;
 
 import Data.*;
-import Data.Event;
+import Gui.InputBox;
 import Gui.StandingEntry;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
-
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Optional;
 
-public class Team {
+public class Team extends InputBox {
 
     public static void add(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
         String name = inputDialog("");
@@ -75,14 +63,4 @@ public class Team {
         }
     }
 
-    private static String inputDialog(String defaultValue) {
-        TextInputDialog inputdialog = new TextInputDialog(defaultValue);
-        inputdialog.setTitle("Opret Hold");
-        inputdialog.setHeaderText("Indtast holdnavn");
-        inputdialog.setContentText("Navn:");
-
-        Optional<String> result = inputdialog.showAndWait();
-
-        return result.orElse(defaultValue);
-    }
 }
