@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 public class DBleague {
 
-    private final DBconnect database = DBconnect.getInstance();
-    private final Connection db = database.getConnection();
+    private final Connection db = DBconnect.getInstance().getConnection();
 
     //Gets league data from the DB
     public ArrayList<League> getLeague() {

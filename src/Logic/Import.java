@@ -1,6 +1,7 @@
 package Logic;
 
 import Data.DBimport;
+import Data.Event;
 import Gui.DialogBox;
 import javafx.scene.control.Button;
 
@@ -22,15 +23,24 @@ public class Import extends DialogBox {
 
         if(file != null) {
             Path filePath = Paths.get(file.toString());
-            java.util.List<Charset> charsets = java.util.List.of(StandardCharsets.UTF_8, StandardCharsets.ISO_8859_1);
+            List<Charset> charsets = List.of(StandardCharsets.ISO_8859_1, StandardCharsets.UTF_8);
 
             for (Charset charset : charsets) {
                 try {
-                    java.util.List<String> lines = Files.readAllLines(filePath, StandardCharsets.ISO_8859_1);
-                    List<String[]> data = new ArrayList<>();
+                    List<String> lines = Files.readAllLines(filePath, charset);
+                    List<Event> data = new ArrayList<>();
 
-                    for (int i=1; i<lines.size(); i++)
-                        data.add(lines.get(i).split(";"));
+                    for (int i=1; i<lines.size(); i++) {
+                        String[] col = lines.get(i).split(";");
+                        data.add(new Event(
+                                Integer.parseInt(col[1]), //id
+                                col[2], //event
+                                Integer.parseInt(col[3]), //teamID
+                                col[4], //Team
+                                "00:"+col[0], //time
+                                col[5]) //real time
+                        );
+                     }
 
                     db.importData(data, matchID);
 

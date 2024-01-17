@@ -8,9 +8,7 @@ import java.util.ArrayList;
 
 public class DBevent {
 
-    private final DBconnect database = DBconnect.getInstance();
-    private final Connection db = database.getConnection();
-
+    private final Connection db = DBconnect.getInstance().getConnection();
 
     //Gets the list of events for a given match from DB
     public ArrayList<Event> getEvents(int matchID) {
@@ -47,9 +45,9 @@ public class DBevent {
         try {
             String parameters =
                     "@type="+eventType+","+
-                            "@matchID="+matchID+","+
-                            "@teamID="+teamID+","+
-                            "@time=\"00:"+time+"\"";
+                    "@matchID="+matchID+","+
+                    "@teamID="+teamID+","+
+                    "@time=\"00:"+time+"\"";
 
             Statement statement = db.createStatement();
             statement.executeUpdate("setEvent "+parameters);
@@ -66,8 +64,8 @@ public class DBevent {
         try {
             String parameters =
                     "@type="+eventType+","+
-                            "@matchID="+matchID+","+
-                            "@teamID="+teamID;
+                    "@matchID="+matchID+","+
+                    "@teamID="+teamID;
 
             Statement statement = db.createStatement();
             statement.executeUpdate("deleteEvent "+parameters);

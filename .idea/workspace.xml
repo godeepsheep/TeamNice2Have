@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6abc0c-19c1-4a95-88e9-b5d5abbca72a" name="Changes" comment="Made classes from the ER diagram.">
-      <change beforePath="$PROJECT_DIR$/src/Data/DBconnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBconnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBevent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBevent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBimport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBimport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBleague.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBleague.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DBmatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DBmatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/Import.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Import.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +64,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.45747125",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "inlay.hints",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -122,7 +128,7 @@
       <workItem from="1705471733904" duration="1969000" />
       <workItem from="1705473760860" duration="203000" />
       <workItem from="1705473993074" duration="2383000" />
-      <workItem from="1705503941278" duration="447000" />
+      <workItem from="1705503941278" duration="7577000" />
     </task>
     <task id="LOCAL-00001" summary="Made classes from the ER diagram.">
       <option name="closed" value="true" />

@@ -5,9 +5,7 @@ import java.util.ArrayList;
 
 public class DBmatch {
 
-    private final DBconnect database = DBconnect.getInstance();
-    private final Connection db = database.getConnection();
-
+    private final Connection db = DBconnect.getInstance().getConnection();
 
     //Gets a list of matches from the DB
     public ArrayList<Match> getMatches() {

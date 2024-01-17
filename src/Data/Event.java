@@ -24,6 +24,9 @@ public class Event {
     public String getTeam() {
         return team;
     }
+    public int getTeamID() {
+        return teamID;
+    }
     public String getTime() {
         return time;
     }
