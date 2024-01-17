@@ -14,10 +14,11 @@ public class DBconnect {
     }
 
     private boolean openConnection(String databaseName, boolean online) {
-        String connectionString = "jdbc:sqlserver://";
+        String connectionString;
         try {
             if(online) {
-                connectionString +=
+                connectionString =
+                        "jdbc:sqlserver://"+
                         "mssql9.unoeuro.com:1433;" +
                         "databaseName=" + databaseName + ";" +
                         "user=eamvstudie23_dk;" +
@@ -25,7 +26,8 @@ public class DBconnect {
                         "encrypt=true;" +
                         "trustServerCertificate=true;";
             } else {
-                connectionString +=
+                connectionString =
+                        "jdbc:sqlserver://"+
                         "localhost:1433;" +
                         "instanceName=SQLEXPRESS;" +
                         "databaseName=" + databaseName + ";" +
