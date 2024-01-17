@@ -25,14 +25,10 @@ public class Export extends DialogBox {
             for (T e : list)
                 data.append(e.toString() + "\n");
 
-            write(data, dir, fileName);
+            writeToFile(data, dir + "\\"+fileName+".csv");
+            Desktop.getDesktop().open(dir);
+            DialogBox.alert("Export færdig!", "Export");
         }
-    }
-
-    private static void write(StringBuilder data, File dir, String name) throws IOException {
-        writeToFile(data, dir + "\\"+name+".csv");
-        Desktop.getDesktop().open(dir);
-        DialogBox.alert("Export færdig!", "Export");
     }
 
     private static void writeToFile(StringBuilder data, String filePath) {
