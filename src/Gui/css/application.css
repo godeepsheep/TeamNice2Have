@@ -39,7 +39,4 @@
 
 .button {
     -fx-focus-traversable: false;
-    -fx-focus-color: green;
-    -fx-faint-focus-color: green;
-    -fx-focus-width: 1px;
 }

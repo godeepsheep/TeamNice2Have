@@ -14,11 +14,9 @@ public class Event {
         this.time = time;
         this.realtime = realtime;
     }
+
     public int getID() {
         return id;
-    }
-    public int getTeamID() {
-        return teamID;
     }
     public String getName() {
         return event;

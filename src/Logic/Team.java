@@ -6,7 +6,6 @@ import Gui.StandingEntry;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
-import java.util.Objects;
 import java.util.Optional;
 
 public class Team extends DialogBox {
@@ -35,40 +34,46 @@ public class Team extends DialogBox {
     }
 
     public static void edit(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
-        StandingEntry entry = tableView.getSelectionModel().getSelectedItem();
+
         int index = tableView.getSelectionModel().getSelectedIndex();
+        if(index>=0) {
+            StandingEntry entry = tableView.getSelectionModel().getSelectedItem();
+            String name = textInputDialog(entry.getCol2());
 
-        String name = textInputDialog(entry.getCol2());
+            if(!name.isEmpty()) {
+                datalayer.editTeam(entry.getID(), name);
 
-        if(!name.isEmpty()) {
-            datalayer.editTeam(entry.getID(), name);
+                //ændre navnet i gui
+                entry.setCol2(name);
+                data.set(index, entry);
 
-            //ændre navnet i gui
-            entry.setCol2(name);
-            data.set(index, entry);
-            tableView.refresh();
+                tableView.refresh();
+            }
         }
     }
 
     public static void delete(TableView<StandingEntry> tableView, ObservableList<StandingEntry> data, DBteam datalayer) {
+
         ButtonType yesBut = new ButtonType("Ok");
         ButtonType noBut = new ButtonType("Annullere");
 
-        StandingEntry entry = tableView.getSelectionModel().getSelectedItem();
         int index = tableView.getSelectionModel().getSelectedIndex();
+        if(index>=0) {
+            StandingEntry entry = tableView.getSelectionModel().getSelectedItem();
 
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Advarsel");
-        alert.setHeaderText("Slet hold: \""+entry.getCol2()+"\"");
-        alert.setContentText("Er du sikker på at du vil slette dette hold?");
-        alert.getButtonTypes().setAll(yesBut, noBut);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Advarsel");
+            alert.setHeaderText("Slet hold: \"" + entry.getCol2() + "\"");
+            alert.setContentText("Er du sikker på at du vil slette dette hold?");
+            alert.getButtonTypes().setAll(yesBut, noBut);
 
-        Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();
 
-        if (result.isPresent() && result.get() == yesBut) {
-            datalayer.deleteTeam(entry.getID());
-            data.remove(index);
-            tableView.refresh();
+            if (result.isPresent() && result.get() == yesBut) {
+                datalayer.deleteTeam(entry.getID());
+                data.remove(index);
+                tableView.refresh();
+            }
         }
     }
 

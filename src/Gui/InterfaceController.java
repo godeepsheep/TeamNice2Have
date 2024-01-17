@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
 
 public class InterfaceController implements Initializable {
 
-    private int penaltiesTeam1, penaltiesTeam2, Team1Goals, Team2Goals;
     private int team1ID, team2ID;
 
     @FXML private ChoiceBox<Team> Team1Name, Team2Name;
@@ -66,13 +65,13 @@ public class InterfaceController implements Initializable {
         //delete the value in the other choice box
         Team selectedTeam = box2.getSelectionModel().getSelectedItem();
         GenerateTeamList(box2);
-        
         box2.setValue(selectedTeam);
         box2.getItems().remove(getIndex(teamID));
 
         return teamID;
     }
 
+    //get the index from the teams list to know which index to remove in the other choice box
     private int getIndex(int teamID) {
         for (int i = 0; i < totalTeams.size(); i++)
             if (totalTeams.get(i).getID() == teamID)
@@ -81,11 +80,13 @@ public class InterfaceController implements Initializable {
         return -1;
     }
 
+    //making the teamlist for both choice boxes
     public void GenerateTeamList(ChoiceBox<Team> box) {
         box.getItems().clear();
         box.getItems().addAll(totalTeams);
     }
 
+    //show or hide the start button
     private void activateButton() {
         if (team1ID > 0 && team2ID > 0)
             PauseButton.getStyleClass().add("pauseButtonActive");
@@ -94,43 +95,43 @@ public class InterfaceController implements Initializable {
     }
 
 
-
+    //goal operations
     public void AddGoalTeam1() {
-        Team1Goals = game.goal(true, Team1Goals, Team1Score, team1ID);
+        game.goal(true, Team1Score, 1, team1ID);
     }
 
     public void AddGoalTeam2() {
-        Team2Goals = game.goal(true, Team2Goals, Team2Score, team2ID);
+        game.goal(true, Team2Score, 2, team2ID);
     }
 
     public void RemoveGoalTeam1() {
-        Team1Goals = game.goal(false, Team1Goals, Team1Score, team1ID);
+        game.goal(false, Team1Score, 1, team1ID);
     }
 
     public void RemoveGoalTeam2() {
-        Team2Goals = game.goal(false, Team2Goals, Team2Score, team2ID);
+        game.goal(false, Team2Score, 2, team2ID);
     }
 
 
-
+    //penalties operations
     public void AddPenaltiesTeam1() {
-        penaltiesTeam1 = game.penalties(true, penaltiesTeam1, Team1PenaltyTextField, team1ID);
+        game.penalties(true, Team1PenaltyTextField, 1, team1ID);
     }
 
     public void AddPenaltiesTeam2() {
-        penaltiesTeam2 = game.penalties(true, penaltiesTeam2, Team2PenaltyTextField, team2ID);
+        game.penalties(true, Team2PenaltyTextField, 2, team2ID);
     }
 
     public void RemovePenaltiesTeam1() {
-        penaltiesTeam1 = game.penalties(false, penaltiesTeam1, Team1PenaltyTextField, team1ID);
+        game.penalties(false, Team1PenaltyTextField, 1, team1ID);
     }
 
     public void RemovePenaltiesTeam2() {
-        penaltiesTeam2 = game.penalties(false, penaltiesTeam2, Team2PenaltyTextField, team2ID);
+        game.penalties(false, Team2PenaltyTextField, 2, team2ID);
     }
 
 
-
+    //Begin Match
     public void UpdateTimer() {
         game.updateTime();
     }

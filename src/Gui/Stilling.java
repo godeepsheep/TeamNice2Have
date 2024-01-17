@@ -24,8 +24,8 @@ public class Stilling extends Controller implements Initializable {
     @FXML private TableView<StandingEntry> tableView;
     @FXML private Button exportButton;
 
-    private DBleague leagueDB = new DBleague();
-    private DBteam teamDB = new DBteam();
+    private final DBleague leagueDB = new DBleague();
+    private final DBteam teamDB = new DBteam();
 
     private final ArrayList<League> list = leagueDB.getLeague();
     private final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
@@ -49,6 +49,7 @@ public class Stilling extends Controller implements Initializable {
         setCellValue(Pts, "col5");
 
         tableView.setItems(data);
+
     }
 
     public void addTeam() {

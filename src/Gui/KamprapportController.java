@@ -22,7 +22,6 @@ public class KamprapportController extends Controller implements Initializable {
     @FXML private TableColumn<StandingEntry, String> time, team1, goal1, team2, goal2, timeEvent, event, team, realtime;
     @FXML private TableView<StandingEntry> tableView, tableViewEvents;
     @FXML private Button exportButton, importButton;
-    @FXML private Tab tabReport;
 
     private int matchID = -1;
     private final DBimport importDB = new DBimport();
@@ -71,7 +70,7 @@ public class KamprapportController extends Controller implements Initializable {
 
         for (Event e : eventlist)
             dataEvent.add(new StandingEntry(
-                    0,
+                    e.getID(),
                     e.getTime(),
                     e.getName(),
                     e.getTeam(),

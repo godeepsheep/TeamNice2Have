@@ -115,37 +115,66 @@ public class Match {
 
 
 //setting the goals
-    public int goal(boolean addGoals, int Goals, TextField TeamScore, int teamID) {
-        if (!TimerRunning) return Goals;
+    public void goal(boolean addGoals, TextField TeamScore, int teamNo, int teamID) {
+        if (!TimerRunning) return;
+        int goals;
 
-        if (addGoals) {    
-            Goals++;
+        if (addGoals) {
+            goals = setGoal(teamNo, 1);
             eventDB.setEvent(1, matchID, teamID, CurrentGameTime());
 
-        } else if (Goals > 0) {
-            Goals--;
+        } else {
+            goals = setGoal(teamNo, -1);
             eventDB.deleteEvent(1, matchID, teamID);
         }
 
-        TeamScore.setText("" + Goals);
-        return Goals;
+        TeamScore.setText("" + goals);
     }
 
-//setting the Penalties
-    public int penalties(boolean addPenalties, int penalties, TextField PenaltyText, int teamID) {
-        if (!TimerRunning) return penalties;
+    private int setGoal(int teamNo, int goal) {
+        if(teamNo==1) {
+            if (!(goal<0 && Team1Goals <= 0))
+                return Team1Goals += goal;
 
-        if (addPenalties) {    
-            penalties++;
+        } else {
+            if (!(goal<0 && Team2Goals <= 0))
+                return Team2Goals += goal;
+        }
+
+        return 0;
+    }
+
+
+//setting the Penalties
+    public void penalties(boolean addPenalties, TextField PenaltyText, int teamNo, int teamID) {
+        if (!TimerRunning) return;
+        int penalties;
+
+        if (addPenalties) {
+            penalties = setPenalti(teamNo, 1);
             eventDB.setEvent(2, matchID, teamID, CurrentGameTime());
 
-        } else if (penalties > 0) {
-            penalties--;
+        } else {
+            penalties = setPenalti(teamNo, -1);
             eventDB.deleteEvent(2, matchID, teamID);
         }
 
         PenaltyText.setText("" + penalties);
-        return penalties;
+    }
+
+    private int setPenalti(int teamNo, int goal) {
+
+        if(teamNo==1) {
+            if (!(goal<0 && penaltiesTeam1 <= 0))
+                return penaltiesTeam1 += goal;
+
+        } else {
+
+            if (!(goal<0 && penaltiesTeam2 <= 0))
+                return penaltiesTeam2 += goal;
+        }
+
+        return 0;
     }
 
 
