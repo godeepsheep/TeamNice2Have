@@ -18,7 +18,7 @@ public class DialogBox {
             TextInputDialog inputdialog = new TextInputDialog(defaultValue);
             inputdialog.setTitle("Opret Hold");
             inputdialog.setHeaderText("Indtast holdnavn");
-            inputdialog.setContentText("Navns:");
+            inputdialog.setContentText("Navn:");
 
             Optional<String> result = inputdialog.showAndWait();
             StringResult = result.orElse(defaultValue);
