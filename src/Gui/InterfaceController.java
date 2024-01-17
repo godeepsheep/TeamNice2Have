@@ -97,37 +97,37 @@ public class InterfaceController implements Initializable {
 
     //goal operations
     public void AddGoalTeam1() {
-        game.goal(true, Team1Score, 1, team1ID);
+        game.goal(1, Team1Score, 1, team1ID);
     }
 
     public void AddGoalTeam2() {
-        game.goal(true, Team2Score, 2, team2ID);
+        game.goal(1, Team2Score, 2, team2ID);
     }
 
     public void RemoveGoalTeam1() {
-        game.goal(false, Team1Score, 1, team1ID);
+        game.goal(-1, Team1Score, 1, team1ID);
     }
 
     public void RemoveGoalTeam2() {
-        game.goal(false, Team2Score, 2, team2ID);
+        game.goal(-1, Team2Score, 2, team2ID);
     }
 
 
     //penalties operations
     public void AddPenaltiesTeam1() {
-        game.penalties(true, Team1PenaltyTextField, 1, team1ID);
+        game.penalties(1, Team1PenaltyTextField, 1, team1ID);
     }
 
     public void AddPenaltiesTeam2() {
-        game.penalties(true, Team2PenaltyTextField, 2, team2ID);
+        game.penalties(1, Team2PenaltyTextField, 2, team2ID);
     }
 
     public void RemovePenaltiesTeam1() {
-        game.penalties(false, Team1PenaltyTextField, 1, team1ID);
+        game.penalties(-1, Team1PenaltyTextField, 1, team1ID);
     }
 
     public void RemovePenaltiesTeam2() {
-        game.penalties(false, Team2PenaltyTextField, 2, team2ID);
+        game.penalties(-1, Team2PenaltyTextField, 2, team2ID);
     }
 
 

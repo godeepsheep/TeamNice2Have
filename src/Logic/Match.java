@@ -115,63 +115,55 @@ public class Match {
 
 
 //setting the goals
-    public void goal(boolean addGoals, TextField TeamScore, int teamNo, int teamID) {
+    public void goal(int addGoals, TextField TeamScore, int teamNo, int teamID) {
         if (!TimerRunning) return;
-        int goals;
 
-        if (addGoals) {
-            goals = setGoal(teamNo, 1);
+        if (addGoals==1)
             eventDB.setEvent(1, matchID, teamID, CurrentGameTime());
-
-        } else {
-            goals = setGoal(teamNo, -1);
+        else
             eventDB.deleteEvent(1, matchID, teamID);
-        }
 
-        TeamScore.setText("" + goals);
+        TeamScore.setText("" +
+                setEvent(teamNo, addGoals, 1)
+        );
     }
-
-    private int setGoal(int teamNo, int goal) {
-        if(teamNo==1) {
-            if (!(goal<0 && Team1Goals <= 0))
-                return Team1Goals += goal;
-
-        } else {
-            if (!(goal<0 && Team2Goals <= 0))
-                return Team2Goals += goal;
-        }
-
-        return 0;
-    }
-
 
 //setting the Penalties
-    public void penalties(boolean addPenalties, TextField PenaltyText, int teamNo, int teamID) {
+    public void penalties(int addPenalties, TextField PenaltyText, int teamNo, int teamID) {
         if (!TimerRunning) return;
-        int penalties;
 
-        if (addPenalties) {
-            penalties = setPenalti(teamNo, 1);
+        if (addPenalties == 0)
             eventDB.setEvent(2, matchID, teamID, CurrentGameTime());
-
-        } else {
-            penalties = setPenalti(teamNo, -1);
+        else
             eventDB.deleteEvent(2, matchID, teamID);
-        }
 
-        PenaltyText.setText("" + penalties);
+        PenaltyText.setText("" +
+                setEvent(teamNo, addPenalties, 2)
+        );
     }
 
-    private int setPenalti(int teamNo, int goal) {
+    private int setEvent(int teamNo, int counter, int eventType) {
 
-        if(teamNo==1) {
-            if (!(goal<0 && penaltiesTeam1 <= 0))
-                return penaltiesTeam1 += goal;
+        if(teamNo==1) { //team 1
 
-        } else {
+            if(eventType==1) { //event goal
+                // if counter is -1 and team goal is 0 (or less) then don't
+                if (!(counter<0 && Team1Goals <= 0))
+                    return Team1Goals += counter;
+            } else {
+                if (!(counter<0 && penaltiesTeam1 <= 0))
+                    return penaltiesTeam1 += counter;
+            }
 
-            if (!(goal<0 && penaltiesTeam2 <= 0))
-                return penaltiesTeam2 += goal;
+        } else { //team 2
+
+            if(eventType==1) {
+                if (!(counter<0 && Team2Goals <= 0))
+                    return Team2Goals += counter;
+            } else {
+                if (!(counter<0 && penaltiesTeam2 <= 0))
+                    return penaltiesTeam2 += counter;
+            }
         }
 
         return 0;
@@ -188,7 +180,6 @@ public class Match {
         }
         return "0" + elapsedMinutes + ":" + zeroString + elapsedSeconds;
     }
-
 
     public void updateTime() {
         if (team1ID == 0 || team2ID == 0) return;
