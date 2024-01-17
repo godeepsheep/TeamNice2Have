@@ -112,7 +112,7 @@ BEGIN
 		Team.ID AS Team_ID,
 		Team.Name AS Team, 
 		FORMAT(CONVERT(DATETIME, [Time], 121), 'mm:ss') AS [Time], 
-		FORMAT(CONVERT(DATETIME, RealTime, 121), 'HH:mm:ss') AS RealTime 
+		FORMAT(CONVERT(DATETIME, RealTime, 121), 'HH:mm:ss') AS RealTime
 	FROM [Event]
 
 	LEFT JOIN EventType ON TypeID = EventType.ID

@@ -64,7 +64,7 @@ public class Stilling extends Controller implements Initializable {
     }
 
     public void exportFile() throws IOException {
-        Export.league(exportButton,list);
+        Export.exportFile(exportButton,list,"Standing_league", "Stilling; Hold; Kampe; Mål; Point");
     }
 
     @Override

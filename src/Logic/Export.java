@@ -1,7 +1,5 @@
 package Logic;
 
-import Data.Event;
-import Data.League;
 import Gui.DialogBox;
 import javafx.scene.control.Button;
 
@@ -16,53 +14,25 @@ import java.util.ArrayList;
 
 public class Export extends DialogBox {
 
-    public static void league(Button exportButton, ArrayList<League> list) throws IOException {
+    public static <T> void exportFile(Button exportButton, ArrayList<T> list, String fileName, String header) throws IOException {
 
         File dir = dirInputDialog(exportButton);
 
         if(dir != null) {
             StringBuilder data = new StringBuilder();
-            data.append("Stilling;Holdnavn;Kampe;Mål;Point\n");
+            data.append(header+"\n");
 
-            for (League l : list)
-                data.append(
-                        l.getStanding() + ";" +
-                                l.getName() + ";" +
-                                l.getMatches() + ";" +
-                                l.getGoalsDiff() + ";" +
-                                l.getPoints() + "\n"
-                );
+            for (T e : list)
+                data.append(e.toString() + "\n");
 
-            writeFile(data, dir, "Standing_league");
+            write(data, dir, fileName);
         }
     }
 
-    private static void writeFile(StringBuilder data, File dir, String name) throws IOException {
-        Export.writeToFile(data, dir + "\\"+name+".csv");
+    private static void write(StringBuilder data, File dir, String name) throws IOException {
+        writeToFile(data, dir + "\\"+name+".csv");
         Desktop.getDesktop().open(dir);
         DialogBox.alert("Export færdig!", "Export");
-    }
-
-    public static void events(Button exportButton, ArrayList<Data.Event> list) throws IOException {
-
-        File dir = dirInputDialog(exportButton);
-
-        if(dir != null) {
-            StringBuilder data = new StringBuilder();
-            data.append("Tid;ID;Handling;HoldID;Hold;Realtid\n");
-
-            for (Event e : list)
-                data.append(
-                        e.getTime() + ";" +
-                                e.getID() + ";" +
-                                e.getName() + ";" +
-                                e.getTeamID() + ";" +
-                                e.getTeam() + ";" +
-                                e.getRealTime() + "\n"
-                );
-
-            writeFile(data, dir, "Match_events");
-        }
     }
 
     private static void writeToFile(StringBuilder data, String filePath) {

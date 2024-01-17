@@ -35,9 +35,6 @@ public class Event {
 
     @Override
     public String toString() {
-        return "[Match: Event=" + event +
-                ", Team=" + team +
-                ", Time=" + time +
-                ", RealTime=" + realtime + "]";
+        return time+";"+id+";"+event+";"+teamID+";"+team+";"+realtime;
     }
 }

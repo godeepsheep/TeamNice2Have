@@ -25,9 +25,9 @@ public class KamprapportController extends Controller implements Initializable {
     @FXML private Tab tabReport;
 
     private int matchID = -1;
-    DBimport importDB = new DBimport();
-    DBmatch matchDB = new DBmatch();
-    DBevent eventDB = new DBevent();
+    private final DBimport importDB = new DBimport();
+    private final DBmatch matchDB = new DBmatch();
+    private final DBevent eventDB = new DBevent();
 
     private final ObservableList<StandingEntry> data = FXCollections.observableArrayList();
     private final ArrayList<Match> list = matchDB.getMatches();
@@ -96,7 +96,7 @@ public class KamprapportController extends Controller implements Initializable {
     }
 
     public void exportFile() throws IOException {
-        Export.events(exportButton, eventlist);
+        Export.exportFile(exportButton, eventlist, "Match_events_"+matchID,"Tid; ID; Handling; HoldID; Hold; Realtid" );
     }
 
     public void importFile() {

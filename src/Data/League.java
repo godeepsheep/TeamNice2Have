@@ -21,6 +21,7 @@ public class League {
     public int getID() {
         return id;
     }
+
     public String getName() {
         return name;
     }
@@ -39,10 +40,6 @@ public class League {
 
     @Override
     public String toString() {
-        return "[League: standing=" + standing +
-                ", Name=" + name +
-                ", Matches=" + matches +
-                ", GoalsDiff=" + goalsDiff +
-                ", Points=" + points + "]";
+        return standing+";"+name+";"+matches+";"+goalsDiff+";"+points;
     }
 }
