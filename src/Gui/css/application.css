@@ -37,6 +37,6 @@
     -fx-cursor: hand;
 }
 
-.button {
+.button, .text-field {
     -fx-focus-traversable: false;
 }

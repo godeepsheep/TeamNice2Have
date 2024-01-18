@@ -1,6 +1,7 @@
 package Logic;
 
-import Data.*;
+import Data.DBteam;
+import Data.League;
 import Gui.DialogBox;
 import Gui.StandingEntry;
 import javafx.collections.ObservableList;

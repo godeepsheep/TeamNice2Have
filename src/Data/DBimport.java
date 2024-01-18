@@ -32,7 +32,7 @@ public class DBimport {
     }
 
     private Time toTime(String time) throws ParseException {
-        DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+        DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
         return new Time(formatter.parse(time).getTime());
     }
 
