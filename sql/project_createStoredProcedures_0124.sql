@@ -119,7 +119,7 @@ BEGIN
 	LEFT JOIN Team ON TeamID = Team.ID
 
 	WHERE @matchID = 0 OR MatchID = @matchID
-	ORDER BY RealTime DESC;
+	ORDER BY MatchID DESC, RealTime DESC;
 END;
 GO
 
