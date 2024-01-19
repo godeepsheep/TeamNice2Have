@@ -132,7 +132,7 @@ public class Match {
     public void penalties(int addPenalties, TextField PenaltyText, int teamNo, int teamID) {
         if (!TimerRunning) return;
 
-        if (addPenalties == 0)
+        if (addPenalties==1)
             eventDB.setEvent(2, matchID, teamID, CurrentGameTime());
         else
             eventDB.deleteEvent(2, matchID, teamID);
