@@ -17,11 +17,12 @@ public class Match {
  //Match
     private int matchID, team1ID, team2ID;
     private int penaltiesTeam1, penaltiesTeam2, Team1Goals, Team2Goals;
-    private int elapsedSeconds, elapsedMinutes;  //how long the match has run
+    private int elapsedTime, elapsedSeconds, elapsedMinutes;  //how long the match has run
     private int totalTime, targetTime; //total amount of seconds the match will take
-    private boolean TimerRunning, gameStart;
+    private boolean isTimerRunning, TimerRunning, gameStart;
 
-    private Timer _time;
+    private Timer time;
+    ///private Timer _time;
     private final String imagePause = "images/pauseicon.png";
     private final String imagePlay = "images/PlayIcon.png";
 
@@ -169,8 +170,69 @@ public class Match {
         return 0;
     }
 
+    //timer operations
 
-//timer operations
+
+    public String CurrentGameTime() {
+        String seconds = String.format("%02d", elapsedTime%60);
+        String minutes = String.format("%02d", (elapsedTime/60)%60);
+        return minutes+":"+seconds;
+    }
+
+
+    public void updateTime() {
+
+        if (team2ID > 0 && team1ID > 0) {
+            if(!gameStart) {
+                gameStart = true;
+                start(team1ID, team2ID);
+            }
+        } else {
+            return;
+        }
+
+        if (!isTimerRunning) {
+            time = new Timer(true);
+            isTimerRunning = true;
+
+            time.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+
+                    if(elapsedTime < targetTime) {
+                        //count time
+                        elapsedTime ++;
+                        PauseButton.setImage(getImage(imagePause));
+
+                    } else {
+                        //stop Match
+                        cancelTimer();
+                        end();
+                        gameStart = false;
+                    }
+                    Platform.runLater(() -> timerLabelText.setText(CurrentGameTime()));
+                }
+            },
+            0,
+            1000);
+
+        } else {
+            //pause Match
+            cancelTimer();
+        }
+    }
+
+    private void cancelTimer() {
+        time.cancel();
+        time.purge();
+        isTimerRunning = false;
+        PauseButton.setImage(getImage(imagePlay));
+    }
+
+
+
+
+    /*
     public String CurrentGameTime() {
         String zeroString;
         if (elapsedSeconds < 10) {
@@ -200,6 +262,7 @@ public class Match {
 
                     if (totalTime != targetTime) {
                         //start game
+
                         if (elapsedSeconds == 60) {
                             elapsedMinutes += 1;
                             elapsedSeconds = 0;
@@ -235,7 +298,7 @@ public class Match {
             PauseButton.setImage(getImage(imagePlay));
         }
     }
-
+*/
     private Image getImage(String image) {
         return new Image(streamclass.getResourceAsStream(image));
     }
